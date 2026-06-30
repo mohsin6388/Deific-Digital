@@ -3,6 +3,14 @@ import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from "luc
 import logo from "../../assets/dd.png"
 
 export function Footer() {
+
+  const socialLinks = [
+          { icon: Facebook, href: "https://www.facebook.com/deificdigital/", label: "Facebook" },
+          // { icon: Twitter, href: "#", label: "Twitter" },
+          { icon: Linkedin, href: "https://www.linkedin.com/company/deificdigital/posts/?feedView=all", label: "LinkedIn" },
+          { icon: Instagram, href: "https://www.instagram.com/deificdigital?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", label: "Instagram" },
+          
+      ];
   return (
     <footer className="border-t border-border bg-gray-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
@@ -23,13 +31,13 @@ export function Footer() {
               550+ clients worldwide.
             </p>
             <div className="mt-5 flex gap-3">
-              {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
+              {socialLinks.map((Icon, i) => (
                 <a
                   key={i}
-                  href="#"
+                  href={Icon.href}
                   className="grid h-9 w-9 place-items-center rounded-md border border-border bg-white text-foreground transition-colors hover:bg-red-700 hover:text-white hover:border-red-700"
                 >
-                  <Icon className="h-4 w-4" />
+                  <Icon.icon className="h-4 w-4" />
                 </a>
               ))}
             </div>

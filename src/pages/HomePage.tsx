@@ -415,7 +415,7 @@ function HeroSlider() {
                     </div>
 
                     {/* RIGHT – iPhone */}
-                    <div key={`ph-${animKey}`} className="slide-anim" style={{ position: "relative", flexShrink: 0, display: "flex", justifyContent: "center" }}>
+                    <div key={`ph-${animKey}`} className="slide-anim" style={{ position: "relative", flexShrink: 0, display: "flex", justifyContent: "center"}}>
                         <div style={{ position: "absolute", inset: -30, background: `radial-gradient(ellipse,${slide.accent}22 0%,transparent 70%)`, pointerEvents: "none", borderRadius: "50%" }} />
                         <IPhoneFrame>{slide.screen}</IPhoneFrame>
                         <div style={{ position: "absolute", top: 24, right: -90, background: "#fff", borderRadius: 14, padding: "7px 14px", boxShadow: "0 4px 20px rgba(0,0,0,0.12)", border: "1px solid #f0f0f0", fontSize: 11, fontWeight: 700, color: "#111", whiteSpace: "nowrap" }}>⚡ Fast Delivery</div>
