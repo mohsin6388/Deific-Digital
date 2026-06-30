@@ -1,4 +1,5 @@
 import { CTABanner } from "@/components/site/CTABanner";
+import { FileText } from "lucide-react";
 
 const posts = [
   {
@@ -63,7 +64,16 @@ export default function BlogPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+        <div className="w-full">
+      <div className="h-64 w-full max-w-md mx-auto flex flex-col items-center justify-center gap-3 rounded-lg border border-dashed border-gray-300 bg-gray-50">
+        <FileText className="w-10 h-10 text-gray-400" />
+        <p className="text-lg font-medium text-gray-600">No Blog Posts Yet</p>
+        <p className="text-sm text-gray-400">New articles will appear here once published</p>
+      </div>
+   </div>
+        {/* <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
           {posts.map((p) => (
             <article
               key={p.title}
@@ -85,7 +95,7 @@ export default function BlogPage() {
               </div>
             </article>
           ))}
-        </div>
+        </div> */}
       </section>
 
       <CTABanner />

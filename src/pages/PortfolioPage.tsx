@@ -7,14 +7,14 @@ import rickshaw from "@/assets/e-rickshaw.png"
 import school from "@/assets/school.webp"
 import land from "@/assets/green-land.jfif"
 import sport from "@/assets/sport.webp"
-import darshan from "@/assets/darshan.webp"
+import darshan from "@/assets/darshan.png"
 import city from "@/assets/city-app.jfif"
-import sundra from "../assets/sundra-logo.png"
 import vaishnaviHost from "../assets/vaishnavi.webp"
 import knn from "../assets/knn.jfif"
 import greenPark from "../assets/green-park.jpg"
 import celebration from "../assets/celebration.jpg"
 import perch from "../assets/perch.jfif"
+import sundra from "../assets/image.png"
 
 const projects = [
   {
@@ -104,7 +104,7 @@ const projects = [
     tech: "Next.js, CMS, MongoDB",
     desc: "Corporate website and property listing platform for Sundra Group — properties, projects, and inquiries.",
     color: "from-sky-500 to-blue-700",
-    img: land,
+    img: sundra,
     tag: "Real Estate",
   },
   {
@@ -290,7 +290,7 @@ export default function PortfolioPage() {
           {filtered.map((p) => (
             <div
               key={p.title}
-              className="group rounded-2xl border border-gray-100 bg-white overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+              className="group rounded-2xl border border-gray-100 bg-white overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
             >
               {/* Image/banner area */}
               <div
@@ -318,9 +318,9 @@ export default function PortfolioPage() {
                   <span className="text-xs text-gray-400 font-medium">
                     {p.tech}
                   </span>
-                  <button className="flex items-center gap-1 text-sm font-semibold text-red-600 hover:gap-2 transition-all">
+                  {/* <button className="flex items-center gap-1 text-sm font-semibold text-red-600 hover:gap-2 transition-all">
                     View <ExternalLink className="h-3.5 w-3.5" />
-                  </button>
+                  </button> */}
                 </div>
               </div>
 

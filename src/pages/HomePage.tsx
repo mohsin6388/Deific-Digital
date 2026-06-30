@@ -1,9 +1,10 @@
+
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import {
     ArrowRight, Star, Shield, Zap, Users, Globe, Award,
     ChevronRight, CheckCircle, Code2, Smartphone,
-    Bot, Cloud, BarChart3,
+    Bot, Cloud, BarChart3, MessageCircle, X, Send,
 } from "lucide-react";
 import { Briefcase, Timer, BadgeCheck } from "lucide-react";
 import { Counter } from "@/components/site/Counter";
@@ -291,7 +292,7 @@ const slides = [
 ];
 
 // ──────────────────────────────────────────────────────────────
-// HERO SLIDER (FULL WIDTH – COMPACT)
+// HERO SLIDER
 // ──────────────────────────────────────────────────────────────
 
 function HeroSlider() {
@@ -324,10 +325,10 @@ function HeroSlider() {
     return (
         <>
             {/* ── CERTIFICATION TAG STRIP ── */}
-            <div style={{ background: "#fff", borderBottom: "1px solid #fee2e2", borderTop: "1px solid #fee2e2", overflow: "hidden", padding: "11px 0", position: "relative" }}>
+            <div className="cert-strip-container" style={{ background: "#fff", borderBottom: "1px solid #fee2e2", borderTop: "1px solid #fee2e2", overflow: "hidden", position: "relative" }}>
                 <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 60, background: "linear-gradient(to right,#fff,transparent)", zIndex: 10, pointerEvents: "none" }} />
                 <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 60, background: "linear-gradient(to left,#fff,transparent)", zIndex: 10, pointerEvents: "none" }} />
-                <div className="cert-strip" style={{ gap: 12, display: "flex", width: "max-content", animation: "certScroll 28s linear infinite" }}>
+                <div className="cert-strip" style={{ display: "flex", width: "max-content", animation: "certScroll 28s linear infinite" }}>
                     {doubled.map((tag, i) => (
                         <div key={i} style={{ display: "inline-flex", alignItems: "center", gap: 7, background: "#fff", border: `1.5px solid ${tag.color}22`, borderRadius: 99, padding: "5px 16px", boxShadow: `0 2px 8px ${tag.color}12`, whiteSpace: "nowrap", flexShrink: 0, marginRight: 12 }}>
                             <div style={{ width: 7, height: 7, borderRadius: "50%", background: tag.color }} />
@@ -337,39 +338,31 @@ function HeroSlider() {
                 </div>
             </div>
 
-            {/* ── SLIDER – COMPACT & FULL WIDTH ── */}
-            <section style={{
+            {/* ── SLIDER ── */}
+            <section className="hero-slider-section" style={{
                 background: "linear-gradient(135deg,#fff 0%,#fef2f2 60%,#fff 100%)",
-                padding: "32px 0 40px",
                 position: "relative",
                 overflow: "hidden",
                 width: "100%"
             }}>
-                {/* dot grid */}
                 <div style={{ position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.03, backgroundImage: "radial-gradient(#b91c1c 1px,transparent 1px)", backgroundSize: "28px 28px" }} />
-                {/* accent glow */}
                 <div style={{ position: "absolute", right: -80, top: -80, width: 420, height: 420, background: `radial-gradient(circle,${slide.accent}18 0%,transparent 70%)`, pointerEvents: "none", transition: "background 0.6s ease", borderRadius: "50%" }} />
 
-                {/* ─── INNER ─── */}
-                <div style={{
-                    
+                <div className="hero-inner" style={{
                     maxWidth: "100%",
                     margin: "0 0",
                     display: "flex",
                     alignItems: "center",
-                    gap: 280,
                     flexWrap: "wrap",
                     justifyContent: "center",
-                    padding: "0 40px"
                 }}>
-                    {/* LEFT – Text Content (compact) */}
+                    {/* LEFT – Text Content */}
                     <div key={`txt-${animKey}`} className="slide-anim" style={{ flex: "1 1 380px", maxWidth: 540 }}>
                         <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: `${slide.accent}15`, border: `1.5px solid ${slide.accent}30`, borderRadius: 99, padding: "4px 14px", marginBottom: 14 }}>
                             <div style={{ width: 6, height: 6, borderRadius: "50%", background: slide.accent }} />
                             <span style={{ fontSize: 10, fontWeight: 800, color: slide.accent, textTransform: "uppercase", letterSpacing: 1 }}>{slide.badge}</span>
                         </div>
 
-                        {/* ── NEW HEADLINE: stable + dynamic ── */}
                         <h2 style={{
                             fontSize: "clamp(32px,4.6vw,56px)",
                             fontWeight: 900,
@@ -385,16 +378,12 @@ function HeroSlider() {
                             </span>
                         </h2>
 
-                        {/* ── DESCRIPTION REMOVED ── */}
-
-                        {/* Chips */}
                         <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16, marginTop: 12 }}>
                             {slide.chips.map((chip) => (
                                 <div key={chip} style={{ background: "#fff", border: "1.5px solid #e5e7eb", borderRadius: 99, padding: "3px 13px", fontSize: 11, fontWeight: 700, color: "#555", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>{chip}</div>
                             ))}
                         </div>
 
-                        {/* Stats */}
                         <div style={{ display: "flex", gap: 24, marginBottom: 16 }}>
                             {slide.stats.map((s) => (
                                 <div key={s.lbl}>
@@ -404,7 +393,6 @@ function HeroSlider() {
                             ))}
                         </div>
 
-                        {/* Checklist (compact) */}
                         <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 18 }}>
                             {["End-to-end development & deployment", "Dedicated project manager assigned", "100% source code ownership"].map((f) => (
                                 <div key={f} style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -416,7 +404,6 @@ function HeroSlider() {
                             ))}
                         </div>
 
-                        {/* CTAs */}
                         <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                             <Link to="/contact" style={{ background: slide.accent, color: "#fff", border: "none", borderRadius: 99, padding: "10px 24px", fontSize: 13, fontWeight: 800, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 8, boxShadow: `0 6px 20px ${slide.accent}40`, textDecoration: "none", transition: "transform 0.2s" }}>
                                 Get a Free Quote <ArrowRight size={14} />
@@ -427,11 +414,10 @@ function HeroSlider() {
                         </div>
                     </div>
 
-                    {/* RIGHT – iPhone (same size) */}
+                    {/* RIGHT – iPhone */}
                     <div key={`ph-${animKey}`} className="slide-anim" style={{ position: "relative", flexShrink: 0, display: "flex", justifyContent: "center" }}>
                         <div style={{ position: "absolute", inset: -30, background: `radial-gradient(ellipse,${slide.accent}22 0%,transparent 70%)`, pointerEvents: "none", borderRadius: "50%" }} />
                         <IPhoneFrame>{slide.screen}</IPhoneFrame>
-                        {/* Floating badges – slightly smaller */}
                         <div style={{ position: "absolute", top: 24, right: -90, background: "#fff", borderRadius: 14, padding: "7px 14px", boxShadow: "0 4px 20px rgba(0,0,0,0.12)", border: "1px solid #f0f0f0", fontSize: 11, fontWeight: 700, color: "#111", whiteSpace: "nowrap" }}>⚡ Fast Delivery</div>
                         <div style={{ position: "absolute", bottom: 80, left: -100, background: "#fff", borderRadius: 14, padding: "7px 14px", boxShadow: "0 4px 20px rgba(0,0,0,0.12)", border: "1px solid #f0f0f0", fontSize: 11, fontWeight: 700, whiteSpace: "nowrap" }}>
                             <span style={{ color: "#facc15" }}>★★★★★</span><span style={{ color: "#111", marginLeft: 4 }}>5-Star Rated</span>
@@ -440,7 +426,7 @@ function HeroSlider() {
                     </div>
                 </div>
 
-                {/* Controls – slightly smaller */}
+                {/* Controls */}
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, marginTop: 32 }}>
                     <button onClick={() => go(current - 1)} style={{ width: 36, height: 36, borderRadius: "50%", background: "#fff", border: "2px solid #e5e7eb", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}>
                         <ChevronRight size={16} color="#555" style={{ transform: "rotate(180deg)" }} />
@@ -467,27 +453,249 @@ function HeroSlider() {
     );
 }
 
-// ─── UPDATED ClientCard (larger logos) ────────────────────────────────────
+// ──────────────────────────────────────────────────────────────
+// CLIENT CARD (round logo + label)
+// ──────────────────────────────────────────────────────────────
+
 function ClientCard({ cl }: any) {
     return (
-        <div
-            className="client-card flex-shrink-0 bg-white border border-gray-200 rounded-2xl mx-4 px-6 py-5 flex items-center gap-5 shadow-sm hover:shadow-lg transition-all duration-300"
-            style={{ width: 280 }}
-        >
-            <div className="w-24 h-24 rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden bg-gray-50 border border-gray-100 p-2">
-                <img
-                    src={cl.img}
-                    alt={cl.name}
-                    className="w-full h-full object-contain"
-                />
+        <div className="client-card flex-shrink-0 flex flex-col items-center gap-2 w-28">
+            <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-red-100 shadow-md flex items-center justify-center bg-white">
+                <img src={cl.img} alt={cl.name} className="w-full h-full object-contain p-2" />
             </div>
-            <div className="min-w-0">
-                <p className="font-bold text-gray-800 text-base leading-tight truncate">
-                    {cl.name}
-                </p>
-                <p className="text-xs text-gray-400 mt-1 truncate">{cl.industry}</p>
+            <div className="bg-white border border-gray-200 rounded-lg px-2 py-1 text-center w-full shadow-sm">
+                <p className="text-xs font-bold text-gray-700 truncate">{cl.name}</p>
             </div>
         </div>
+    );
+}
+
+// ──────────────────────────────────────────────────────────────
+// AI CHAT WIDGET — Improved version
+// ──────────────────────────────────────────────────────────────
+
+// ----- Intent definitions -----
+const INTENTS = {
+    greeting: {
+        keywords: ["hello", "hi", "hey", "namaste", "good morning", "good afternoon", "good evening", "greetings", "howdy"],
+        responses: [
+            "Hey there! 👋 I'm Deific Digital's assistant. How can I help you today?",
+            "Hi! Welcome to Deific Digital. What would you like to know?",
+            "Hello! 😊 I'm here to answer your questions about our services, pricing, or anything else."
+        ]
+    },
+    goodbye: {
+        keywords: ["bye", "goodbye", "see you", "thanks", "thank you", "dhanyavad", "dhanyawad", "that's all", "thats all", "done", "exit", "quit", "end", "bye bye"],
+        responses: [
+            "Thank you for chatting with Deific Digital! 🙌 If you'd like a free quote, just hit the 'Get a Free Quote' button anytime. Have a great day!",
+            "Glad to help! 😊 Feel free to reach out if you have more questions. Goodbye!",
+            "Take care! Remember, we're just a message away whenever you need us. 👋"
+        ]
+    },
+    about: {
+        keywords: ["about", "who are you", "company", "deific", "tell me about yourself", "what is deific", "introduce"],
+        responses: [
+            "Deific Digital is a full-service IT solutions company founded in 2014, headquartered in Noida, India. We've worked with 550+ businesses worldwide on web, mobile, AI, and digital marketing — with 12+ years of experience and a 98% client satisfaction rate. 🚀"
+        ]
+    },
+    services: {
+        keywords: ["service", "offer", "what do you do", "what you do", "your services", "solutions", "capabilities"],
+        responses: [
+            "We offer a wide range of digital services including:\n• Startup Validation\n• Fast MVP Development\n• Digital Marketing\n• Mobile Apps (React Native, Flutter, Swift, Kotlin)\n• AI & Automation (GPT-4, LangChain, Python)\n• Cloud & DevOps\n\nWhich one would you like to know more about? 🙂"
+        ]
+    },
+    mobile: {
+        keywords: ["mobile", "app", "android", "ios", "flutter", "react native", "kotlin", "swift", "app development", "mobile app"],
+        responses: [
+            "We build native & cross-platform mobile apps using React Native, Flutter, Swift, and Kotlin. So far we've built 550+ apps with an average rating of 5★, and we can deliver an MVP in as fast as 48 hours. 📱"
+        ]
+    },
+    web: {
+        keywords: ["web", "website", "next.js", "nextjs", "node", "laravel", "react", "vue", "angular", "web development", "web app"],
+        responses: [
+            "Our web team excels in React, Next.js, Node.js, Laravel, and more. We've delivered 100+ web apps with 99% uptime, shipping up to 3× faster than the industry average. 💻"
+        ]
+    },
+    games: {
+        keywords: ["game", "unity", "unreal", "godot", "cocos", "gaming", "game development", "games"],
+        responses: [
+            "We develop games using Unity, Unreal, Cocos2d, and Godot. We've shipped 80+ games with over 10M combined downloads. 🎮"
+        ]
+    },
+    ai: {
+        keywords: ["ai", "artificial intelligence", "automation", "chatbot", "gpt", "langchain", "tensorflow", "machine learning", "ml"],
+        responses: [
+            "Our AI & automation team works with GPT-4, LangChain, Python, TensorFlow, and more. We've automated up to 90% of repetitive workflows for clients, boosting ROI by 10×. We also built our own product, AI Review Ninja Pro, for review and reputation management. 🤖"
+        ]
+    },
+    pricing: {
+        keywords: ["price", "cost", "charge", "quote", "budget", "how much", "expensive", "affordable", "rate"],
+        responses: [
+            "Pricing depends on project scope — every engagement gets a dedicated project manager and a custom quote. The best next step is to hit 'Get a Free Quote' and our team will get back to you with a detailed estimate. 💰"
+        ]
+    },
+    contact: {
+        keywords: ["contact", "reach", "email", "phone", "number", "call", "address", "location"],
+        responses: [
+            "You can reach us through the 'Get a Free Quote' button on this page, or visit our Contact page. We're also available via email at deific.solution@hotmail.com and phone at +91 87502 00899. 📞"
+        ]
+    },
+    experience: {
+        keywords: ["experience", "year", "since", "history", "old", "how long", "established", "founded"],
+        responses: [
+            "We've been around since 2014 – that's 12+ years of experience! In that time, we've served 550+ clients across 20+ countries, delivered 120+ projects, and maintained a 98% client satisfaction rate. 📅"
+        ]
+    },
+    clients: {
+        keywords: ["client", "customer", "portfolio", "worked with", "brands", "companies", "organizations", "clients"],
+        responses: [
+            "We've had the pleasure of working with organisations like Kanpur Nagar Nigam, Kanpur Green Park, Vaishnavi Hospital, Sundra Group, A4 Celebration, and The Perch – from government bodies to hospitals to hospitality brands. 🤝"
+        ]
+    },
+    help: {
+        keywords: ["help", "support", "assist", "what can you do", "options", "menu", "list"],
+        responses: [
+            "I can tell you about:\n• Our services (web, mobile, AI, games, etc.)\n• Pricing and quotes\n• Our experience and clients\n• Contact details\n• Anything specific about Deific Digital\n\nJust ask! 🙂"
+        ]
+    }
+};
+
+// Fallback response
+const FALLBACK_RESPONSES = [
+    "Hmm, I'm not sure about that. But I can help with questions about our services, pricing, experience, clients, or contact info. What would you like to know?",
+    "I didn't quite get that. 🤔 You can ask me about our services (web, mobile, AI, games), pricing, our experience, or our clients. Just type your question!",
+    "Sorry, I don't have an answer for that yet. 😅 But I'm good at talking about what we do, how we work, and how we can help you. Ask away!"
+];
+
+// ----- Intent matching function -----
+function getIntent(text: string): keyof typeof INTENTS | "fallback" {
+    const lower = text.toLowerCase().trim();
+    // If empty, fallback
+    if (!lower) return "fallback";
+
+    // Score each intent based on keyword matches
+    let bestIntent: keyof typeof INTENTS | "fallback" = "fallback";
+    let bestScore = 0;
+
+    for (const [intentKey, intent] of Object.entries(INTENTS) as any) {
+        let score = 0;
+        for (const kw of intent.keywords) {
+            if (lower.includes(kw)) {
+                // Give higher weight to exact word matches (word boundary)
+                const regex = new RegExp(`\\b${kw}\\b`, "i");
+                if (regex.test(lower)) {
+                    score += 3;
+                } else {
+                    score += 1;
+                }
+            }
+        }
+        if (score > bestScore) {
+            bestScore = score;
+            bestIntent = intentKey;
+        }
+    }
+
+    // If score is very low, fallback
+    if (bestScore < 1) return "fallback";
+    return bestIntent;
+}
+
+// ----- ChatBot Component -----
+function ChatBot() {
+    const [open, setOpen] = useState(false);
+    const [messages, setMessages] = useState([
+        { from: "bot", text: "Hey there! 👋 I'm Deific Digital's assistant. Ask me about our services, experience, clients, or how to get a free quote!" }
+    ]);
+    const [input, setInput] = useState("");
+    const scrollRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
+    }, [messages, open]);
+
+    const send = () => {
+        const text = input.trim();
+        if (!text) return;
+
+        // Get intent
+        const intent = getIntent(text);
+        let reply = "";
+
+        if (intent === "fallback") {
+            // Pick a random fallback
+            reply = FALLBACK_RESPONSES[Math.floor(Math.random() * FALLBACK_RESPONSES.length)];
+        } else {
+            // Pick a random response from the matched intent
+            const responses = INTENTS[intent].responses;
+            reply = responses[Math.floor(Math.random() * responses.length)];
+        }
+
+        setMessages((m) => [...m, { from: "user", text }, { from: "bot", text: reply }]);
+        setInput("");
+    };
+
+    return (
+        <>
+            <button
+                onClick={() => setOpen((o) => !o)}
+                aria-label="Chat with Deific Digital"
+                style={{
+                    position: "fixed", bottom: 22, right: 22, width: 56, height: 56, borderRadius: "50%",
+                    background: "#EF4444", border: "none", display: "flex", alignItems: "center", justifyContent: "center",
+                    boxShadow: "0 8px 24px rgba(239,68,68,0.45)", cursor: "pointer", zIndex: 999,
+                }}
+            >
+                {open ? <X size={24} color="#fff" /> : <MessageCircle size={24} color="#fff" />}
+            </button>
+
+            {open && (
+                <div style={{
+                    position: "fixed", bottom: 90, right: 22, width: 320, maxWidth: "90vw", height: 420,
+                    background: "#fff", borderRadius: 18, boxShadow: "0 12px 40px rgba(0,0,0,0.18)",
+                    display: "flex", flexDirection: "column", overflow: "hidden", zIndex: 999, border: "1px solid #f0f0f0",
+                }}>
+                    <div style={{ background: "#EF4444", padding: "14px 16px", display: "flex", alignItems: "center", gap: 10 }}>
+                        <div style={{ width: 32, height: 32, borderRadius: "50%", background: "rgba(255,255,255,0.2)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <Bot size={18} color="#fff" />
+                        </div>
+                        <div>
+                            <div style={{ color: "#fff", fontWeight: 800, fontSize: 13 }}>Deific Digital Assistant</div>
+                            <div style={{ color: "rgba(255,255,255,0.85)", fontSize: 10 }}>● Online</div>
+                        </div>
+                    </div>
+
+                    <div ref={scrollRef} style={{ flex: 1, padding: "12px", display: "flex", flexDirection: "column", gap: 8, overflowY: "auto", background: "#fafafa" }}>
+                        {messages.map((m, i) => (
+                            <div key={i} style={{ display: "flex", justifyContent: m.from === "bot" ? "flex-start" : "flex-end" }}>
+                                <div style={{
+                                    background: m.from === "bot" ? "#fff" : "#EF4444",
+                                    color: m.from === "bot" ? "#222" : "#fff",
+                                    borderRadius: m.from === "bot" ? "4px 14px 14px 14px" : "14px 4px 14px 14px",
+                                    padding: "8px 12px", fontSize: 12.5, maxWidth: "82%", lineHeight: 1.5,
+                                    boxShadow: m.from === "bot" ? "0 1px 4px rgba(0,0,0,0.08)" : "none",
+                                    border: m.from === "bot" ? "1px solid #f0f0f0" : "none",
+                                    whiteSpace: "pre-line",
+                                }}>{m.text}</div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div style={{ display: "flex", gap: 6, padding: 10, borderTop: "1px solid #f0f0f0", background: "#fff" }}>
+                        <input
+                            value={input}
+                            onChange={(e) => setInput(e.target.value)}
+                            onKeyDown={(e) => e.key === "Enter" && send()}
+                            placeholder="Ask about our services..."
+                            style={{ flex: 1, border: "1px solid #e5e7eb", borderRadius: 20, padding: "8px 14px", fontSize: 12.5, outline: "none" }}
+                        />
+                        <button onClick={send} style={{ width: 36, height: 36, borderRadius: "50%", background: "#EF4444", border: "none", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", flexShrink: 0 }}>
+                            <Send size={15} color="#fff" />
+                        </button>
+                    </div>
+                </div>
+            )}
+        </>
     );
 }
 
@@ -496,23 +704,64 @@ function ClientCard({ cl }: any) {
 // ──────────────────────────────────────────────────────────────
 
 const globalStyles = `
-  @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-  @keyframes marqueeRev { 0%{transform:translateX(-50%)} 100%{transform:translateX(0)} }
+  @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-33.3334%)} }
   @keyframes certScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
   @keyframes fadeSlideUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
   @keyframes progressFill { from{width:0%} to{width:100%} }
 
-  .marquee-track { display:flex; width:max-content; animation:marquee 30s linear infinite; }
+  .marquee-track {
+    display:flex;
+    width:max-content;
+    gap:16px;
+    animation:marquee 45s linear infinite;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
   .marquee-track:hover { animation-play-state:paused; }
-  .marquee-track-reverse { display:flex; width:max-content; animation:marqueeRev 28s linear infinite; }
-  .marquee-track-reverse:hover { animation-play-state:paused; }
   .cert-strip { display:flex; width:max-content; animation:certScroll 28s linear infinite; }
   .cert-strip:hover { animation-play-state:paused; }
   .slide-anim { animation:fadeSlideUp 0.5s ease forwards; }
   .progress-fill { animation:progressFill 4s linear forwards; }
 
-  .client-card { transition:transform 0.2s ease,box-shadow 0.2s ease; cursor:default; }
-  .client-card:hover { transform:translateY(-5px); box-shadow:0 10px 30px rgba(220,38,38,0.14); }
+  .client-card { transition:transform 0.2s ease; cursor:default; }
+  .client-card:hover { transform:translateY(-5px); }
+
+  /* ----- Hero slider spacing (fixed mobile gap) ----- */
+  .hero-slider-section {
+    padding-top: 32px;
+    padding-bottom: 40px;
+  }
+  .cert-strip-container {
+    padding: 11px 0;
+  }
+  .hero-inner {
+    padding: 0 40px;
+    column-gap: 280px;
+    row-gap: 40px;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-inner {
+      column-gap: 60px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-slider-section {
+      padding-top: 16px !important;
+      padding-bottom: 24px !important;
+    }
+    .cert-strip-container {
+      padding-top: 6px !important;
+      padding-bottom: 6px !important;
+    }
+    .hero-inner {
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+      column-gap: 24px !important;
+      row-gap: 24px !important;
+    }
+  }
 `;
 
 // ──────────────────────────────────────────────────────────────
@@ -520,13 +769,13 @@ const globalStyles = `
 // ──────────────────────────────────────────────────────────────
 
 export default function HomePage() {
-    const doubledClients = [...clients, ...clients];
+    const tripledClients = [...clients, ...clients, ...clients];
 
     return (
         <div className="min-h-screen">
             <style>{globalStyles}</style>
 
-            {/* ── HERO SLIDER (FULL WIDTH) ── */}
+            {/* ── HERO SLIDER ── */}
             <HeroSlider />
 
             {/* ── STATS BAR ── */}
@@ -647,8 +896,26 @@ export default function HomePage() {
                         From AI-powered tools to round-the-clock delivery, every part of Deific Digital is built to move your business forward — faster, smarter, better.
                     </p>
 
-                    {/* AI Review Ninja Pro */}
-                    <div className="relative overflow-hidden bg-red-50 border border-red-200 rounded-2xl p-4 sm:p-5 mb-8">
+                    {/* Feature Cards */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {features.map((s) => (
+                            <div key={s.title} className="group relative bg-white rounded-2xl border border-gray-200 p-6 hover:border-red-100 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-red-100/40 transition-all duration-300 overflow-hidden">
+                                <div className="absolute top-0 left-0 right-0 h-[3px] bg-red-600 rounded-t-2xl scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                                <div className="absolute inset-0 bg-gradient-to-br from-red-50/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                                <div className="relative z-10">
+                                    <div className="h-11 w-11 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center mb-5 group-hover:bg-red-600 group-hover:border-red-600 group-hover:scale-110 transition-all duration-300">
+                                        <s.icon className="h-5 w-5 text-red-600 group-hover:text-white transition-colors duration-300" />
+                                    </div>
+                                    <h3 className="font-black text-[20px] text-gray-900 leading-tight">{s.title}</h3>
+                                    <div className="mt-3 mb-3 w-8 h-[2px] bg-red-200 rounded-full group-hover:w-14 group-hover:bg-red-500 transition-all duration-300" />
+                                    <p className="text-[13px] text-gray-500 leading-relaxed">{s.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                     {/* AI Review Ninja Pro */}
+                    <div className="relative overflow-hidden bg-red-50 border border-red-200 rounded-2xl p-4 sm:p-5 mb-8 mt-10">
                         <div className="absolute right-0 top-0 w-32 h-32 rounded-full bg-red-100 -translate-y-1/2 translate-x-1/2 pointer-events-none" />
                         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center gap-5">
                             <div className="w-14 h-14 rounded-2xl bg-red-600 flex items-center justify-center shrink-0 shadow-lg shadow-red-200">
@@ -672,24 +939,6 @@ export default function HomePage() {
                                 ))}
                             </div>
                         </div>
-                    </div>
-
-                    {/* Feature Cards */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {features.map((s) => (
-                            <div key={s.title} className="group relative bg-white rounded-2xl border border-gray-200 p-6 hover:border-red-100 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-red-100/40 transition-all duration-300 overflow-hidden">
-                                <div className="absolute top-0 left-0 right-0 h-[3px] bg-red-600 rounded-t-2xl scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                                <div className="absolute inset-0 bg-gradient-to-br from-red-50/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                                <div className="relative z-10">
-                                    <div className="h-11 w-11 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center mb-5 group-hover:bg-red-600 group-hover:border-red-600 group-hover:scale-110 transition-all duration-300">
-                                        <s.icon className="h-5 w-5 text-red-600 group-hover:text-white transition-colors duration-300" />
-                                    </div>
-                                    <h3 className="font-black text-[20px] text-gray-900 leading-tight">{s.title}</h3>
-                                    <div className="mt-3 mb-3 w-8 h-[2px] bg-red-200 rounded-full group-hover:w-14 group-hover:bg-red-500 transition-all duration-300" />
-                                    <p className="text-[13px] text-gray-500 leading-relaxed">{s.desc}</p>
-                                </div>
-                            </div>
-                        ))}
                     </div>
                 </div>
             </section>
@@ -718,24 +967,10 @@ export default function HomePage() {
                         style={{ background: "linear-gradient(to left, #f9fafb, transparent)" }}
                     />
                     <div className="marquee-track py-4">
-                        {doubledClients.map((cl, i) => (
+                        {tripledClients.map((cl, i) => (
                             <ClientCard key={`r1-${i}`} cl={cl} />
                         ))}
                     </div>
-                </div>
-
-                <div className="flex flex-wrap justify-center gap-10 sm:gap-14 mt-14 px-4">
-                    {[
-                        { number: "550+", label: "Happy Clients" },
-                        { number: "1200+", label: "Projects Delivered" },
-                        { number: "12+", label: "Years Experience" },
-                        { number: "5★", label: "Avg. Rating" },
-                    ].map((stat) => (
-                        <div key={stat.label} className="text-center">
-                            <p className="text-2xl font-bold text-red-600">{stat.number}</p>
-                            <p className="text-xs text-gray-500 mt-0.5">{stat.label}</p>
-                        </div>
-                    ))}
                 </div>
             </section>
 
@@ -768,6 +1003,9 @@ export default function HomePage() {
             </section>
 
             <CTABanner />
+
+            {/* ── AI CHAT WIDGET ── */}
+            <ChatBot />
         </div>
     );
 }

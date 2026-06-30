@@ -1,455 +1,3 @@
-// import { CTABanner } from "@/components/site/CTABanner";
-// import { Link } from "react-router-dom";
-// import {
-//     MapPin,
-//     Clock,
-//     ArrowRight,
-//     Sparkles,
-//     Briefcase,
-//     Users,
-//     Award,
-//     TrendingUp,
-//     ChevronRight,
-//     Code,
-//     Smartphone,
-//     Palette,
-//     Cloud,
-//     TrendingUp as SalesIcon,
-//     Bot,
-// } from "lucide-react";
-// import { useState, useEffect, useRef } from "react";
-
-// const jobs = [
-//     {
-//         title: "Senior React Developer",
-//         type: "Full-time",
-//         location: "Kanpur / Remote",
-//         dept: "Engineering",
-//         icon: Code,
-//         bgGradient: "from-blue-600 to-cyan-500",
-//         description:
-//             "Build cutting-edge web applications with React, TypeScript, and modern frontend technologies.",
-//     },
-//     {
-//         title: "Flutter Developer",
-//         type: "Full-time",
-//         location: "Kanpur / Remote",
-//         dept: "Mobile",
-//         icon: Smartphone,
-//         bgGradient: "from-purple-600 to-pink-500",
-//         description:
-//             "Create beautiful cross-platform mobile apps with Flutter and Dart for iOS and Android.",
-//     },
-//     {
-//         title: "UI/UX Designer",
-//         type: "Full-time",
-//         location: "Kanpur",
-//         dept: "Design",
-//         icon: Palette,
-//         bgGradient: "from-orange-500 to-red-500",
-//         description:
-//             "Design intuitive user experiences and stunning interfaces for web and mobile products.",
-//     },
-//     {
-//         title: "DevOps Engineer",
-//         type: "Full-time",
-//         location: "Remote",
-//         dept: "Infrastructure",
-//         icon: Cloud,
-//         bgGradient: "from-green-600 to-teal-500",
-//         description:
-//             "Build and maintain cloud infrastructure, CI/CD pipelines, and automate deployment workflows.",
-//     },
-//     {
-//         title: "Business Development Executive",
-//         type: "Full-time",
-//         location: "Kanpur",
-//         dept: "Sales",
-//         icon: SalesIcon,
-//         bgGradient: "from-yellow-600 to-orange-500",
-//         description:
-//             "Drive business growth by identifying new opportunities and building strong client relationships.",
-//     },
-//     {
-//         title: "AI/ML Intern",
-//         type: "Internship",
-//         location: "Kanpur / Remote",
-//         dept: "AI",
-//         icon: Bot,
-//         bgGradient: "from-indigo-600 to-purple-500",
-//         description:
-//             "Work on cutting-edge AI and machine learning projects with real-world applications.",
-//     },
-// ];
-
-// // Animation helper: staggered entrance on scroll
-// const useStaggeredAnimation = () => {
-//     const [visible, setVisible] = useState(false);
-//     const ref = useRef<HTMLDivElement>(null);
-
-//     useEffect(() => {
-//         const observer = new IntersectionObserver(
-//             (entries) => {
-//                 entries.forEach((entry) => {
-//                     if (entry.isIntersecting) {
-//                         setVisible(true);
-//                         observer.disconnect();
-//                     }
-//                 });
-//             },
-//             { threshold: 0.1 }
-//         );
-//         if (ref.current) observer.observe(ref.current);
-//         return () => observer.disconnect();
-//     }, []);
-
-//     return { ref, visible };
-// };
-
-// export default function CareersPage() {
-//     const { ref, visible } = useStaggeredAnimation();
-
-//     // Stats
-//     const stats = [
-//         { icon: Users, label: "Team Members", value: "50+" },
-//         { icon: Briefcase, label: "Open Positions", value: "6" },
-//         { icon: Award, label: "Years in Industry", value: "12+" },
-//         { icon: TrendingUp, label: "Growth Rate", value: "200%" },
-//     ];
-
-//     return (
-//         <div className="min-h-screen bg-white">
-//             {/* ===== HERO SECTION — COMPACT & ATTRACTIVE ===== */}
-//             <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-red-900 py-12 md:py-16">
-//                 <div className="absolute inset-0 overflow-hidden">
-//                     <div className="absolute -top-32 -right-32 h-64 w-64 rounded-full bg-red-500/25 blur-3xl animate-pulse" />
-//                     <div className="absolute -bottom-32 -left-32 h-64 w-64 rounded-full bg-blue-500/20 blur-3xl animate-pulse delay-1000" />
-//                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-80 w-80 rounded-full bg-purple-500/10 blur-3xl" />
-
-//                     <div className="absolute top-8 left-8 animate-float">
-//                         <div className="h-2.5 w-2.5 rounded-full bg-red-400/70 shadow-lg shadow-red-400/30" />
-//                     </div>
-//                     <div className="absolute top-16 right-16 animate-float-delay">
-//                         <div className="h-3 w-3 rounded-full bg-blue-400/60 shadow-lg shadow-blue-400/30" />
-//                     </div>
-//                     <div className="absolute bottom-20 left-1/4 animate-float">
-//                         <div className="h-3.5 w-3.5 rounded-full bg-purple-400/50 shadow-lg shadow-purple-400/30" />
-//                     </div>
-//                     <div className="absolute bottom-12 right-1/3 animate-float-delay">
-//                         <div className="h-2.5 w-2.5 rounded-full bg-orange-400/60 shadow-lg shadow-orange-400/30" />
-//                     </div>
-//                     <div className="absolute top-1/2 left-5 animate-float-delay">
-//                         <div className="h-2 w-2 rounded-full bg-yellow-400/50" />
-//                     </div>
-//                     <div className="absolute top-1/3 right-8 animate-float">
-//                         <div className="h-2 w-2 rounded-full bg-green-400/50" />
-//                     </div>
-
-//                     <div
-//                         className="absolute inset-0 opacity-[0.04]"
-//                         style={{
-//                             backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
-//                             backgroundSize: "32px 32px",
-//                         }}
-//                     />
-//                 </div>
-
-//                 <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-//                     <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 px-3.5 py-1 text-xs font-medium text-white/90 mb-4 shadow-lg shadow-black/10">
-//                         <Sparkles className="h-3.5 w-3.5 text-yellow-400" />
-//                         <span>We're Hiring!</span>
-//                     </div>
-
-//                     <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl text-white leading-tight">
-//                         Join Our
-//                         <span className="block bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent">
-//                             Growing Team
-//                         </span>
-//                     </h1>
-
-//                     <p className="mx-auto mt-3 max-w-2xl text-sm text-white/70 md:text-base">
-//                         Build your career with one of India's fastest-growing IT
-//                         companies. We're always looking for talented people.
-//                     </p>
-
-//                     <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
-//                         <a
-//                             href="#openings"
-//                             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-red-600 to-orange-500 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-red-500/30 transition-all hover:scale-105 hover:shadow-red-500/50"
-//                         >
-//                             View Openings
-//                             <ArrowRight className="h-4 w-4" />
-//                         </a>
-//                         <a
-//                             href="#culture"
-//                             className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/10 hover:scale-105"
-//                         >
-//                             Learn About Us
-//                         </a>
-//                     </div>
-//                 </div>
-//             </section>
-
-//             {/* ===== STATS SECTION ===== */}
-//             <section className="border-b border-gray-100 bg-white py-12">
-//                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-//                     <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
-//                         {stats.map((stat, index) => (
-//                             <div
-//                                 key={index}
-//                                 className="text-center animate-on-scroll"
-//                                 style={{ animationDelay: `${index * 100}ms` }}
-//                             >
-//                                 <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-red-50 text-red-600">
-//                                     <stat.icon className="h-5 w-5" />
-//                                 </div>
-//                                 <div className="text-2xl font-bold text-gray-900">
-//                                     {stat.value}
-//                                 </div>
-//                                 <div className="text-sm text-gray-500">
-//                                     {stat.label}
-//                                 </div>
-//                             </div>
-//                         ))}
-//                     </div>
-//                 </div>
-//             </section>
-
-//             {/* ===== JOB OPENINGS — GRID CARDS ===== */}
-//             <section
-//                 className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20"
-//                 id="openings"
-//             >
-//                 <div className="text-center mb-12">
-//                     <span className="inline-block rounded-full bg-red-100 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-red-700 mb-3">
-//                         Current Openings
-//                     </span>
-//                     <h2 className="text-3xl font-bold text-gray-900">
-//                         Join Our <span className="text-red-600">Team</span>
-//                     </h2>
-//                     <p className="mt-2 text-gray-500 max-w-2xl mx-auto">
-//                         We're looking for passionate individuals to help us
-//                         build the future of digital solutions.
-//                     </p>
-//                 </div>
-
-//                 <div
-//                     ref={ref}
-//                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-//                 >
-//                     {jobs.map((job, index) => {
-//                         const IconComponent = job.icon;
-//                         return (
-//                             <div
-//                                 key={job.title}
-//                                 className={`group rounded-2xl bg-white border border-gray-100 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:border-red-200 ${
-//                                     visible ? "animate-fade-in-up" : "opacity-0"
-//                                 }`}
-//                                 style={{ animationDelay: `${index * 80}ms` }}
-//                             >
-//                                 {/* Visual header with gradient and icon */}
-//                                 <div
-//                                     className={`relative h-44 w-full bg-gradient-to-br ${job.bgGradient} flex items-center justify-center overflow-hidden`}
-//                                 >
-//                                     <div className="absolute inset-0 opacity-20">
-//                                         <svg
-//                                             className="absolute -top-10 -right-10 h-32 w-32 text-white/30"
-//                                             fill="currentColor"
-//                                             viewBox="0 0 100 100"
-//                                         >
-//                                             <circle cx="50" cy="50" r="40" />
-//                                         </svg>
-//                                         <svg
-//                                             className="absolute -bottom-10 -left-10 h-24 w-24 text-white/20"
-//                                             fill="currentColor"
-//                                             viewBox="0 0 100 100"
-//                                         >
-//                                             <rect
-//                                                 x="10"
-//                                                 y="10"
-//                                                 width="80"
-//                                                 height="80"
-//                                                 rx="10"
-//                                             />
-//                                         </svg>
-//                                         <svg
-//                                             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-48 w-48 text-white/10"
-//                                             fill="currentColor"
-//                                             viewBox="0 0 100 100"
-//                                         >
-//                                             <polygon points="50,0 100,50 50,100 0,50" />
-//                                         </svg>
-//                                     </div>
-
-//                                     <div className="relative z-10 flex h-24 w-24 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-sm shadow-xl shadow-black/20 border border-white/30">
-//                                         <IconComponent className="h-12 w-12 text-white" />
-//                                     </div>
-
-//                                     <div className="absolute top-4 right-4 rounded-full bg-black/30 backdrop-blur-sm px-3 py-1 text-xs font-medium text-white border border-white/20">
-//                                         {job.type}
-//                                     </div>
-
-//                                     <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/40 to-transparent" />
-//                                 </div>
-
-//                                 {/* Content */}
-//                                 <div className="p-5 md:p-6">
-//                                     <span className="inline-block rounded-full bg-red-50 text-red-700 text-xs font-semibold px-3 py-1 mb-2.5">
-//                                         {job.dept}
-//                                     </span>
-
-//                                     <h3 className="font-bold text-lg text-gray-900 group-hover:text-red-600 transition-colors line-clamp-1">
-//                                         {job.title}
-//                                     </h3>
-
-//                                     <p className="text-sm text-gray-500 mt-1.5 leading-relaxed line-clamp-2">
-//                                         {job.description}
-//                                     </p>
-
-//                                     <div className="flex flex-wrap items-center gap-4 mt-3 text-sm text-gray-400">
-//                                         <span className="flex items-center gap-1.5">
-//                                             <MapPin className="h-3.5 w-3.5" />
-//                                             {job.location}
-//                                         </span>
-//                                         <span className="flex items-center gap-1.5">
-//                                             <Clock className="h-3.5 w-3.5" />
-//                                             {job.type}
-//                                         </span>
-//                                     </div>
-
-//                                     <Link
-//                                         to="/contact"
-//                                         className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-red-600 to-orange-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-red-200 transition-all hover:shadow-lg hover:shadow-red-300 group-hover:scale-[1.02]"
-//                                     >
-//                                         Apply Now
-//                                         <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-//                                     </Link>
-//                                 </div>
-//                             </div>
-//                         );
-//                     })}
-//                 </div>
-//             </section>
-
-//             {/* ===== CULTURE / WHY JOIN US ===== */}
-//             <section className="bg-gray-50/50 py-16" id="culture">
-//                 <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-//                     <div className="text-center mb-12">
-//                         <span className="inline-block rounded-full bg-red-100 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-red-700 mb-3">
-//                             Culture
-//                         </span>
-//                         <h2 className="text-3xl font-bold text-gray-900">
-//                             Why Work With <span className="text-red-600">Us</span>
-//                         </h2>
-//                         <p className="mt-2 text-gray-500 max-w-2xl mx-auto">
-//                             We believe in fostering a collaborative, innovative,
-//                             and inclusive environment where everyone can thrive.
-//                         </p>
-//                     </div>
-
-//                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-//                         {[
-//                             {
-//                                 icon: "🚀",
-//                                 title: "Innovation First",
-//                                 desc: "We encourage creative thinking and provide the freedom to experiment with new technologies.",
-//                             },
-//                             {
-//                                 icon: "🤝",
-//                                 title: "Collaborative Culture",
-//                                 desc: "Work with a diverse team of experts who support each other and celebrate wins together.",
-//                             },
-//                             {
-//                                 icon: "📈",
-//                                 title: "Growth Opportunities",
-//                                 desc: "Continuous learning, mentorship, and clear career progression paths for every role.",
-//                             },
-//                             {
-//                                 icon: "🌍",
-//                                 title: "Remote & Flexible",
-//                                 desc: "Work from anywhere with flexible hours that fit your lifestyle and productivity.",
-//                             },
-//                             {
-//                                 icon: "🏆",
-//                                 title: "Impactful Projects",
-//                                 desc: "Work on projects that make a real difference for clients across industries.",
-//                             },
-//                             {
-//                                 icon: "🎉",
-//                                 title: "Fun & Rewards",
-//                                 desc: "Regular team events, competitive compensation, and a culture that values work-life balance.",
-//                             },
-//                         ].map((item, index) => (
-//                             <div
-//                                 key={index}
-//                                 className="bg-white rounded-2xl border border-gray-100 p-6 text-center shadow-sm hover:shadow-xl hover:border-red-200 transition-all duration-300 hover:-translate-y-1 animate-on-scroll"
-//                                 style={{ animationDelay: `${index * 80}ms` }}
-//                             >
-//                                 <div className="text-4xl mb-3">{item.icon}</div>
-//                                 <h3 className="font-bold text-gray-900">
-//                                     {item.title}
-//                                 </h3>
-//                                 <p className="text-sm text-gray-500 mt-2 leading-relaxed">
-//                                     {item.desc}
-//                                 </p>
-//                             </div>
-//                         ))}
-//                     </div>
-//                 </div>
-//             </section>
-
-//             {/* ===== CTA BANNER ===== */}
-//             <CTABanner />
-
-//             {/* ===== ANIMATION STYLES ===== */}
-//             <style>{`
-//                 @keyframes float {
-//                     0%, 100% { transform: translateY(0px) rotate(0deg); }
-//                     50% { transform: translateY(-16px) rotate(8deg); }
-//                 }
-//                 @keyframes float-delay {
-//                     0%, 100% { transform: translateY(0px) rotate(0deg); }
-//                     50% { transform: translateY(-12px) rotate(-6deg); }
-//                 }
-//                 @keyframes fadeInUp {
-//                     from { opacity: 0; transform: translateY(30px); }
-//                     to { opacity: 1; transform: translateY(0); }
-//                 }
-//                 .animate-float {
-//                     animation: float 5s ease-in-out infinite;
-//                 }
-//                 .animate-float-delay {
-//                     animation: float-delay 6s ease-in-out infinite;
-//                 }
-//                 .animate-fade-in-up {
-//                     animation: fadeInUp 0.6s ease-out forwards;
-//                 }
-//                 .animate-on-scroll {
-//                     opacity: 0;
-//                     transform: translateY(30px);
-//                     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-//                 }
-//                 .animate-on-scroll.animate-fade-in-up {
-//                     opacity: 1;
-//                     transform: translateY(0);
-//                 }
-//                 .line-clamp-1 {
-//                     display: -webkit-box;
-//                     -webkit-line-clamp: 1;
-//                     -webkit-box-orient: vertical;
-//                     overflow: hidden;
-//                 }
-//                 .line-clamp-2 {
-//                     display: -webkit-box;
-//                     -webkit-line-clamp: 2;
-//                     -webkit-box-orient: vertical;
-//                     overflow: hidden;
-//                 }
-//             `}</style>
-//         </div>
-//     );
-// }
-
 
 import { CTABanner } from "@/components/site/CTABanner";
 import { Link } from "react-router-dom";
@@ -567,6 +115,7 @@ const useStaggeredAnimation = () => {
 
 export default function CareersPage() {
     const { ref, visible } = useStaggeredAnimation();
+    const [jobList, setJobList] = useState<any>(false);
 
     // Stats
     const stats = [
@@ -639,25 +188,6 @@ export default function CareersPage() {
                     <div className="absolute -bottom-32 -left-32 h-64 w-64 rounded-full bg-blue-500/20 blur-3xl animate-pulse delay-1000" />
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-80 w-80 rounded-full bg-purple-500/10 blur-3xl" />
 
-                    <div className="absolute top-8 left-8 animate-float">
-                        <div className="h-2.5 w-2.5 rounded-full bg-red-400/70 shadow-lg shadow-red-400/30" />
-                    </div>
-                    <div className="absolute top-16 right-16 animate-float-delay">
-                        <div className="h-3 w-3 rounded-full bg-blue-400/60 shadow-lg shadow-blue-400/30" />
-                    </div>
-                    <div className="absolute bottom-20 left-1/4 animate-float">
-                        <div className="h-3.5 w-3.5 rounded-full bg-purple-400/50 shadow-lg shadow-purple-400/30" />
-                    </div>
-                    <div className="absolute bottom-12 right-1/3 animate-float-delay">
-                        <div className="h-2.5 w-2.5 rounded-full bg-orange-400/60 shadow-lg shadow-orange-400/30" />
-                    </div>
-                    <div className="absolute top-1/2 left-5 animate-float-delay">
-                        <div className="h-2 w-2 rounded-full bg-yellow-400/50" />
-                    </div>
-                    <div className="absolute top-1/3 right-8 animate-float">
-                        <div className="h-2 w-2 rounded-full bg-green-400/50" />
-                    </div>
-
                     <div
                         className="absolute inset-0 opacity-[0.04]"
                         style={{
@@ -704,7 +234,7 @@ export default function CareersPage() {
             </section>
 
             {/* ===== STATS SECTION ===== */}
-            <section className="border-b border-gray-100 bg-white py-2">
+            {/* <section className="border-b border-gray-100 bg-white py-2">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
                         {stats.map((stat, index) => (
@@ -726,31 +256,30 @@ export default function CareersPage() {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* ===== JOB OPENINGS — GRID CARDS ===== */}
             <section
                 className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-10 "
                 id="openings"
             >
-                <div className="text-center mb-12">
-                    <span className="inline-block rounded-full bg-red-100 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-red-700 mb-3">
-                        Current Openings
-                    </span>
-                    <h2 className="text-3xl font-bold text-gray-900 font-display">
-                        Join Our <span className="text-red-600">Team</span>
-                    </h2>
-                    <p className="mt-2 text-gray-500 max-w-2xl mx-auto">
-                        We're looking for passionate individuals to help us
-                        build the future of digital solutions.
-                    </p>
+               <div className="w-full">
+                    <div className="h-64 w-full max-w-md mx-auto flex flex-col items-center justify-center gap-3 rounded-lg border border-dashed border-gray-300 bg-gray-50">
+                        <Briefcase className="w-10 h-10 text-gray-400" />
+                        <p className="text-lg font-medium text-gray-600">No Current Job Openings</p>
+                        <p className="text-sm text-gray-400">Please check back later for new opportunities</p>
+                    </div>
                 </div>
 
                 <div
                     ref={ref}
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
                 >
-                    {jobs.map((job, index) => {
+
+                    {/* { jobList? */}
+                  
+
+                    {/* {jobs.map((job, index) => {
                         const IconComponent = job.icon;
                         return (
                             <div
@@ -760,7 +289,7 @@ export default function CareersPage() {
                                 }`}
                                 style={{ animationDelay: `${index * 80}ms` }}
                             >
-                                {/* Visual header with gradient and icon */}
+                               
                                 <div
                                     className={`relative h-44 w-full bg-gradient-to-br ${job.bgGradient} flex items-center justify-center overflow-hidden`}
                                 >
@@ -805,7 +334,7 @@ export default function CareersPage() {
                                     <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/40 to-transparent" />
                                 </div>
 
-                                {/* Content */}
+                                
                                 <div className="p-5 md:p-6">
                                     <span className="inline-block rounded-full bg-red-50 text-red-700 text-xs font-semibold px-3 py-1 mb-2.5">
                                         {job.dept}
@@ -840,7 +369,7 @@ export default function CareersPage() {
                                 </div>
                             </div>
                         );
-                    })}
+                    })} */}
                 </div>
             </section>
 
@@ -1015,23 +544,9 @@ export default function CareersPage() {
                     font-family: 'Playfair Display', serif;
                 }
 
-                @keyframes float {
-                    0%, 100% { transform: translateY(0px) rotate(0deg); }
-                    50% { transform: translateY(-16px) rotate(8deg); }
-                }
-                @keyframes float-delay {
-                    0%, 100% { transform: translateY(0px) rotate(0deg); }
-                    50% { transform: translateY(-12px) rotate(-6deg); }
-                }
                 @keyframes fadeInUp {
                     from { opacity: 0; transform: translateY(40px); }
                     to { opacity: 1; transform: translateY(0); }
-                }
-                .animate-float {
-                    animation: float 5s ease-in-out infinite;
-                }
-                .animate-float-delay {
-                    animation: float-delay 6s ease-in-out infinite;
                 }
                 .animate-fade-in-up {
                     animation: fadeInUp 0.7s ease-out forwards;
