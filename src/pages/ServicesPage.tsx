@@ -105,13 +105,17 @@ function ServicesPage() {
                 </Link>
               </div>
             </div>
+            
             <div className="flex-1 flex justify-center">
-              <img
-                src={content.heroImage}
-                alt={content.highlight}
-                className="w-32 h-32 md:w-44 md:h-44 rounded-2xl shadow-2xl object-cover border-2 border-white/20"
-              />
-            </div>
+  <img
+    src={content.heroImage}
+    alt={content.highlight}
+    className="w-64 md:w-80 lg:w-96 h-44 rounded-2xl shadow-2xl object-cover border-2 border-white/20"
+  />
+</div>
+
+
+
           </div>
         </div>
       </section>

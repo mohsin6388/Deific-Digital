@@ -6,6 +6,20 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
+import android from "../assets/android.png";
+import ios from "../assets/ios-development.png";
+import hybrid from "../assets/hybrid.jpg";
+import automation from "../assets/automation.png"
+import chatbot from "../assets/chatbot.jpg";
+import genAi from "../assets/gen-ai.jpg";
+import gmb from "../assets/gmb.jpg";
+import meta from "../assets/meta-ads.jpg";
+import socialMedia from "../assets/social-media.jpg";
+import startup from "../assets/startup-idea.webp";
+import cross from "../assets/cross-development.png";
+import mvp from "../assets/mvp.jpg";
+
+
 // ─── Types ─────────────────────────────────────────────────────────────
 
 export interface StatItem {
@@ -74,7 +88,7 @@ export const servicesContent: Record<string, ServiceContent> = {
     tagline: "Build powerful, scalable Android apps",
     description:
       "For individuals, startups, enterprises and leading organizations. We offer android app development services for smart phones, tablets, wearables.",
-    heroImage: "https://picsum.photos/seed/phone/500/500",
+    heroImage: android,
 
     stats: [
       { icon: Globe, value: "10+", label: "Industries" },
@@ -182,120 +196,7 @@ export const servicesContent: Record<string, ServiceContent> = {
     ],
   },
 
-  // "ios-app-development": {
-  //   badge: "Chatbots & Virtual Assistants",
-  //   title: "Ranked among top 10 best",
-  //   highlight: "Conversational AI Development Company",
-  //   tagline: "Automate conversations, delight your customers",
-  //   description:
-  //     "From customer support bots to intelligent virtual assistants, we build conversational AI solutions that understand context, respond naturally, and reduce response time across your support channels.",
-  //   heroImage: "https://picsum.photos/seed/chatbot/500/500",
-
-  //   stats: [
-  //     { icon: Globe, value: "10+", label: "Industries" },
-  //     { icon: Briefcase, value: "300", label: "Bots Deployed" },
-  //     { icon: Users, value: "70+", label: "Strong Team" },
-  //   ],
-
-  //   overviewTitle: "Deific Digital",
-  //   overviewParagraphs: [
-  //     "\u201CEvery success is built on the ability to do better than good enough\u201D \u2013 these words hold true in the world of conversational AI. As a leading chatbot development company, Deific Digital has consistently delivered high-quality, intelligent virtual assistants that stand out in the competitive market.",
-  //     "With a team of proficient AI engineers and designers, we have built bots that are not only technically robust but also conversationally natural. Our solutions are deployed across web, WhatsApp, and in-app channels and have been widely appreciated by users and clients alike.",
-  //   ],
-  //   overviewBadges: [
-  //     "NLP Certified Team",
-  //     "5+ Years Experience",
-  //     "300+ Bots Deployed",
-  //   ],
-
-  //   whyChooseTitle: "Why Choose Us?",
-  //   whyChooseDesc:
-  //     "We are a leader among chatbot and virtual assistant development companies and have built hundreds of bots following a conversation-first approach. \u201COur work is done when it serves your purpose\u201D so we dedicate full heartedly to deliver our best when it comes to conversational AI services.",
-  //   whyChooseTags: [
-  //     "Customer support bots",
-  //     "WhatsApp business bots",
-  //     "Voice assistants",
-  //     "Multilingual chatbots",
-  //     "Enterprise virtual assistants",
-  //   ],
-
-  //   processHeading: "Build?",
-  //   processSteps: [
-  //     {
-  //       icon: "\uD83D\uDCA1",
-  //       title: "Understanding your use case",
-  //       desc: "We listen, understand and analyze your support workflows and customer pain points before designing any conversation.",
-  //     },
-  //     {
-  //       icon: "\uD83D\uDDE3\uFE0F",
-  //       title: "Designing conversation flows",
-  //       desc: "We map out intents, entities, and dialogue flows that feel natural and guide the user toward resolution quickly.",
-  //     },
-  //     {
-  //       icon: "\uD83E\uDD16",
-  //       title: "Prototype the bot",
-  //       desc: "We build a working prototype so you can test the tone and flow before full-scale development begins.",
-  //     },
-  //     {
-  //       icon: "\uD83D\uDCBB",
-  //       title: "Developing & training the model",
-  //       desc: "We rely on best-in-class NLP frameworks to train models that understand context and intent accurately.",
-  //     },
-  //     {
-  //       icon: "\uD83E\uDDEA",
-  //       title: "Testing the bot",
-  //       desc: "We run the bot through real conversation scenarios, edge cases, and load testing before going live.",
-  //     },
-  //     {
-  //       icon: "\uD83D\uDE80",
-  //       title: "Ready to launch",
-  //       desc: "After performing all the development procedures, we deploy the bot and provide ongoing tuning and support.",
-  //     },
-  //   ],
-
-  //   servicesHeading: "Chatbot & Virtual Assistant Development",
-  //   servicesIntro:
-  //     "Your search for a leading conversational AI company may get a halt at Deific Digital. Demand for automated, intelligent support is rising across every industry, and so we design extensively innovative and helpful assistants. Our chatbot development services encompass:",
-  //   servicesList: [
-  //     "Customer support chatbots",
-  //     "WhatsApp & Messenger bots",
-  //     "Voice-enabled virtual assistants",
-  //     "Multilingual conversational AI",
-  //     "Bot analytics & optimization",
-  //     "Live agent handoff integration",
-  //     "Bot support, maintenance and optimization and much more",
-  //   ],
-
-  //   processPhases: [
-  //     "Conversation Strategy",
-  //     "Dialogue Design",
-  //     "Bot Prototype",
-  //     "NLP Architecture",
-  //     "Bot Development",
-  //     "Conversation Testing",
-  //     "Bot Delivery and launch",
-  //     "Bot support and maintenance",
-  //     "Bot performance and monitoring",
-  //   ],
-
-  //   projects: [
-  //     {
-  //       title: "MySwaasth: AI Health Assistant",
-  //       img: "https://picsum.photos/seed/healthbot/400/250",
-  //       desc: "Health & Wellness Bot",
-  //     },
-  //     {
-  //       title: "Pelotea: Fan Engagement Bot",
-  //       img: "https://picsum.photos/seed/sportsbot/400/250",
-  //       desc: "Sports Engagement",
-  //     },
-  //     {
-  //       title: "Agro: Farmer Support Assistant",
-  //       img: "https://picsum.photos/seed/agribot/400/250",
-  //       desc: "Agri-Tech Support",
-  //     },
-  //   ],
-  // },
+ 
 "ios-app-development": {
     badge: "iOS App Development",
     title: "Ranked among top 10 best",
@@ -303,7 +204,7 @@ export const servicesContent: Record<string, ServiceContent> = {
     tagline: "Native iOS apps that deliver premium user experiences",
     description:
       "We build high-performance, native iOS applications using Swift and UIKit/SwiftUI — designed to leverage the full power of Apple's ecosystem, from iPhones to iPads and Apple Watch.",
-    heroImage: "https://picsum.photos/seed/ios/500/500",
+    heroImage: ios,
 
     stats: [
       { icon: Globe, value: "10+", label: "Industries" },
@@ -412,236 +313,7 @@ export const servicesContent: Record<string, ServiceContent> = {
   },
 
 
-  // "hybrid-app-development": {
 
-  //   badge: "Automation",
-  //   title: "Ranked among top 10 best",
-  //   highlight: "Business Automation Company",
-  //   tagline: "Let machines handle the repetitive work",
-  //   description:
-  //     "We design intelligent automation workflows that eliminate manual, repetitive tasks \u2014 from document processing to data entry \u2014 freeing up your team to focus on higher-value work.",
-  //   heroImage: "https://picsum.photos/seed/automation/500/500",
-
-  //   stats: [
-  //     { icon: Globe, value: "10+", label: "Industries" },
-  //     { icon: Briefcase, value: "250", label: "Workflows Automated" },
-  //     { icon: Users, value: "70+", label: "Strong Team" },
-  //   ],
-
-  //   overviewTitle: "Deific Digital",
-  //   overviewParagraphs: [
-  //     "\u201CEvery success is built on the ability to do better than good enough\u201D \u2013 these words hold true in the world of business automation. As a leading automation company, Deific Digital has consistently delivered high-quality workflow solutions that stand out in the competitive market.",
-  //     "With a team of proficient automation engineers, we have built workflows that are not only technically robust but also easy for non-technical teams to manage. Our solutions have been widely appreciated by users and clients alike across industries.",
-  //   ],
-  //   overviewBadges: [
-  //     "RPA Certified Team",
-  //     "6+ Years Experience",
-  //     "250+ Workflows Delivered",
-  //   ],
-
-  //   whyChooseTitle: "Why Choose Us?",
-  //   whyChooseDesc:
-  //     "We are a leader among automation companies and have built hundreds of workflows following a process-first approach. \u201COur work is done when it serves your purpose\u201D so we dedicate full heartedly to deliver our best when it comes to automation services.",
-  //   whyChooseTags: [
-  //     "Document processing automation",
-  //     "Data entry automation",
-  //     "Workflow orchestration",
-  //     "RPA bots",
-  //     "Integration automation",
-  //   ],
-
-  //   processHeading: "Automate?",
-  //   processSteps: [
-  //     {
-  //       icon: "\uD83D\uDCA1",
-  //       title: "Understanding your workflow",
-  //       desc: "We listen, understand and analyze your current manual processes to identify where automation will have the biggest impact.",
-  //     },
-  //     {
-  //       icon: "\uD83E\uDDE9",
-  //       title: "Designing the automation",
-  //       desc: "We map out the steps, triggers, and exceptions so the automated workflow handles real-world scenarios reliably.",
-  //     },
-  //     {
-  //       icon: "\uD83D\uDCF1",
-  //       title: "Prototype the workflow",
-  //       desc: "We build a working prototype so you can validate the logic before full-scale automation rollout.",
-  //     },
-  //     {
-  //       icon: "\uD83D\uDCBB",
-  //       title: "Developing the automation",
-  //       desc: "We rely on best automation practices and tools to build reliable, maintainable workflows.",
-  //     },
-  //     {
-  //       icon: "\uD83E\uDDEA",
-  //       title: "Testing the workflow",
-  //       desc: "We run the automation through real data and edge cases to ensure accuracy before going live.",
-  //     },
-  //     {
-  //       icon: "\uD83D\uDE80",
-  //       title: "Ready to launch",
-  //       desc: "After performing all the development procedures, we deploy the automation and provide ongoing support.",
-  //     },
-  //   ],
-
-  //   servicesHeading: "Business Process Automation",
-  //   servicesIntro:
-  //     "Your search for a leading automation company may get a halt at Deific Digital. Demand for efficient, error-free operations is rising across every business, and so we design extensively reliable automation. Our automation services encompass:",
-  //   servicesList: [
-  //     "Document & invoice processing automation",
-  //     "Data entry & migration automation",
-  //     "Workflow orchestration",
-  //     "RPA bot development",
-  //     "Third-party system integrations",
-  //     "Automation monitoring dashboards",
-  //     "Automation support, maintenance and optimization and much more",
-  //   ],
-
-  //   processPhases: [
-  //     "Automation Strategy",
-  //     "Workflow Design",
-  //     "Automation Prototype",
-  //     "Automation Architecture",
-  //     "Automation Development",
-  //     "Automation Testing",
-  //     "Automation delivery and launch",
-  //     "Automation support and maintenance",
-  //     "Automation performance and monitoring",
-  //   ],
-
-  //   projects: [
-  //     {
-  //       title: "MySwaasth: Records Automation",
-  //       img: "https://picsum.photos/seed/healthauto/400/250",
-  //       desc: "Health Records Automation",
-  //     },
-  //     {
-  //       title: "Pelotea: Match Data Automation",
-  //       img: "https://picsum.photos/seed/sportsauto/400/250",
-  //       desc: "Sports Data Pipeline",
-  //     },
-  //     {
-  //       title: "Agro: Supply Chain Automation",
-  //       img: "https://picsum.photos/seed/agriauto/400/250",
-  //       desc: "Agri Supply Automation",
-  //     },
-  //   ],
-  // },
-
-  // "cross-platform-app-development": {
-  //   badge: "Generative AI Solutions",
-  //   title: "Ranked among top 10 best",
-  //   highlight: "Generative AI Solutions Company",
-  //   tagline: "Create content, code, and ideas at scale",
-  //   description:
-  //     "We build custom generative AI tools for content creation, code generation, image synthesis, and more \u2014 tailored to fit your brand voice and business workflows.",
-  //   heroImage: "https://picsum.photos/seed/genai/500/500",
-
-  //   stats: [
-  //     { icon: Globe, value: "10+", label: "Industries" },
-  //     { icon: Briefcase, value: "180", label: "AI Tools Built" },
-  //     { icon: Users, value: "70+", label: "Strong Team" },
-  //   ],
-
-  //   overviewTitle: "Deific Digital",
-  //   overviewParagraphs: [
-  //     "\u201CEvery success is built on the ability to do better than good enough\u201D \u2013 these words hold true in the world of generative AI. As a leading generative AI company, Deific Digital has consistently delivered high-quality, innovative AI tools that stand out in the competitive market.",
-  //     "With a team of proficient AI engineers and designers, we have built generative tools that are not only technically robust but also tailored to brand voice. Our solutions have been widely appreciated by users and clients alike across industries.",
-  //   ],
-  //   overviewBadges: [
-  //     "AI Certified Team",
-  //     "4+ Years Experience",
-  //     "180+ AI Tools Delivered",
-  //   ],
-
-  //   whyChooseTitle: "Why Choose Us?",
-  //   whyChooseDesc:
-  //     "We are a leader among generative AI companies and have built dozens of tools following a research-driven approach. \u201COur work is done when it serves your purpose\u201D so we dedicate full heartedly to deliver our best when it comes to generative AI services.",
-  //   whyChooseTags: [
-  //     "Content generation tools",
-  //     "Code generation assistants",
-  //     "Image synthesis tools",
-  //     "Custom fine-tuned models",
-  //     "Brand-voice AI tools",
-  //   ],
-
-  //   processHeading: "Create?",
-  //   processSteps: [
-  //     {
-  //       icon: "\uD83D\uDCA1",
-  //       title: "Understanding your goals",
-  //       desc: "We listen, understand and analyze the kind of content, code, or media you want the AI to generate.",
-  //     },
-  //     {
-  //       icon: "\uD83C\uDFA8",
-  //       title: "Designing the AI experience",
-  //       desc: "We design prompts, pipelines and interfaces that fit naturally into your existing workflow.",
-  //     },
-  //     {
-  //       icon: "\uD83D\uDCF1",
-  //       title: "Prototype the tool",
-  //       desc: "We build a working prototype so you can test output quality before full-scale development.",
-  //     },
-  //     {
-  //       icon: "\uD83D\uDCBB",
-  //       title: "Developing the model pipeline",
-  //       desc: "We rely on best practices in prompt engineering and fine-tuning to build reliable generative pipelines.",
-  //     },
-  //     {
-  //       icon: "\uD83E\uDDEA",
-  //       title: "Testing the outputs",
-  //       desc: "We evaluate outputs for quality, safety, and consistency across many real-world scenarios before launch.",
-  //     },
-  //     {
-  //       icon: "\uD83D\uDE80",
-  //       title: "Ready to launch",
-  //       desc: "After performing all the development procedures, we deploy the tool and provide ongoing tuning and support.",
-  //     },
-  //   ],
-
-  //   servicesHeading: "Generative AI Tool Development",
-  //   servicesIntro:
-  //     "Your search for a leading generative AI company may get a halt at Deific Digital. Demand for AI-generated content and code is rising across every business, and so we design extensively creative AI tools. Our generative AI services encompass:",
-  //   servicesList: [
-  //     "AI content generation tools",
-  //     "Code generation assistants",
-  //     "Image & design synthesis",
-  //     "Custom fine-tuned models",
-  //     "Prompt engineering & optimization",
-  //     "Brand-voice tuned AI tools",
-  //     "AI tool support, maintenance and optimization and much more",
-  //   ],
-
-  //   processPhases: [
-  //     "AI Strategy",
-  //     "AI Experience design",
-  //     "AI Prototype",
-  //     "AI Architecture",
-  //     "AI Development",
-  //     "AI Testing",
-  //     "AI delivery and launch",
-  //     "AI support and maintenance",
-  //     "AI performance and monitoring",
-  //   ],
-
-  //   projects: [
-  //     {
-  //       title: "MySwaasth: AI Health Content",
-  //       img: "https://picsum.photos/seed/healthgenai/400/250",
-  //       desc: "Health Content Generation",
-  //     },
-  //     {
-  //       title: "Pelotea: AI Match Highlights",
-  //       img: "https://picsum.photos/seed/sportsgenai/400/250",
-  //       desc: "Sports Content AI",
-  //     },
-  //     {
-  //       title: "Agro: AI Crop Reports",
-  //       img: "https://picsum.photos/seed/agrigenai/400/250",
-  //       desc: "Agri Content AI",
-  //     },
-  //   ],
-  // },
 "hybrid-app-development": {
     badge: "Hybrid App Development",
     title: "Ranked among top 10 best",
@@ -649,7 +321,7 @@ export const servicesContent: Record<string, ServiceContent> = {
     tagline: "One codebase, multiple platforms — faster and cost-effective",
     description:
       "We build high-performance hybrid mobile apps using modern frameworks like Ionic, Capacitor, and Cordova — delivering native-like experiences across iOS and Android with a single codebase.",
-    heroImage: "https://picsum.photos/seed/hybrid/500/500",
+    heroImage: hybrid,
 
     stats: [
       { icon: Globe, value: "10+", label: "Industries" },
@@ -756,6 +428,7 @@ export const servicesContent: Record<string, ServiceContent> = {
       },
     ],
   },
+
   "cross-platform-app-development": {
   badge: "Cross-Platform App Development",
   title: "Cross-Platform",
@@ -763,7 +436,7 @@ export const servicesContent: Record<string, ServiceContent> = {
   tagline: "One codebase, multiple platforms – faster, cheaper, better",
   description:
     "We build high-performance cross-platform apps using React Native, Flutter, and other modern frameworks – delivering native-like experiences on iOS, Android, and beyond from a single codebase.",
-  heroImage: "https://picsum.photos/seed/crossplatform/500/500",
+  heroImage: cross,
 
   stats: [
     { icon: Globe, value: "100+", label: "Apps Built" },
@@ -868,6 +541,8 @@ export const servicesContent: Record<string, ServiceContent> = {
     },
   ],
 },
+
+
 "ai-integration-service": {
   badge: "AI Integration Services",
   title: "AI Integration",
@@ -875,7 +550,7 @@ export const servicesContent: Record<string, ServiceContent> = {
   tagline: "Seamlessly integrate AI into your existing workflows",
   description:
     "We help businesses integrate AI capabilities – such as machine learning models, natural language processing, computer vision, and predictive analytics – into their existing software systems, enabling intelligent automation and data-driven insights.",
-  heroImage: "https://picsum.photos/seed/aiintegration/500/500",
+  heroImage: genAi,
 
   stats: [
     { icon: Globe, value: "50+", label: "Integrations" },
@@ -982,6 +657,8 @@ export const servicesContent: Record<string, ServiceContent> = {
     },
   ],
 },
+
+
 "chatbots-virtual-assistants": {
   badge: "Chatbots & Virtual Assistants",
   title: "Chatbots &",
@@ -989,7 +666,7 @@ export const servicesContent: Record<string, ServiceContent> = {
   tagline: "Automate conversations, delight your customers 24/7",
   description:
     "We build intelligent conversational AI agents – from customer support chatbots to enterprise virtual assistants – that understand context, respond naturally, and reduce response time across all your communication channels.",
-  heroImage: "https://picsum.photos/seed/chatbot/500/500",
+  heroImage: chatbot,
 
   stats: [
     { icon: Globe, value: "15+", label: "Industries" },
@@ -1111,7 +788,7 @@ export const servicesContent: Record<string, ServiceContent> = {
   tagline: "Let machines handle the repetitive, focus on what matters",
   description:
     "We design intelligent automation workflows that eliminate manual, repetitive tasks – from document processing to data entry – freeing up your team to focus on higher-value work.",
-  heroImage: "https://picsum.photos/seed/automation/500/500",
+  heroImage: automation,
 
   stats: [
     { icon: Globe, value: "12+", label: "Industries" },
@@ -1231,7 +908,7 @@ export const servicesContent: Record<string, ServiceContent> = {
   tagline: "Create content, code, and ideas at scale with AI",
   description:
     "We build custom generative AI tools for content creation, code generation, image synthesis, and more – tailored to fit your brand voice and business workflows.",
-  heroImage: "https://picsum.photos/seed/genai/500/500",
+  heroImage: genAi,
 
   stats: [
     { icon: Globe, value: "10+", label: "Industries" },
@@ -1338,6 +1015,127 @@ export const servicesContent: Record<string, ServiceContent> = {
     },
   ],
 },
+
+
+"search-engine-optimization":{
+  badge: "Search Engine Optimization",
+  title: "Search Engine",
+  highlight: "Optimization",
+  tagline: "Rank higher, get found faster, grow organically",
+  description:
+    "We build data-driven SEO strategies that improve your search rankings, drive qualified organic traffic, and deliver measurable business growth across all major search engines.",
+  heroImage: socialMedia,
+  stats: [
+    { icon: Globe, value: "12+", label: "Industries" },
+    { icon: Briefcase, value: "500+", label: "Keywords Ranked" },
+    { icon: Users, value: "50+", label: "Strong Team" },
+  ],
+
+  overviewTitle: "Strategic SEO Solutions",
+  overviewParagraphs: [
+    "Search Engine Optimization is the foundation of sustainable digital growth. With billions of searches happening every day, appearing on the first page of Google is no longer a luxury — it's a necessity. SEO drives high-intent traffic that converts into real customers.",
+    "At Deific Digital, we craft comprehensive SEO strategies tailored to your industry, audience, and business goals. From technical audits to content optimization and link building, we handle everything. Our approach combines proven techniques with the latest algorithm insights to deliver lasting rankings and measurable ROI.",
+  ],
+  overviewBadges: [
+    "Technical SEO",
+    "On-Page Optimization",
+    "Link Building",
+    "Analytics & Reporting",
+  ],
+
+  whyChooseTitle: "Why Choose Us?",
+  whyChooseDesc:
+    "We are a leader among SEO agencies and have helped hundreds of brands dominate search results. 'Our work is done when it serves your purpose' — so we dedicate ourselves fully to delivering measurable rankings and organic growth. We stay ahead of algorithm updates and industry trends to keep your brand on top.",
+  whyChooseTags: [
+    "Technical SEO audit & fixes",
+    "On-page & off-page optimization",
+    "Content strategy & creation",
+    "Local SEO & Google Business Profile",
+    "Link building & outreach",
+    "Performance tracking & reporting",
+  ],
+
+  processHeading: "How We Rank Your Business",
+  processSteps: [
+    {
+      icon: "🔍",
+      title: "SEO Audit & Research",
+      desc: "We conduct a thorough audit of your website, analyze competitors, and identify high-value keyword opportunities aligned with your business goals.",
+    },
+    {
+      icon: "🛠️",
+      title: "Technical SEO",
+      desc: "We fix crawl errors, improve site speed, optimize mobile experience, and ensure your website is fully indexable by search engines.",
+    },
+    {
+      icon: "✍️",
+      title: "On-Page Optimization",
+      desc: "We optimize meta tags, headings, content structure, internal linking, and schema markup to maximize relevance for target keywords.",
+    },
+    {
+      icon: "📝",
+      title: "Content Strategy",
+      desc: "We create SEO-optimized, high-quality content that answers your audience's questions, builds authority, and drives organic traffic.",
+    },
+    {
+      icon: "🔗",
+      title: "Link Building",
+      desc: "We execute white-hat link building campaigns to earn high-authority backlinks that boost your domain strength and search rankings.",
+    },
+    {
+      icon: "📊",
+      title: "Monitoring & Optimization",
+      desc: "We track keyword rankings, traffic, and conversions — continuously refining our strategy to improve results month over month.",
+    },
+  ],
+
+  servicesHeading: "SEO Services We Offer",
+  servicesIntro:
+    "Your search for a results-driven SEO agency ends at Deific Digital. Demand for organic visibility is growing across every industry, and we design extensively researched and result-oriented SEO campaigns. Our SEO services encompass:",
+  servicesList: [
+    "Technical SEO audit & implementation",
+    "Keyword research & competitive analysis",
+    "On-page SEO optimization",
+    "Content creation & optimization",
+    "Link building & digital PR",
+    "Local SEO & Google Business Profile management",
+    "E-commerce SEO",
+    "SEO analytics, reporting & continuous optimization",
+  ],
+
+  processPhases: [
+    "SEO Audit",
+    "Keyword Research",
+    "Technical Fixes",
+    "On-Page Optimization",
+    "Content Creation",
+    "Link Building",
+    "Local SEO",
+    "Performance Tracking",
+    "Continuous Optimization",
+  ],
+
+  projects: [
+    {
+      title: "E-Commerce Store Rankings",
+      img: "https://picsum.photos/seed/seoecom/400/250",
+      desc: "Page 1 rankings for 200+ product keywords",
+    },
+    {
+      title: "Local Business Visibility",
+      img: "https://picsum.photos/seed/seolocal/400/250",
+      desc: "3x increase in local search traffic in 90 days",
+    },
+    {
+      title: "B2B SaaS Organic Growth",
+      img: "https://picsum.photos/seed/seosaas/400/250",
+      desc: "400% organic traffic growth in 6 months",
+    },
+  ],
+},
+
+
+
  
 "social-media-marketing": {
   badge: "Social Media Marketing",
@@ -1346,7 +1144,7 @@ export const servicesContent: Record<string, ServiceContent> = {
   tagline: "Build your brand, engage your audience, drive results",
   description:
     "We create data-driven social media strategies that build brand awareness, foster community engagement, and generate measurable business growth across all major platforms.",
-  heroImage: "https://picsum.photos/seed/socialmedia/500/500",
+  heroImage: socialMedia,
 
   stats: [
     { icon: Globe, value: "12+", label: "Industries" },
@@ -1456,6 +1254,8 @@ export const servicesContent: Record<string, ServiceContent> = {
     },
   ],
 },
+
+
 "meta-ads": {
   badge: "Meta Ads",
   title: "Meta",
@@ -1463,7 +1263,7 @@ export const servicesContent: Record<string, ServiceContent> = {
   tagline: "Reach your ideal customers on Facebook & Instagram",
   description:
     "We create high-performing Meta advertising campaigns that drive conversions, build brand awareness, and maximize ROI through precise targeting and creative excellence on Facebook and Instagram.",
-  heroImage: "https://picsum.photos/seed/metaads/500/500",
+  heroImage: meta,
 
   stats: [
     { icon: Globe, value: "15+", label: "Industries" },
@@ -1573,6 +1373,9 @@ export const servicesContent: Record<string, ServiceContent> = {
     },
   ],
 },
+
+
+
 "google-my-business-optimization": {
   badge: "Google My Business Optimization",
   title: "Google My Business",
@@ -1580,7 +1383,7 @@ export const servicesContent: Record<string, ServiceContent> = {
   tagline: "Get found locally, attract more customers",
   description:
     "We optimize your Google My Business profile to improve local search visibility, attract more customers, and drive foot traffic through enhanced listings, reviews, and local engagement.",
-  heroImage: "https://picsum.photos/seed/gmb/500/500",
+  heroImage: gmb,
 
   stats: [
     { icon: Globe, value: "20+", label: "Industries" },
@@ -1689,6 +1492,9 @@ export const servicesContent: Record<string, ServiceContent> = {
     },
   ],
 },
+
+
+
 "mvp-development": {
   badge: "MVP Development",
   title: "MVP",
@@ -1696,7 +1502,7 @@ export const servicesContent: Record<string, ServiceContent> = {
   tagline: "Validate your idea fast, launch smarter",
   description:
     "We build Minimum Viable Products (MVPs) that help you test your business ideas quickly, gather real user feedback, and iterate based on data – all while minimizing cost and time to market.",
-  heroImage: "https://picsum.photos/seed/mvp/500/500",
+  heroImage: mvp,
 
   stats: [
     { icon: Globe, value: "18+", label: "Industries" },
@@ -1805,6 +1611,8 @@ export const servicesContent: Record<string, ServiceContent> = {
     },
   ],
 },
+
+
 "startup-idea-validation": {
   badge: "Startup Idea Validation",
   title: "Startup Idea",
@@ -1812,7 +1620,7 @@ export const servicesContent: Record<string, ServiceContent> = {
   tagline: "Validate your idea, attract investors, build with confidence",
   description:
     "We help entrepreneurs validate their startup ideas through comprehensive market research, financial modeling, and competitive analysis – ensuring your business has a solid foundation before you invest time and money.",
-  heroImage: "https://picsum.photos/seed/startupvalidation/500/500",
+  heroImage: startup,
 
   stats: [
     { icon: Globe, value: "12+", label: "Industries" },
@@ -1933,12 +1741,6 @@ export const servicesContent: Record<string, ServiceContent> = {
 
 };
 
-// Aliases — same content reused for duplicate slugs in your routing
-// servicesContent["ai-integration-service"] = servicesContent["android-app-development"];
-// servicesContent["chatbots-virtual-assistants"] = servicesContent["ios-app-development"];
-// servicesContent["automation"] = servicesContent["hybrid-app-development"];
-// servicesContent["generative-ai-solution"] = servicesContent["cross-platform-app-development"];
-// servicesContent["search-engine-optimization"] = servicesContent["hybrid-app-development"];
-// servicesContent["social-media-marketing"] = servicesContent["cross-platform-app-development"];
-// servicesContent["meta-ads"] = servicesContent["hybrid-app-development"];
-// servicesContent["google-my-business-optimization"] = servicesContent["cross-platform-app-development"];
+
+
+
