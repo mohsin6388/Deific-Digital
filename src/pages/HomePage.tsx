@@ -37,12 +37,12 @@ const features = [
 ];
 
 const services = [
-    { icon: Code2, title: "Startup Validation", desc: "Design and develop a creative website with our microscopic detailing and scrupulous strategies.", link: "/services" },
-    { icon: Code2, title: "Fast MVP Development", desc: "Minimum Viable Product (MVP) development services designed to cater to a diverse range of businesses.", link: "/services" },
-    { icon: BarChart3, title: "Digital Marketing", desc: "Data-driven strategies to grow your online presence and generate leads.", link: "/services" },
-    { icon: Smartphone, title: "Mobile Apps", desc: "Native & cross-platform iOS/Android apps that deliver seamless user experiences.", link: "/services" },
-    { icon: Bot, title: "AI Solutions", desc: "Smart automation and AI-driven business solutions to streamline operations.", link: "/services" },
-    { icon: Cloud, title: "Cloud & DevOps", desc: "Scalable cloud infrastructure and CI/CD pipelines for enterprise reliability.", link: "/services" },
+    { icon: Code2, title: "Startup Validation", desc: "Design and develop a creative website with our microscopic detailing and scrupulous strategies.", link: "/services/startup-idea-validation" },
+    { icon: Code2, title: "Fast MVP Development", desc: "Minimum Viable Product (MVP) development services designed to cater to a diverse range of businesses.", link: "/services/mvp-developmen" },
+    { icon: BarChart3, title: "Digital Marketing", desc: "Data-driven strategies to grow your online presence and generate leads.", link: "/services/search-engine-optimization" },
+    { icon: Smartphone, title: "Mobile Apps", desc: "Native & cross-platform iOS/Android apps that deliver seamless user experiences.", link: "/services/android-app-development" },
+    { icon: Bot, title: "AI Solutions", desc: "Smart automation and AI-driven business solutions to streamline operations.", link: "/services/ai-integration-service" },
+    { icon: Cloud, title: "Cloud & DevOps", desc: "Scalable cloud infrastructure and CI/CD pipelines for enterprise reliability.", link: "/services/cross-platform-app-development" },
 ];
 
 const testimonials = [
@@ -72,7 +72,7 @@ const certTags = [
 ];
 
 // ──────────────────────────────────────────────────────────────
-// PHONE SCREEN COMPONENTS
+// PHONE SCREEN COMPONENTS (same as before)
 // ──────────────────────────────────────────────────────────────
 
 function MobileAppScreen() {
@@ -234,10 +234,10 @@ function AIScreen() {
 }
 
 // ──────────────────────────────────────────────────────────────
-// IPHONE FRAME
+// DEVICE FRAMES
 // ──────────────────────────────────────────────────────────────
 
-function IPhoneFrame({ children }: any) {
+function PhoneFrame({ children }: { children: React.ReactNode }) {
     return (
         <div style={{ position: "relative", width: 230, height: 460, flexShrink: 0 }}>
             <div style={{ position: "absolute", left: -4, top: 80, width: 4, height: 28, background: "#b0b0b0", borderRadius: "4px 0 0 4px" }} />
@@ -256,8 +256,59 @@ function IPhoneFrame({ children }: any) {
     );
 }
 
+function TabletFrame({ children }: { children: React.ReactNode }) {
+    return (
+        <div style={{ position: "relative", width: 300, height: 440, flexShrink: 0 }}>
+            <div style={{ width: "100%", height: "100%", background: "#1a1a1a", borderRadius: 32, padding: 8, boxShadow: "0 0 0 1px #333, 0 28px 80px rgba(0,0,0,0.5), inset 0 0 0 1px #555" }}>
+                <div style={{ width: "100%", height: "100%", background: "#111", borderRadius: 24, overflow: "hidden", position: "relative" }}>
+                    <div style={{ position: "absolute", top: 10, left: "50%", transform: "translateX(-50%)", width: 120, height: 18, background: "#000", borderRadius: 10, zIndex: 100 }} />
+                    <div style={{ width: "100%", height: "100%", borderRadius: 24, overflow: "hidden", background: "#fff" }}>
+                        <div style={{ paddingTop: 28, height: "100%", position: "relative" }}>{children}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function LaptopFrame({ children }: { children: React.ReactNode }) {
+    return (
+        <div style={{ position: "relative", width: 380, height: 300, flexShrink: 0 }}>
+            <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <div style={{ width: "100%", height: "88%", background: "#1a1a1a", borderRadius: "12px 12px 0 0", padding: 8, boxShadow: "0 0 0 1px #333, 0 28px 80px rgba(0,0,0,0.4)" }}>
+                    <div style={{ width: "100%", height: "100%", background: "#111", borderRadius: "6px 6px 0 0", overflow: "hidden" }}>
+                        <div style={{ width: "100%", height: "100%", background: "#fff", overflow: "hidden" }}>
+                            <div style={{ height: "100%", position: "relative" }}>{children}</div>
+                        </div>
+                    </div>
+                </div>
+                <div style={{ width: "60%", height: 8, background: "#2a2a2a", borderRadius: "0 0 6px 6px", boxShadow: "0 0 0 1px #444" }} />
+                <div style={{ width: "40%", height: 4, background: "#555", borderRadius: "0 0 4px 4px", marginTop: -2 }} />
+            </div>
+        </div>
+    );
+}
+
+function MonitorFrame({ children }: { children: React.ReactNode }) {
+    return (
+        <div style={{ position: "relative", width: 400, height: 320, flexShrink: 0 }}>
+            <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <div style={{ width: "100%", height: "90%", background: "#1a1a1a", borderRadius: "10px 10px 0 0", padding: 10, boxShadow: "0 0 0 1px #333, 0 28px 80px rgba(0,0,0,0.4)" }}>
+                    <div style={{ width: "100%", height: "100%", background: "#111", borderRadius: "4px", overflow: "hidden" }}>
+                        <div style={{ width: "100%", height: "100%", background: "#fff", overflow: "hidden" }}>
+                            <div style={{ height: "100%", position: "relative" }}>{children}</div>
+                        </div>
+                    </div>
+                </div>
+                <div style={{ width: "20%", height: 10, background: "#2a2a2a", borderRadius: "0 0 4px 4px", boxShadow: "0 0 0 1px #444" }} />
+                <div style={{ width: "6%", height: 20, background: "#1a1a1a", borderRadius: "0 0 4px 4px", boxShadow: "0 0 0 1px #444" }} />
+            </div>
+        </div>
+    );
+}
+
 // ──────────────────────────────────────────────────────────────
-// SLIDES CONFIG
+// SLIDES CONFIG (each with a device type)
 // ──────────────────────────────────────────────────────────────
 
 const slides = [
@@ -267,6 +318,12 @@ const slides = [
         chips: ["React Native", "Flutter", "Swift", "Kotlin"],
         stats: [{ val: "550+", lbl: "Apps Built" }, { val: "5★", lbl: "Avg Rating" }, { val: "48h", lbl: "Fast Delivery" }],
         screen: <MobileAppScreen />,
+        device: "phone",
+        floatLabels: [
+            { text: "⚡ Fast Delivery", pos: { top: 24, right: -90 } },
+            { text: "★★★★★ 5-Star Rated", pos: { bottom: 80, left: -100 } },
+            { text: "🏆 Top Rated Agency", pos: { bottom: 140, right: -100 } },
+        ]
     },
     {
         id: "mobile-games", badge: "Game Development", accent: "#8B5CF6",
@@ -274,6 +331,12 @@ const slides = [
         chips: ["Unity", "Unreal", "Cocos2d", "Godot"],
         stats: [{ val: "80+", lbl: "Games Built" }, { val: "4.9★", lbl: "Store Rating" }, { val: "10M+", lbl: "Downloads" }],
         screen: <MobileGameScreen />,
+        device: "tablet",
+        floatLabels: [
+            { text: "🎮 80+ Games", pos: { top: 20, right: -100 } },
+            { text: "4.9★ Rating", pos: { bottom: 100, left: -110 } },
+            { text: "10M+ Downloads", pos: { bottom: 160, right: -110 } },
+        ]
     },
     {
         id: "web-dev", badge: "Web Solutions", accent: "#0EA5E9",
@@ -281,6 +344,12 @@ const slides = [
         chips: ["React", "Next.js", "Node.js", "Laravel"],
         stats: [{ val: "100+", lbl: "Web Apps" }, { val: "99%", lbl: "Uptime" }, { val: "3×", lbl: "Faster" }],
         screen: <WebScreen />,
+        device: "laptop",
+        floatLabels: [
+            { text: "💻 100+ Web Apps", pos: { top: 16, right: -100 } },
+            { text: "99% Uptime", pos: { bottom: 80, left: -100 } },
+            { text: "3× Faster Delivery", pos: { bottom: 130, right: -100 } },
+        ]
     },
     {
         id: "ai-agent", badge: "AI & Automation", accent: "#10B981",
@@ -288,11 +357,17 @@ const slides = [
         chips: ["GPT-4", "LangChain", "Python", "TensorFlow"],
         stats: [{ val: "24/7", lbl: "AI Uptime" }, { val: "90%", lbl: "Automation" }, { val: "10×", lbl: "ROI Boost" }],
         screen: <AIScreen />,
+        device: "monitor",
+        floatLabels: [
+            { text: "🤖 24/7 AI", pos: { top: 16, right: -110 } },
+            { text: "90% Automation", pos: { bottom: 80, left: -110 } },
+            { text: "10× ROI Boost", pos: { bottom: 130, right: -110 } },
+        ]
     },
 ];
 
 // ──────────────────────────────────────────────────────────────
-// HERO SLIDER
+// HERO SLIDER (updated with device frames and labels)
 // ──────────────────────────────────────────────────────────────
 
 function HeroSlider() {
@@ -321,6 +396,17 @@ function HeroSlider() {
     }, []);
 
     const slide = slides[current];
+
+    // Render the appropriate frame based on device type
+    const renderDeviceFrame = (children: React.ReactNode, device: string) => {
+        switch (device) {
+            case "phone": return <PhoneFrame>{children}</PhoneFrame>;
+            case "tablet": return <TabletFrame>{children}</TabletFrame>;
+            case "laptop": return <LaptopFrame>{children}</LaptopFrame>;
+            case "monitor": return <MonitorFrame>{children}</MonitorFrame>;
+            default: return <PhoneFrame>{children}</PhoneFrame>;
+        }
+    };
 
     return (
         <>
@@ -414,15 +500,34 @@ function HeroSlider() {
                         </div>
                     </div>
 
-                    {/* RIGHT – iPhone */}
-                    <div key={`ph-${animKey}`} className="slide-anim" style={{ position: "relative", flexShrink: 0, display: "flex", justifyContent: "center"}}>
+                    {/* RIGHT – Device Frame with floating labels */}
+                    <div key={`ph-${animKey}`} className="slide-anim" style={{ position: "relative", flexShrink: 0, display: "flex", justifyContent: "center" }}>
                         <div style={{ position: "absolute", inset: -30, background: `radial-gradient(ellipse,${slide.accent}22 0%,transparent 70%)`, pointerEvents: "none", borderRadius: "50%" }} />
-                        <IPhoneFrame>{slide.screen}</IPhoneFrame>
-                        <div style={{ position: "absolute", top: 24, right: -90, background: "#fff", borderRadius: 14, padding: "7px 14px", boxShadow: "0 4px 20px rgba(0,0,0,0.12)", border: "1px solid #f0f0f0", fontSize: 11, fontWeight: 700, color: "#111", whiteSpace: "nowrap" }}>⚡ Fast Delivery</div>
-                        <div style={{ position: "absolute", bottom: 80, left: -100, background: "#fff", borderRadius: 14, padding: "7px 14px", boxShadow: "0 4px 20px rgba(0,0,0,0.12)", border: "1px solid #f0f0f0", fontSize: 11, fontWeight: 700, whiteSpace: "nowrap" }}>
-                            <span style={{ color: "#facc15" }}>★★★★★</span><span style={{ color: "#111", marginLeft: 4 }}>5-Star Rated</span>
-                        </div>
-                        <div style={{ position: "absolute", bottom: 140, right: -100, background: slide.accent, borderRadius: 14, padding: "7px 14px", boxShadow: `0 4px 20px ${slide.accent}40`, fontSize: 11, fontWeight: 800, color: "#fff", whiteSpace: "nowrap" }}>🏆 Top Rated Agency</div>
+                        
+                        {renderDeviceFrame(slide.screen, slide.device)}
+
+                        {/* Floating Labels (positioned according to slide) */}
+                        {slide.floatLabels.map((label, i) => (
+                            <div
+                                key={i}
+                                style={{
+                                    position: "absolute",
+                                    ...label.pos,
+                                    background: label.text.includes("★") ? "#fff" : (label.text.includes("🏆") ? slide.accent : "#fff"),
+                                    borderRadius: 14,
+                                    padding: "7px 14px",
+                                    boxShadow: label.text.includes("★") ? "0 4px 20px rgba(0,0,0,0.12)" : (label.text.includes("🏆") ? `0 4px 20px ${slide.accent}40` : "0 4px 20px rgba(0,0,0,0.12)"),
+                                    border: label.text.includes("★") ? "1px solid #f0f0f0" : "none",
+                                    fontSize: 11,
+                                    fontWeight: 700,
+                                    color: label.text.includes("🏆") ? "#fff" : "#111",
+                                    whiteSpace: "nowrap",
+                                    zIndex: 20,
+                                }}
+                            >
+                                {label.text}
+                            </div>
+                        ))}
                     </div>
                 </div>
 
@@ -471,10 +576,9 @@ function ClientCard({ cl }: any) {
 }
 
 // ──────────────────────────────────────────────────────────────
-// AI CHAT WIDGET — Improved version
+// AI CHAT WIDGET (unchanged)
 // ──────────────────────────────────────────────────────────────
 
-// ----- Intent definitions -----
 const INTENTS = {
     greeting: {
         keywords: ["hello", "hi", "hey", "namaste", "good morning", "good afternoon", "good evening", "greetings", "howdy"],
@@ -560,28 +664,21 @@ const INTENTS = {
     }
 };
 
-// Fallback response
 const FALLBACK_RESPONSES = [
     "Hmm, I'm not sure about that. But I can help with questions about our services, pricing, experience, clients, or contact info. What would you like to know?",
     "I didn't quite get that. 🤔 You can ask me about our services (web, mobile, AI, games), pricing, our experience, or our clients. Just type your question!",
     "Sorry, I don't have an answer for that yet. 😅 But I'm good at talking about what we do, how we work, and how we can help you. Ask away!"
 ];
 
-// ----- Intent matching function -----
 function getIntent(text: string): keyof typeof INTENTS | "fallback" {
     const lower = text.toLowerCase().trim();
-    // If empty, fallback
     if (!lower) return "fallback";
-
-    // Score each intent based on keyword matches
     let bestIntent: keyof typeof INTENTS | "fallback" = "fallback";
     let bestScore = 0;
-
     for (const [intentKey, intent] of Object.entries(INTENTS) as any) {
         let score = 0;
         for (const kw of intent.keywords) {
             if (lower.includes(kw)) {
-                // Give higher weight to exact word matches (word boundary)
                 const regex = new RegExp(`\\b${kw}\\b`, "i");
                 if (regex.test(lower)) {
                     score += 3;
@@ -595,13 +692,10 @@ function getIntent(text: string): keyof typeof INTENTS | "fallback" {
             bestIntent = intentKey;
         }
     }
-
-    // If score is very low, fallback
     if (bestScore < 1) return "fallback";
     return bestIntent;
 }
 
-// ----- ChatBot Component -----
 function ChatBot() {
     const [open, setOpen] = useState(false);
     const [messages, setMessages] = useState([
@@ -617,20 +711,14 @@ function ChatBot() {
     const send = () => {
         const text = input.trim();
         if (!text) return;
-
-        // Get intent
         const intent = getIntent(text);
         let reply = "";
-
         if (intent === "fallback") {
-            // Pick a random fallback
             reply = FALLBACK_RESPONSES[Math.floor(Math.random() * FALLBACK_RESPONSES.length)];
         } else {
-            // Pick a random response from the matched intent
             const responses = INTENTS[intent].responses;
             reply = responses[Math.floor(Math.random() * responses.length)];
         }
-
         setMessages((m) => [...m, { from: "user", text }, { from: "bot", text: reply }]);
         setInput("");
     };
@@ -726,7 +814,6 @@ const globalStyles = `
   .client-card { transition:transform 0.2s ease; cursor:default; }
   .client-card:hover { transform:translateY(-5px); }
 
-  /* ----- Hero slider spacing (fixed mobile gap) ----- */
   .hero-slider-section {
     padding-top: 32px;
     padding-bottom: 40px;
@@ -765,7 +852,7 @@ const globalStyles = `
 `;
 
 // ──────────────────────────────────────────────────────────────
-// MAIN HomePage
+// MAIN HomePage (unchanged except the slider now uses new frames)
 // ──────────────────────────────────────────────────────────────
 
 export default function HomePage() {
@@ -929,83 +1016,26 @@ export default function HomePage() {
                                     <span className="text-gray-700 font-semibold">AI Review Ninja Pro</span>{" "}
                                     helps businesses generate high-quality customer reviews, strengthen their online reputation, and improve local search visibility, making it easier to rank higher on Google Business Profile and attract more customers.
                                 </p>
+
+
                             </div>
-                            <div className="grid grid-cols-3 gap-2 sm:gap-3 w-full lg:w-auto lg:min-w-[320px]">
-                                {[{ v: "+320%", l: "Review Growth" }, { v: "4.9★", l: "Avg Rating Boost" }, { v: "24/7", l: "AI Automation" }].map((st) => (
-                                    <div key={st.l} className="bg-white rounded-xl border border-red-100 p-3 text-center">
-                                        <p className="text-lg sm:text-xl font-black text-red-600">{st.v}</p>
-                                        <p className="text-[11px] sm:text-xs text-gray-500">{st.l}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+
+                            <button>
+                                <a href="https://reviewninjapro.com" className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                    Go To Product &rsaquo;
+                                </a>
+                            </button>
+
                     </div>
-                </div>
-            </section>
-
-            {/* ── OUR CLIENTS (marquee) ── */}
-            <section className="py-16 bg-gray-50 overflow-hidden">
-                <div className="text-center mb-12 px-4">
-                    <span className="inline-block border border-red-200 text-red-500 text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full bg-red-50 mb-4">
-                        Our Clients
-                    </span>
-                    <h2 className="text-4xl font-bold text-gray-900">
-                        Brands That <span className="text-red-600">Trust Us</span>
-                    </h2>
-                    <p className="text-gray-500 mt-3 text-base max-w-md mx-auto">
-                        550+ happy clients worldwide — from startups to enterprises.
-                    </p>
-                </div>
-
-                <div className="overflow-hidden relative">
-                    <div
-                        className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-                        style={{ background: "linear-gradient(to right, #f9fafb, transparent)" }}
-                    />
-                    <div
-                        className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-                        style={{ background: "linear-gradient(to left, #f9fafb, transparent)" }}
-                    />
-                    <div className="marquee-track py-4">
-                        {tripledClients.map((cl, i) => (
-                            <ClientCard key={`r1-${i}`} cl={cl} />
-                        ))}
                     </div>
-                </div>
-            </section>
+                    </div>
+           </section>
 
-            {/* ── TESTIMONIALS ── */}
-            <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-                <div className="text-center mb-14">
-                    <span className="inline-block rounded-full border border-red-200 bg-red-50 px-4 py-1 text-xs font-bold uppercase tracking-widest text-red-600 mb-3">Client Love</span>
-                    <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">What Our <span className="text-red-600">Clients Say</span></h2>
-                </div>
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {testimonials.map((t) => (
-                        <div key={t.name} className="rounded-2xl border border-gray-100 bg-white p-7 shadow-sm hover:shadow-md transition-all relative">
-                            <div className="absolute top-5 right-6 text-6xl text-red-100 font-serif leading-none select-none">"</div>
-                            <div className="flex gap-1 mb-4">
-                                {Array.from({ length: t.rating }).map((i: any) => (
-                                    <Star key={i} className="h-4 w-4 fill-red-500 text-red-500" />
-                                ))}
-                            </div>
-                            <p className="text-sm text-gray-600 leading-relaxed relative z-10">"{t.text}"</p>
-                            <div className="mt-5 flex items-center gap-3">
-                                <div className="h-11 w-11 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-white font-bold text-sm">{t.name[0]}</div>
-                                <div>
-                                    <p className="font-bold text-sm text-gray-900">{t.name}</p>
-                                    <p className="text-xs text-gray-500">{t.role}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
 
-            <CTABanner />
 
-            {/* ── AI CHAT WIDGET ── */}
-            <ChatBot />
-        </div>
-    );
-}
+           </div>
+
+
+)}
+
+                

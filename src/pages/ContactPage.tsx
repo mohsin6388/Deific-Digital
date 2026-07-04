@@ -1,5 +1,3 @@
-
-
 import React, { useState, useRef, useEffect } from "react";
 import {
     Phone,
@@ -26,6 +24,8 @@ import {
     MessageSquare,
     AlertCircle,
     Building,
+    ShieldCheck,
+    RefreshCw,
 } from "lucide-react";
 
 export default function ContactPage() {
@@ -43,6 +43,25 @@ export default function ContactPage() {
     const [touched, setTouched] = useState<Record<string, boolean>>({});
     const [faqOpen, setFaqOpen] = useState<number | null>(null);
     const formRef = useRef<HTMLFormElement>(null);
+
+    // ─── Captcha (simple math challenge, front-end only) ───────────────────
+    const generateCaptcha = () => {
+        const num1 = Math.floor(Math.random() * 10) + 1;
+        const num2 = Math.floor(Math.random() * 10) + 1;
+        return { num1, num2 };
+    };
+    const [captcha, setCaptcha] = useState(generateCaptcha());
+    const [captchaAnswer, setCaptchaAnswer] = useState("");
+    const [captchaTouched, setCaptchaTouched] = useState(false);
+
+    const refreshCaptcha = () => {
+        setCaptcha(generateCaptcha());
+        setCaptchaAnswer("");
+        setCaptchaTouched(false);
+        if (errors.captcha) {
+            setErrors((prev) => ({ ...prev, captcha: "" }));
+        }
+    };
 
     // Scroll animations on mount
     useEffect(() => {
@@ -85,6 +104,13 @@ export default function ContactPage() {
         setTouched((prev) => ({ ...prev, [name]: true }));
     };
 
+    const handleCaptchaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setCaptchaAnswer(e.target.value);
+        if (errors.captcha) {
+            setErrors((prev) => ({ ...prev, captcha: "" }));
+        }
+    };
+
     const validateForm = () => {
         const newErrors: Record<string, string> = {};
         if (!formData.firstName.trim())
@@ -104,6 +130,16 @@ export default function ContactPage() {
         if (!formData.service) newErrors.service = "Please select a service";
         if (!formData.message.trim())
             newErrors.message = "Message is required";
+
+        // Captcha check
+        if (!captchaAnswer.trim()) {
+            newErrors.captcha = "Please solve the captcha";
+        } else if (
+            parseInt(captchaAnswer, 10) !== captcha.num1 + captcha.num2
+        ) {
+            newErrors.captcha = "Incorrect answer, please try again";
+        }
+
         return newErrors;
     };
 
@@ -114,10 +150,15 @@ export default function ContactPage() {
             allTouched[key] = true;
         });
         setTouched(allTouched);
+        setCaptchaTouched(true);
 
         const newErrors = validateForm();
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
+            // Refresh captcha whenever it fails, so an answer can't be reused/brute-forced
+            if (newErrors.captcha) {
+                refreshCaptcha();
+            }
             const firstError = Object.keys(newErrors)[0];
             const el = document.querySelector(`[name="${firstError}"]`);
             if (el) {
@@ -143,6 +184,7 @@ export default function ContactPage() {
                 message: "",
             });
             setTouched({});
+            refreshCaptcha();
         }, 1500);
     };
 
@@ -242,16 +284,16 @@ export default function ContactPage() {
         {
             country: "India",
             type: "Head Office",
-            address: "Innotical Tower, H-192, Sector 63, Lohia Road, Noida, UP, 201306",
-            email: "hello@innotical.com",
-            phone: "(+91) 9319668389",
+            address: "8th Floor A1/4, Lakhanpur, Khyora, Kanpur, UP 208024",
+            email: "deific.solution@hotmail.com",
+            phone: "(+91) 8750200899",
             flag: "🇮🇳",
         },
         {
             country: "USA",
             type: "Registered Office",
             address: "13201 Legendary Drive # 6201, Austin, Texas - 78727",
-            email: "hello@innotical.com",
+            email: "deific.solution@hotmail.com",
             phone: "(+1) 4086220445",
             flag: "🇺🇸",
         },
@@ -259,85 +301,14 @@ export default function ContactPage() {
             country: "UAE",
             type: "Registered Office",
             address: "Suite 1403, Off 22 & 23, Opal Tower, Business Bay, PO. Box:97450, Dubai, UAE",
-            email: "hello@innotical.com",
-            phone: "(+91) 9319668389",
+            email: "deific.solution@hotmail.com",
+            phone: "(+971) 9319668389",
             flag: "🇦🇪",
         },
     ];
 
     return (
         <div className="min-h-screen bg-white">
-            {/* ===== HERO ===== */}
-            {/* <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-red-900 py-12 md:py-16">
-                <div className="absolute inset-0 overflow-hidden">
-                    <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-red-500/20 blur-3xl animate-pulse" />
-                    <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-blue-500/20 blur-3xl animate-pulse delay-1000" />
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-purple-500/10 blur-3xl" />
-                    
-                </div>
-
-                <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="text-center">
-                        <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-white/90 backdrop-blur-sm border border-white/10 mb-4">
-                            <Sparkles className="h-4 w-4 text-yellow-400" />
-                            <span>Get in Touch</span>
-                        </div>
-                        <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl text-white">
-                            Let's Build Something
-                            <span className="block mt-1 bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent">
-                                Amazing Together
-                            </span>
-                        </h1>
-                        <p className="mx-auto mt-4 max-w-2xl text-base text-white/70 md:text-lg">
-                            Have a project in mind? We'd love to hear from you.
-                            Drop us a message and we'll get back within 24
-                            hours.
-                        </p>
-                        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-                            <a
-                                href="#contact-form"
-                                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-red-600 to-orange-500 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-red-500/25 transition-all hover:scale-105 hover:shadow-red-500/40"
-                            >
-                                Start a Project
-                                <ArrowRight className="h-4 w-4" />
-                            </a>
-                            <a
-                                href="tel:+918750200899"
-                                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/10 hover:scale-105"
-                            >
-                                <Phone className="h-4 w-4" />
-                                +91 87502 00899
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section> */}
-
-            {/* ===== STATS ===== */}
-            {/* <section className="border-b border-gray-100 bg-white py-12">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
-                        {stats.map((stat, index) => (
-                            <div
-                                key={index}
-                                className="text-center animate-on-scroll"
-                                style={{ animationDelay: `${index * 100}ms` }}
-                            >
-                                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-red-50 text-red-600">
-                                    <stat.icon className="h-5 w-5" />
-                                </div>
-                                <div className="text-2xl font-bold text-gray-900">
-                                    {stat.value}
-                                </div>
-                                <div className="text-sm text-gray-500">
-                                    {stat.label}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section> */}
-
             {/* ===== CONTACT INFO + FORM ===== */}
             <section
                 className="py-16 md:py-24 bg-gray-50/50"
@@ -699,6 +670,56 @@ export default function ContactPage() {
                                             <div className="text-right text-xs text-gray-400 mt-1">
                                                 {formData.message.length} / 500
                                             </div>
+                                        </div>
+
+                                        {/* Captcha */}
+                                        <div className="rounded-xl border border-gray-200 bg-gray-50/50 p-4">
+                                            <div className="flex items-center gap-2 mb-3">
+                                                <ShieldCheck className="h-4 w-4 text-red-500" />
+                                                <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                                                    Security Check
+                                                </span>
+                                            </div>
+                                            <div className="flex flex-wrap items-center gap-3">
+                                                <div className="flex items-center gap-2 rounded-lg bg-white border border-gray-200 px-4 py-2.5 select-none">
+                                                    <span className="text-base font-bold text-gray-800 tracking-wider">
+                                                        {captcha.num1} + {captcha.num2} =
+                                                    </span>
+                                                </div>
+                                                <input
+                                                    type="text"
+                                                    inputMode="numeric"
+                                                    name="captcha"
+                                                    value={captchaAnswer}
+                                                    onChange={handleCaptchaChange}
+                                                    onBlur={() =>
+                                                        setCaptchaTouched(true)
+                                                    }
+                                                    placeholder="?"
+                                                    className={`w-24 rounded-lg border ${
+                                                        errors.captcha &&
+                                                        captchaTouched
+                                                            ? "border-red-500 ring-2 ring-red-500/20"
+                                                            : "border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
+                                                    } bg-white px-3 py-2.5 text-sm text-center outline-none transition-all`}
+                                                />
+                                                <button
+                                                    type="button"
+                                                    onClick={refreshCaptcha}
+                                                    className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-500 transition-all hover:text-red-600 hover:border-red-200"
+                                                    aria-label="Refresh captcha"
+                                                    title="Get a new question"
+                                                >
+                                                    <RefreshCw className="h-4 w-4" />
+                                                </button>
+                                            </div>
+                                            {errors.captcha &&
+                                                captchaTouched && (
+                                                    <p className="mt-2 text-xs text-red-500 flex items-center gap-1 animate-slide-down">
+                                                        <AlertCircle className="h-3 w-3" />
+                                                        {errors.captcha}
+                                                    </p>
+                                                )}
                                         </div>
 
                                         {/* Submit */}
