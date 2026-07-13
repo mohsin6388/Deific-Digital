@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { Helmet } from 'react-helmet-async';
 import { CTABanner } from "@/components/site/CTABanner";
 import vaishnavi from "@/assets/vasihnavi.webp";
 import school from "@/assets/school.webp";
@@ -391,6 +392,14 @@ export default function PortfolioPage() {
     : projects.filter((p) => p.tag === active);
 
   return (
+
+    <>
+             <Helmet>
+             <title>Portfolio | Deific Digital</title>
+             <link rel="canonical" href="https://deificdigital.com/portfolio" />
+            </Helmet>
+
+
     <div>
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-br from-white via-gray-50 to-red-50/30 py-20 text-center">
@@ -586,5 +595,7 @@ export default function PortfolioPage() {
 
       <CTABanner />
     </div>
+
+    </>
   );
 }

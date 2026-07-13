@@ -1,5 +1,6 @@
 
 import { CTABanner } from "@/components/site/CTABanner";
+import { Helmet } from 'react-helmet-async';
 import { Link } from "react-router-dom";
 import {
     MapPin,
@@ -180,7 +181,15 @@ export default function CareersPage() {
     ];
 
     return (
-        <div className="min-h-screen bg-white font-sans">
+
+        <>
+
+        <Helmet>
+        <title>Careers | Deific Digital</title>
+        <link rel="canonical" href="https://deificdigital.com/careers" />
+        </Helmet>
+        
+                <div className="min-h-screen bg-white font-sans">
             {/* ===== HERO SECTION — COMPACT & ATTRACTIVE ===== */}
             <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-red-900 py-12 md:py-16">
                 <div className="absolute inset-0 overflow-hidden">
@@ -574,5 +583,7 @@ export default function CareersPage() {
                 }
             `}</style>
         </div>
+
+        </>
     );
 }

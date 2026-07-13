@@ -1,5 +1,6 @@
 
 import { Link, useParams } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
 import {
   ArrowRight,
   CheckCircle,
@@ -55,6 +56,9 @@ function ServicesPage() {
 
   if (!content) {
     return (
+
+
+
       <div className="min-h-screen flex flex-col items-center justify-center bg-white px-4 text-center">
         <h1 className="text-3xl font-bold text-gray-900">Service not found</h1>
         <p className="mt-2 text-gray-500">
@@ -72,6 +76,14 @@ function ServicesPage() {
   }
 
   return (
+
+     <>
+             <Helmet>
+             <title>Services | Deific Digital</title>
+             <link rel="canonical" href="https://deificdigital.com/services" />
+            </Helmet>
+
+
     <div className="min-h-screen bg-white">
 
       {/* ===== HERO (smaller, half screen height) ===== */}
@@ -365,6 +377,9 @@ function ServicesPage() {
         }
       `}</style>
     </div>
+
+
+    </>
   );
 }
 

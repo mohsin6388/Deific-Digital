@@ -1,5 +1,6 @@
 import { CTABanner } from "@/components/site/CTABanner";
 import { FileText } from "lucide-react";
+import { Helmet } from 'react-helmet-async';
 
 const posts = [
   {
@@ -48,6 +49,14 @@ const posts = [
 
 export default function BlogPage() {
   return (
+
+    <>
+      <Helmet>
+        <title>About Us | Deific Digital</title>
+        <link rel="canonical" href="https://deificdigital.com/blog" />
+      </Helmet>
+
+
     <div>
       <section className="bg-gradient-to-br from-gray-50 to-white py-16 text-center">
         <div className="mx-auto max-w-3xl px-4">
@@ -100,5 +109,7 @@ export default function BlogPage() {
 
       <CTABanner />
     </div>
+
+  </>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Helmet } from 'react-helmet-async';
 import {
     Phone,
     Mail,
@@ -308,6 +309,13 @@ export default function ContactPage() {
     ];
 
     return (
+
+        <>
+         <Helmet>
+         <title>Contact Us | Deific Digital</title>
+         <link rel="canonical" href="https://deificdigital.com/contact" />
+        </Helmet>
+
         <div className="min-h-screen bg-white">
             {/* ===== CONTACT INFO + FORM ===== */}
             <section
@@ -1043,5 +1051,7 @@ export default function ContactPage() {
                 }
             `}</style>
         </div>
+
+        </>
     );
 }

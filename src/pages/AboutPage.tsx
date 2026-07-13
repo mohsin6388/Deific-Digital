@@ -1,7 +1,5 @@
 import { CTABanner } from "@/components/site/CTABanner";
-import { SectionHeading } from "@/components/site/SectionHeading";
-import { Counter } from "@/components/site/Counter";
-import officeImg from "@/assets/my_office.webp";
+import { Helmet } from 'react-helmet-async';
 import atul from "../assets/team-5.webp";
 import shobhit from "../assets/team-3.webp";
 import hridyansh from "../assets/team-2.webp";
@@ -520,6 +518,15 @@ function TeamGrid() {
 // ─── MAIN ABOUT PAGE ────────────────────────────────────────────────────
 export default function AboutPage() {
     return (
+
+    <>
+      <Helmet>
+        <title>About Us | Deific Digital</title>
+        <link rel="canonical" href="https://deificdigital.com/about" />
+      </Helmet>
+
+
+
         <div className="min-h-screen bg-white">
             <Breadcrumb />
             <HeroSection />
@@ -551,5 +558,7 @@ export default function AboutPage() {
                 }
             `}</style>
         </div>
+
+    </>
     );
 }

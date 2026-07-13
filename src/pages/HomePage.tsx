@@ -1,5 +1,6 @@
 
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
 import { useState, useEffect, useRef } from "react";
 import {
     ArrowRight, Star, Shield, Zap, Users, Globe, Award,
@@ -859,6 +860,16 @@ export default function HomePage() {
     const tripledClients = [...clients, ...clients, ...clients];
 
     return (
+
+
+         <>
+
+        <Helmet>
+        <title>Career | Deific Digital</title>
+        <link rel="canonical" href="https://deificdigital.com/career" />
+      </Helmet>
+
+        
         <div className="min-h-screen">
             <style>{globalStyles}</style>
 
@@ -1034,6 +1045,8 @@ export default function HomePage() {
 
 
            </div>
+
+    </>
 
 
 )}
