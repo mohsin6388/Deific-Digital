@@ -9,19 +9,19 @@ import {
 import { Briefcase, Timer, BadgeCheck } from "lucide-react";
 import { Counter } from "@/components/site/Counter";
 import { CTABanner } from "@/components/site/CTABanner";
-import officeImg from "@/assets/my_office.png";
-import sundra from "../assets/sundra-logo.png";
+import officeImg from "@/assets/my_office.webp";
+import sundra from "../assets/sundra-logo.webp";
 import vaishnavi from "../assets/vaishnavi.webp";
-import knn from "../assets/knn.jfif";
-import green from "../assets/green-park.jpg";
-import celebration from "../assets/celebration.jpg";
-import perch from "../assets/perch.jfif";
-import build from "../assets/build.png";
-import client from "../assets/client.png";
-import country from "../assets/country.png";
-import project from "../assets/project.png";
-import experience from "../assets/experience.png";
-import team from "../assets/team.png";
+import knn from "../assets/knn.webp";
+import green from "../assets/green-park.webp";
+import celebration from "../assets/celebration.webp";
+import perch from "../assets/perch.webp";
+import build from "../assets/build.webp";
+import client from "../assets/client.webp";
+import country from "../assets/country.webp";
+import project from "../assets/project.webp";
+import experience from "../assets/experience.webp";
+import team from "../assets/team.webp";
 
 // ──────────────────────────────────────────────────────────────
 // DATA

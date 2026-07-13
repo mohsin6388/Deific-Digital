@@ -2,7 +2,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
-import logo from "../../assets/dd.jpg";
+import logo from "../../assets/dd.webp";
 import { servicesMenu } from "../../static/servicesData"; // <-- yahan se data aa raha hai
 
 const nav = [

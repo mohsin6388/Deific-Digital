@@ -1,22 +1,16 @@
 
 import { useState } from "react";
 import { CTABanner } from "@/components/site/CTABanner";
-import { ExternalLink } from "lucide-react";
-import vaishnavi from "@/assets/vasihnavi.png";
-import green from "@/assets/stadium.png";
-import rickshaw from "@/assets/e-rickshaw.png";
+import vaishnavi from "@/assets/vasihnavi.webp";
 import school from "@/assets/school.webp";
-import land from "@/assets/green-land.jfif";
-import sport from "@/assets/sport.webp";
-import darshan from "@/assets/darshan.png";
-import city from "@/assets/city-app.jfif";
+import darshan from "@/assets/darshan.webp";
+import city from "@/assets/city-app.webp";
 import vaishnaviHost from "../assets/vaishnavi.webp";
-import knn from "../assets/knn.jfif";
-import greenPark from "../assets/green-park.jpg";
-import celebration from "../assets/celebration.jpg";
-import perch from "../assets/perch.jfif";
-import sundra from "../assets/image.png";
-import smartCity from "../assets/smart-city.jpg";
+import knn from "../assets/knn.webp";
+import celebration from "../assets/celebration.webp";
+import perch from "../assets/perch.webp";
+import sundra from "../assets/image.webp";
+import smartCity from "../assets/smart-city.webp";
 
 // -------------------------------
 // FULL CLIENTS LIST (25)

@@ -6,18 +6,18 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-import android from "../assets/android.png";
-import ios from "../assets/ios-development.png";
-import hybrid from "../assets/hybrid.jpg";
-import automation from "../assets/automation.png"
-import chatbot from "../assets/chatbot.jpg";
-import genAi from "../assets/gen-ai.jpg";
-import gmb from "../assets/gmb.jpg";
-import meta from "../assets/meta-ads.jpg";
-import socialMedia from "../assets/social-media.jpg";
+import android from "../assets/android.webp";
+import ios from "../assets/ios-development.webp";
+import hybrid from "../assets/hybrid.webp";
+import automation from "../assets/automation.webp"
+import chatbot from "../assets/chatbot.webp";
+import genAi from "../assets/gen-ai.webp";
+import gmb from "../assets/gmb.webp";
+import meta from "../assets/meta-ads.webp";
+import socialMedia from "../assets/social-media.webp";
 import startup from "../assets/startup-idea.webp";
-import cross from "../assets/cross-development.png";
-import mvp from "../assets/mvp.jpg";
+import cross from "../assets/cross-development.webp";
+import mvp from "../assets/mvp.webp";
 
 
 // ─── Types ─────────────────────────────────────────────────────────────

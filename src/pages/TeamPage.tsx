@@ -1,11 +1,11 @@
 import { CTABanner } from "@/components/site/CTABanner";
 import { Linkedin, Twitter } from "lucide-react";
-import team1 from "@/assets/team-mohit.jpeg";
-import team2 from "@/assets/team-2.jpeg";
-import team3 from "@/assets/team-3.jpeg";
-import team4 from "@/assets/team-4.jpeg";
-import team5 from "@/assets/team-5.jpeg";
-import team6 from "@/assets/team-6.jpeg";
+import team1 from "@/assets/team-mohit.webp";
+import team2 from "@/assets/team-2.webp";
+import team3 from "@/assets/team-3.webp";
+import team4 from "@/assets/team-4.webp";
+import team5 from "@/assets/team-5.webp";
+import team6 from "@/assets/team-6.webp";
 
 const team = [
   { name: "Mohit Sharma", role: "CEO & Founder", dept: "Leadership", photo: team1 },
