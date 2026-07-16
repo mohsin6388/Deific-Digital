@@ -1,0 +1,240 @@
+import { useState, useEffect, useRef } from "react";
+
+// ============================================================
+// CONFIG — set this in your .env file, NOT hardcoded here.
+// Vite:  VITE_N8N_WEBHOOK_URL=https://n8n.deificglobal.tech/webhook/support-chat
+// ============================================================
+const WEBHOOK_URL: string =
+  (import.meta as any)?.env?.VITE_N8N_WEBHOOK_URL ||
+  "https://n8n.deificglobal.tech/webhook/support-chat";
+
+type Role = "user" | "bot";
+
+interface ChatMessage {
+  role: Role;
+  text: string;
+}
+
+export default function ChatWidget() {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [input, setInput] = useState<string>("");
+  const [isTyping, setIsTyping] = useState<boolean>(false);
+  const [sending, setSending] = useState<boolean>(false);
+
+  const visitorNameRef = useRef<string>("");
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const loadedRef = useRef<boolean>(false);
+
+  // Setup visitor name (runs once, on mount)
+  useEffect(() => {
+    let name = localStorage.getItem("dg_visitor_name");
+    if (!name) {
+      name = "Visitor-" + Math.floor(Math.random() * 9000 + 1000);
+      localStorage.setItem("dg_visitor_name", name);
+    }
+    visitorNameRef.current = name;
+  }, []);
+
+  // Auto-scroll on new message
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, isTyping]);
+
+  const openChat = () => {
+    setIsOpen(true);
+    if (!loadedRef.current) {
+      loadedRef.current = true;
+      const saved = localStorage.getItem("dg_chat_history");
+      if (saved) {
+        try {
+          setMessages(JSON.parse(saved) as ChatMessage[]);
+        } catch {
+          /* ignore corrupt history */
+        }
+      } else {
+        const greeting: ChatMessage = {
+          role: "bot",
+          text: "Hi! Main Deific Global ka support assistant hu. Aapki kaise madad kar sakta hu?",
+        };
+        setMessages([greeting]);
+      }
+    }
+    setTimeout(() => inputRef.current?.focus(), 0);
+  };
+
+  const persist = (msgs: ChatMessage[]) => {
+    localStorage.setItem("dg_chat_history", JSON.stringify(msgs));
+  };
+
+  const sendMessage = async () => {
+    const text = input.trim();
+    if (!text || sending) return;
+
+    setInput("");
+    setSending(true);
+    setMessages((prev) => {
+      const next = [...prev, { role: "user" as Role, text }];
+      persist(next);
+      return next;
+    });
+    setIsTyping(true);
+
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: visitorNameRef.current, message: text }),
+      });
+      const data = await res.json();
+      const reply: string = data.reply || "Sorry, kuch gadbad hui. Dobara try karein.";
+      setMessages((prev) => {
+        const next = [...prev, { role: "bot" as Role, text: reply }];
+        persist(next);
+        return next;
+      });
+    } catch (err) {
+      setMessages((prev) => {
+        const next = [
+          ...prev,
+          { role: "bot" as Role, text: "Connection error — please try again in a moment." },
+        ];
+        persist(next);
+        return next;
+      });
+    } finally {
+      setIsTyping(false);
+      setSending(false);
+      inputRef.current?.focus();
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") sendMessage();
+  };
+
+  return (
+    <>
+      <style>{`
+        :root {
+          --dg-bg: #14161C;
+          --dg-panel: #1C1F27;
+          --dg-border: #2B2F3A;
+          --dg-text: #E8E9ED;
+          --dg-muted: #8A8F9C;
+          --dg-accent: #FF5A36;
+          --dg-user-bubble: #2A2E38;
+          --dg-mono: 'IBM Plex Mono', 'Courier New', monospace;
+          --dg-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        #dg-launcher {
+          position: fixed; bottom: 24px; right: 24px; width: 58px; height: 58px;
+          border-radius: 14px; background: var(--dg-bg); border: 1px solid var(--dg-border);
+          color: var(--dg-accent); font-family: var(--dg-mono); font-size: 20px; font-weight: 600;
+          display: flex; align-items: center; justify-content: center; cursor: pointer;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.35); z-index: 999998; transition: transform 0.15s ease;
+        }
+        #dg-launcher:hover { transform: scale(1.05); }
+        #dg-launcher:focus-visible { outline: 2px solid var(--dg-accent); outline-offset: 2px; }
+        #dg-window {
+          position: fixed; bottom: 96px; right: 24px; width: 360px; max-width: calc(100vw - 32px);
+          height: 480px; max-height: calc(100vh - 140px); background: var(--dg-panel);
+          border: 1px solid var(--dg-border); border-radius: 16px; display: flex; flex-direction: column;
+          overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); z-index: 999999;
+          font-family: var(--dg-sans); opacity: 0; transform: translateY(12px);
+          transition: opacity 0.2s ease, transform 0.2s ease; pointer-events: none;
+        }
+        #dg-window.dg-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        #dg-header {
+          background: var(--dg-bg); border-bottom: 1px solid var(--dg-border); padding: 14px 16px;
+          display: flex; align-items: center; justify-content: space-between;
+        }
+        #dg-header-title {
+          font-family: var(--dg-mono); font-size: 13px; color: var(--dg-text);
+          display: flex; align-items: center; gap: 8px;
+        }
+        .dg-cursor { color: var(--dg-accent); animation: dg-blink 1.1s steps(1) infinite; }
+        @keyframes dg-blink { 50% { opacity: 0; } }
+        #dg-close {
+          background: none; border: none; color: var(--dg-muted); font-size: 18px;
+          cursor: pointer; line-height: 1; padding: 4px;
+        }
+        #dg-close:hover { color: var(--dg-text); }
+        #dg-messages {
+          flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px;
+        }
+        .dg-msg { max-width: 85%; font-size: 13.5px; line-height: 1.5; }
+        .dg-msg-user {
+          align-self: flex-end; background: var(--dg-user-bubble); color: var(--dg-text);
+          padding: 8px 12px; border-radius: 10px 10px 2px 10px;
+        }
+        .dg-msg-user::before { content: "> "; color: var(--dg-accent); font-family: var(--dg-mono); }
+        .dg-msg-bot { align-self: flex-start; color: var(--dg-text); padding: 8px 0; }
+        .dg-label {
+          display: block; font-family: var(--dg-mono); font-size: 10.5px;
+          color: var(--dg-muted); margin-bottom: 3px; letter-spacing: 0.03em;
+        }
+        .dg-msg-typing { color: var(--dg-muted); font-family: var(--dg-mono); font-size: 12px; }
+        #dg-inputrow { border-top: 1px solid var(--dg-border); padding: 10px; display: flex; gap: 8px; }
+        #dg-input {
+          flex: 1; background: var(--dg-bg); border: 1px solid var(--dg-border); border-radius: 8px;
+          color: var(--dg-text); padding: 10px 12px; font-size: 13.5px; font-family: var(--dg-sans); outline: none;
+        }
+        #dg-input:focus { border-color: var(--dg-accent); }
+        #dg-send {
+          background: var(--dg-accent); border: none; color: #14161C; font-weight: 600;
+          font-size: 13px; border-radius: 8px; padding: 0 16px; cursor: pointer;
+        }
+        #dg-send:disabled { opacity: 0.5; cursor: not-allowed; }
+        #dg-send:focus-visible, #dg-input:focus-visible { outline: 2px solid var(--dg-accent); outline-offset: 1px; }
+        @media (prefers-reduced-motion: reduce) {
+          #dg-window { transition: none; }
+          .dg-cursor { animation: none; }
+        }
+      `}</style>
+
+      <button id="dg-launcher" aria-label="Open support chat" onClick={openChat}>
+        &gt;_
+      </button>
+
+      <div id="dg-window" className={isOpen ? "dg-open" : ""} role="dialog" aria-label="Support chat">
+        <div id="dg-header">
+          <div id="dg-header-title">
+            support@deificglobal<span className="dg-cursor">_</span>
+          </div>
+          <button id="dg-close" aria-label="Close chat" onClick={() => setIsOpen(false)}>
+            &times;
+          </button>
+        </div>
+
+        <div id="dg-messages">
+          {messages.map((m, i) => (
+            <div key={i} className={`dg-msg ${m.role === "user" ? "dg-msg-user" : "dg-msg-bot"}`}>
+              {m.role === "bot" && <span className="dg-label">SUPPORT</span>}
+              <span>{m.text}</span>
+            </div>
+          ))}
+          {isTyping && <div className="dg-msg dg-msg-typing">SUPPORT is typing...</div>}
+          <div ref={messagesEndRef} />
+        </div>
+
+        <div id="dg-inputrow">
+          <input
+            id="dg-input"
+            ref={inputRef}
+            type="text"
+            placeholder="Type your message..."
+            autoComplete="off"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
+          <button id="dg-send" onClick={sendMessage} disabled={sending}>
+            Send
+          </button>
+        </div>
+      </div>
+    </>
+  );
+}
