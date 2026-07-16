@@ -318,7 +318,7 @@ const slides = [
         highlight: "Mobile Apps",
         chips: ["React Native", "Flutter", "Swift", "Kotlin"],
         stats: [{ val: "550+", lbl: "Apps Built" }, { val: "5★", lbl: "Avg Rating" }, { val: "48h", lbl: "Fast Delivery" }],
-        screen: <MobileAppScreen />,
+        ScreenComponent: MobileAppScreen,
         device: "phone",
         floatLabels: [
             { text: "⚡ Fast Delivery", pos: { top: 24, right: -90 } },
@@ -331,7 +331,7 @@ const slides = [
         highlight: "Games",
         chips: ["Unity", "Unreal", "Cocos2d", "Godot"],
         stats: [{ val: "80+", lbl: "Games Built" }, { val: "4.9★", lbl: "Store Rating" }, { val: "10M+", lbl: "Downloads" }],
-        screen: <MobileGameScreen />,
+         ScreenComponent: MobileGameScreen,
         device: "tablet",
         floatLabels: [
             { text: "🎮 80+ Games", pos: { top: 20, right: -100 } },
@@ -344,7 +344,7 @@ const slides = [
         highlight: "Web",
         chips: ["React", "Next.js", "Node.js", "Laravel"],
         stats: [{ val: "100+", lbl: "Web Apps" }, { val: "99%", lbl: "Uptime" }, { val: "3×", lbl: "Faster" }],
-        screen: <WebScreen />,
+        ScreenComponent: WebScreen, 
         device: "laptop",
         floatLabels: [
             { text: "💻 100+ Web Apps", pos: { top: 16, right: -100 } },
@@ -357,7 +357,7 @@ const slides = [
         highlight: "AI",
         chips: ["GPT-4", "LangChain", "Python", "TensorFlow"],
         stats: [{ val: "24/7", lbl: "AI Uptime" }, { val: "90%", lbl: "Automation" }, { val: "10×", lbl: "ROI Boost" }],
-        screen: <AIScreen />,
+        ScreenComponent: AIScreen, 
         device: "monitor",
         floatLabels: [
             { text: "🤖 24/7 AI", pos: { top: 16, right: -110 } },
@@ -505,7 +505,8 @@ function HeroSlider() {
                     <div key={`ph-${animKey}`} className="slide-anim" style={{ position: "relative", flexShrink: 0, display: "flex", justifyContent: "center" }}>
                         <div style={{ position: "absolute", inset: -30, background: `radial-gradient(ellipse,${slide.accent}22 0%,transparent 70%)`, pointerEvents: "none", borderRadius: "50%" }} />
                         
-                        {renderDeviceFrame(slide.screen, slide.device)}
+                        
+                        {renderDeviceFrame(<slide.ScreenComponent />, slide.device)}
 
                         {/* Floating Labels (positioned according to slide) */}
                         {slide.floatLabels.map((label, i) => (
