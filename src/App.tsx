@@ -21,6 +21,8 @@ const CareersPage = lazy(() => import("@/pages/CareersPage"));
 const BlogPage = lazy(() => import("@/pages/BlogPage"));
 const ContactPage = lazy(() => import("@/pages/ContactPage"));
 const ChatWidget = lazy(() => import("@/components/site/ChatWidget"));
+const TermsAndCondition = lazy(() => import("@/pages/TermsAndCondition"));
+const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -51,6 +53,8 @@ export default function App() {
           <Route path="/careers" element={<Layout><CareersPage /></Layout>} />
           <Route path="/blog" element={<Layout><BlogPage /></Layout>} />
           <Route path="/contact" element={<Layout><ContactPage /></Layout>} />
+          <Route path="/terms-and-condition" element={<Layout><TermsAndCondition /></Layout>} />
+          <Route path="/privacy-policy" element={<Layout><PrivacyPolicy /></Layout>} />
           <Route
             path="*"
             element={

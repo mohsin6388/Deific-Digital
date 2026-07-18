@@ -66,26 +66,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* <div>
-            <h4 className="font-semibold text-foreground">Services</h4>
-            <ul className="mt-4 space-y-2 text-sm">
-              {[
-                "Web Development",
-                "Mobile Apps",
-                "UI/UX Design",
-                "AI Solutions",
-                "Cloud & DevOps",
-                "Digital Marketing",
-              ].map((s) => (
-                <li key={s}>
-                  <Link to="/services" className="text-muted-foreground hover:text-red-700">
-                    {s}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div> */}
-
           <div>
             <h4 className="font-semibold text-foreground">Get in Touch</h4>
             <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
@@ -127,6 +107,24 @@ export function Footer() {
         <div className="mt-12 flex flex-col gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 Deific Digital. All Rights Reserved.</p>
           <p>Crafted with passion in Kanpur, India.</p>
+          <div className="flex gap-4">
+            <Link
+                    to={'/terms-and-condition'}
+                    className="text-muted-foreground hover:text-red-700"
+                  >
+
+                    <p>Terms & Condition</p>
+                  </Link>
+
+                   <Link
+                    to={'/privacy-policy'}
+                    className="text-muted-foreground hover:text-red-700"
+                  >
+                 <p>Privacy Policy</p>
+
+                 </Link>
+
+                 </div>
         </div>
       </div>
     </footer>

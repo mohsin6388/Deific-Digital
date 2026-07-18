@@ -8,6 +8,7 @@ const WEBHOOK_URL: string =
   (import.meta as any)?.env?.VITE_N8N_WEBHOOK_URL ||
   "https://n8n.deificglobal.tech/webhook/support-chat";
 
+
 type Role = "user" | "bot";
 
 interface ChatMessage {
@@ -130,13 +131,26 @@ export default function ChatWidget() {
         }
         #dg-launcher {
           position: fixed; bottom: 24px; right: 24px; width: 58px; height: 58px;
-          border-radius: 14px; background: var(--dg-bg); border: 1px solid var(--dg-border);
-          color: var(--dg-accent); font-family: var(--dg-mono); font-size: 20px; font-weight: 600;
-          display: flex; align-items: center; justify-content: center; cursor: pointer;
-          box-shadow: 0 8px 24px rgba(0,0,0,0.35); z-index: 999998; transition: transform 0.15s ease;
+          border-radius: 50%; background: var(--dg-accent); border: none;
+          color: #14161C; display: flex; align-items: center; justify-content: center; cursor: pointer;
+          box-shadow: 0 8px 24px rgba(255,90,54,0.4); z-index: 999998; transition: transform 0.15s ease;
         }
-        #dg-launcher:hover { transform: scale(1.05); }
+        #dg-launcher:hover { transform: scale(1.06); }
         #dg-launcher:focus-visible { outline: 2px solid var(--dg-accent); outline-offset: 2px; }
+        #dg-launcher-ring {
+          position: absolute; inset: 0; border-radius: 50%;
+          border: 2px solid var(--dg-accent); animation: dg-pulse 2.2s ease-out infinite;
+          pointer-events: none;
+        }
+        #dg-launcher.dg-launcher-open #dg-launcher-ring { display: none; }
+        @keyframes dg-pulse {
+          0% { transform: scale(1); opacity: 0.6; }
+          100% { transform: scale(1.6); opacity: 0; }
+        }
+        #dg-launcher-badge {
+          position: absolute; top: -2px; right: -2px; width: 14px; height: 14px;
+          border-radius: 50%; background: #22C55E; border: 2px solid var(--dg-bg);
+        }
         #dg-window {
           position: fixed; bottom: 96px; right: 24px; width: 360px; max-width: calc(100vw - 32px);
           height: 480px; max-height: calc(100vh - 140px); background: var(--dg-panel);
@@ -190,12 +204,37 @@ export default function ChatWidget() {
         #dg-send:focus-visible, #dg-input:focus-visible { outline: 2px solid var(--dg-accent); outline-offset: 1px; }
         @media (prefers-reduced-motion: reduce) {
           #dg-window { transition: none; }
+          #dg-launcher-ring { animation: none; }
           .dg-cursor { animation: none; }
         }
       `}</style>
 
-      <button id="dg-launcher" aria-label="Open support chat" onClick={openChat}>
-        &gt;_
+      <button
+        id="dg-launcher"
+        className={isOpen ? "dg-launcher-open" : ""}
+        aria-label="Open support chat"
+        onClick={openChat}
+      >
+        {!isOpen && <span id="dg-launcher-ring" />}
+        {!isOpen && <span id="dg-launcher-badge" />}
+        {isOpen ? (
+          // Close (X) icon when the chat window is open
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
+            <line x1="6" y1="6" x2="18" y2="18" />
+            <line x1="18" y1="6" x2="6" y2="18" />
+          </svg>
+        ) : (
+          // Friendly chat-bubble icon — reads as "customer support" / CTA
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M4 5.5C4 4.67 4.67 4 5.5 4h13c.83 0 1.5.67 1.5 1.5v10c0 .83-.67 1.5-1.5 1.5H9l-4.2 3.36A.5.5 0 0 1 4 20V5.5Z"
+              fill="currentColor"
+            />
+            <circle cx="8.5" cy="10" r="1.15" fill="#14161C" />
+            <circle cx="12" cy="10" r="1.15" fill="#14161C" />
+            <circle cx="15.5" cy="10" r="1.15" fill="#14161C" />
+          </svg>
+        )}
       </button>
 
       <div id="dg-window" className={isOpen ? "dg-open" : ""} role="dialog" aria-label="Support chat">
