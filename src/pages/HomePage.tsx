@@ -866,9 +866,10 @@ export default function HomePage() {
          <>
 
         <Helmet>
-        <title>Career | Deific Digital</title>
-        <link rel="canonical" href="https://deificdigital.com/career" />
-      </Helmet>
+         <title>Deific Digital – IT Company | Web Development & Digital Marketing Experts</title>
+         <link rel="canonical" href="https://deificdigital.com" />
+         <meta name="description" content="Professional IT services for businesses including web development, mobile apps, SEO, Google Ads, branding, software development, and cloud hosting." />
+       </Helmet>
 
         
         <div className="min-h-screen">
