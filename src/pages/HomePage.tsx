@@ -62,13 +62,13 @@ const clients = [
 ];
 
 const certTags = [
-    { label: "ISO 9001 Certified", color: "#EF4444" },
+    { label: "ISO 9001 Certified", color: "#B91C1C" },
     { label: "Google Partner", color: "#4285F4" },
     { label: "AWS Partner", color: "#FF9900" },
     { label: "Meta Business Partner", color: "#1877F2" },
-    { label: "NASSCOM Member", color: "#EF4444" },
+    { label: "NASSCOM Member", color: "#B91C1C" },
     { label: "Microsoft Partner", color: "#00A4EF" },
-    { label: "Clutch Top Company", color: "#EF4444" },
+    { label: "Clutch Top Company", color: "#B91C1C" },
     { label: "GoodFirms Certified", color: "#2ECC71" },
 ];
 
@@ -79,11 +79,11 @@ const certTags = [
 function MobileAppScreen() {
     return (
         <div style={{ fontFamily: "system-ui,sans-serif", height: "100%", display: "flex", flexDirection: "column", background: "#fff" }}>
-            <div style={{ background: "#EF4444", color: "#fff", padding: "8px 14px 6px", fontSize: 10, display: "flex", justifyContent: "space-between" }}>
+            <div style={{ background: "#B91C1C", color: "#fff", padding: "8px 14px 6px", fontSize: 10, display: "flex", justifyContent: "space-between" }}>
                 <span style={{ fontWeight: 700 }}>9:41</span>
                 <span>●●● WiFi</span>
             </div>
-            <div style={{ background: "#EF4444", color: "#fff", padding: "10px 14px 14px" }}>
+            <div style={{ background: "#B91C1C", color: "#fff", padding: "10px 14px 14px" }}>
                 <div style={{ fontSize: 11, opacity: 0.8 }}>Good Morning 👋</div>
                 <div style={{ fontSize: 15, fontWeight: 800, marginTop: 2 }}>Dashboard</div>
                 <div style={{ marginTop: 10, background: "rgba(255,255,255,0.2)", borderRadius: 8, padding: "6px 10px", fontSize: 10 }}>🔍 Search...</div>
@@ -94,7 +94,7 @@ function MobileAppScreen() {
                     <div style={{ fontSize: 20, fontWeight: 900, marginTop: 2 }}>₹4,82,000</div>
                     <div style={{ fontSize: 9, color: "#4ade80", marginTop: 4 }}>↑ 24% this month</div>
                 </div>
-                {[{ label: "Mobile Apps", pct: 85, color: "#EF4444" }, { label: "Web Projects", pct: 70, color: "#8B5CF6" }, { label: "AI Solutions", pct: 60, color: "#10B981" }].map((b) => (
+                {[{ label: "Mobile Apps", pct: 85, color: "#B91C1C" }, { label: "Web Projects", pct: 70, color: "#8B5CF6" }, { label: "AI Solutions", pct: 60, color: "#10B981" }].map((b) => (
                     <div key={b.label} style={{ marginBottom: 9 }}>
                         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 9, color: "#555", marginBottom: 3 }}>
                             <span>{b.label}</span><span style={{ fontWeight: 700 }}>{b.pct}%</span>
@@ -107,7 +107,7 @@ function MobileAppScreen() {
             </div>
             <div style={{ position: "absolute", bottom: 6, left: 0, right: 0, background: "#fff", borderTop: "1px solid #f0f0f0", display: "flex", justifyContent: "space-around", padding: "8px 0", fontSize: 8 }}>
                 {["🏠 Home", "📊 Stats", "🔔 Alerts", "👤 Profile"].map((n) => (
-                    <div key={n} style={{ textAlign: "center", color: n.startsWith("🏠") ? "#EF4444" : "#aaa", fontWeight: n.startsWith("🏠") ? 700 : 400 }}>{n}</div>
+                    <div key={n} style={{ textAlign: "center", color: n.startsWith("🏠") ? "#B91C1C" : "#656464", fontWeight: n.startsWith("🏠") ? 700 : 400 }}>{n}</div>
                 ))}
             </div>
         </div>
@@ -136,7 +136,7 @@ function MobileGameScreen() {
                 ))}
             </div>
             <div style={{ flex: 1, position: "relative", zIndex: 10 }}>
-                <div style={{ position: "absolute", left: "50%", top: "20%", transform: "translateX(-50%)", width: 3, height: 16, background: "#ef4444", borderRadius: 99, boxShadow: "0 0 6px #ef4444" }} />
+                <div style={{ position: "absolute", left: "50%", top: "20%", transform: "translateX(-50%)", width: 3, height: 16, background: "#B91C1C", borderRadius: 99, boxShadow: "0 0 6px #B91C1C" }} />
             </div>
             <div style={{ textAlign: "center", fontSize: 22, marginBottom: 6, zIndex: 10 }}>🚀</div>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "6px 16px 10px", zIndex: 10 }}>
@@ -144,7 +144,7 @@ function MobileGameScreen() {
                     <div style={{ width: 28, height: 28, background: "rgba(255,255,255,0.15)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, color: "#fff" }}>◀</div>
                     <div style={{ width: 28, height: 28, background: "rgba(255,255,255,0.15)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, color: "#fff" }}>▶</div>
                 </div>
-                <div style={{ width: 36, height: 36, background: "#ef4444", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, color: "#fff", fontWeight: 700, boxShadow: "0 0 10px #ef4444" }}>FIRE</div>
+                <div style={{ width: 36, height: 36, background: "#B91C1C", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, color: "#fff", fontWeight: 700, boxShadow: "0 0 10px #B91C1C" }}>FIRE</div>
             </div>
         </div>
     );
@@ -156,25 +156,25 @@ function WebScreen() {
             <div style={{ background: "#f1f5f9", borderBottom: "1px solid #e2e8f0", padding: "6px 10px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 5 }}>
                     <div style={{ display: "flex", gap: 4 }}>
-                        {["#ef4444", "#facc15", "#4ade80"].map(c => <div key={c} style={{ width: 7, height: 7, borderRadius: "50%", background: c }} />)}
+                        {["#B91C1C", "#facc15", "#4ade80"].map(c => <div key={c} style={{ width: 7, height: 7, borderRadius: "50%", background: c }} />)}
                     </div>
                 </div>
                 <div style={{ background: "#fff", borderRadius: 6, padding: "4px 8px", fontSize: 9, color: "#94a3b8", border: "1px solid #e2e8f0" }}>🔒 deificdigital.com</div>
             </div>
             <div style={{ background: "#fff", borderBottom: "1px solid #f1f5f9", padding: "8px 12px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span style={{ color: "#EF4444", fontWeight: 900, fontSize: 11 }}>Deific<span style={{ color: "#111" }}>Digital</span></span>
+                <span style={{ color: "#B91C1C", fontWeight: 900, fontSize: 11 }}>Deific<span style={{ color: "#111" }}>Digital</span></span>
                 <div style={{ display: "flex", gap: 8, fontSize: 8, color: "#666" }}><span>Home</span><span>Services</span><span>Portfolio</span></div>
             </div>
             <div style={{ background: "linear-gradient(135deg,#fff5f5,#fff)", padding: "12px 12px 10px" }}>
-                <div style={{ fontSize: 8, color: "#EF4444", fontWeight: 700, textTransform: "uppercase", letterSpacing: 1 }}>Web Solutions</div>
-                <div style={{ fontSize: 14, fontWeight: 900, color: "#111", marginTop: 2, lineHeight: 1.2 }}>We Build Digital<br /><span style={{ color: "#EF4444" }}>Engines That Scale</span></div>
+                <div style={{ fontSize: 8, color: "#B91C1C", fontWeight: 700, textTransform: "uppercase", letterSpacing: 1 }}>Web Solutions</div>
+                <div style={{ fontSize: 14, fontWeight: 900, color: "#111", marginTop: 2, lineHeight: 1.2 }}>We Build Digital<br /><span style={{ color: "#B91C1C" }}>Engines That Scale</span></div>
                 <div style={{ marginTop: 8, display: "flex", gap: 6 }}>
-                    <div style={{ background: "#EF4444", color: "#fff", borderRadius: 99, padding: "4px 10px", fontSize: 8, fontWeight: 700 }}>Get Started</div>
+                    <div style={{ background: "#B91C1C", color: "#fff", borderRadius: 99, padding: "4px 10px", fontSize: 8, fontWeight: 700 }}>Get Started</div>
                     <div style={{ border: "1px solid #ddd", borderRadius: 99, padding: "4px 10px", fontSize: 8, color: "#555" }}>View Work</div>
                 </div>
             </div>
             <div style={{ padding: "8px 10px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6, flex: 1 }}>
-                {[{ icon: "💻", title: "Web Apps", color: "#EF4444" }, { icon: "🛒", title: "E-Commerce", color: "#8B5CF6" }, { icon: "📊", title: "Dashboards", color: "#0EA5E9" }, { icon: "🔗", title: "APIs & CMS", color: "#10B981" }].map((s) => (
+                {[{ icon: "💻", title: "Web Apps", color: "#B91C1C" }, { icon: "🛒", title: "E-Commerce", color: "#8B5CF6" }, { icon: "📊", title: "Dashboards", color: "#0EA5E9" }, { icon: "🔗", title: "APIs & CMS", color: "#10B981" }].map((s) => (
                     <div key={s.title} style={{ background: "#f8fafc", borderRadius: 10, padding: "8px", border: "1px solid #f1f5f9" }}>
                         <div style={{ fontSize: 14 }}>{s.icon}</div>
                         <div style={{ fontSize: 9, fontWeight: 700, color: s.color, marginTop: 3 }}>{s.title}</div>
@@ -314,7 +314,7 @@ function MonitorFrame({ children }: { children: React.ReactNode }) {
 
 const slides = [
     {
-        id: "mobile-apps", badge: "App Development", accent: "#EF4444",
+        id: "mobile-apps", badge: "App Development", accent: "#B91C1C",
         highlight: "Mobile Apps",
         chips: ["React Native", "Flutter", "Swift", "Kotlin"],
         stats: [{ val: "550+", lbl: "Apps Built" }, { val: "5★", lbl: "Avg Rating" }, { val: "48h", lbl: "Fast Delivery" }],
@@ -732,7 +732,7 @@ function ChatBot() {
                 aria-label="Chat with Deific Digital"
                 style={{
                     position: "fixed", bottom: 22, right: 22, width: 56, height: 56, borderRadius: "50%",
-                    background: "#EF4444", border: "none", display: "flex", alignItems: "center", justifyContent: "center",
+                    background: "#B91C1C", border: "none", display: "flex", alignItems: "center", justifyContent: "center",
                     boxShadow: "0 8px 24px rgba(239,68,68,0.45)", cursor: "pointer", zIndex: 999,
                 }}
             >
@@ -745,7 +745,7 @@ function ChatBot() {
                     background: "#fff", borderRadius: 18, boxShadow: "0 12px 40px rgba(0,0,0,0.18)",
                     display: "flex", flexDirection: "column", overflow: "hidden", zIndex: 999, border: "1px solid #f0f0f0",
                 }}>
-                    <div style={{ background: "#EF4444", padding: "14px 16px", display: "flex", alignItems: "center", gap: 10 }}>
+                    <div style={{ background: "#B91C1C", padding: "14px 16px", display: "flex", alignItems: "center", gap: 10 }}>
                         <div style={{ width: 32, height: 32, borderRadius: "50%", background: "rgba(255,255,255,0.2)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                             <Bot size={18} color="#fff" />
                         </div>
@@ -759,7 +759,7 @@ function ChatBot() {
                         {messages.map((m, i) => (
                             <div key={i} style={{ display: "flex", justifyContent: m.from === "bot" ? "flex-start" : "flex-end" }}>
                                 <div style={{
-                                    background: m.from === "bot" ? "#fff" : "#EF4444",
+                                    background: m.from === "bot" ? "#fff" : "#B91C1C",
                                     color: m.from === "bot" ? "#222" : "#fff",
                                     borderRadius: m.from === "bot" ? "4px 14px 14px 14px" : "14px 4px 14px 14px",
                                     padding: "8px 12px", fontSize: 12.5, maxWidth: "82%", lineHeight: 1.5,
@@ -779,7 +779,7 @@ function ChatBot() {
                             placeholder="Ask about our services..."
                             style={{ flex: 1, border: "1px solid #e5e7eb", borderRadius: 20, padding: "8px 14px", fontSize: 12.5, outline: "none" }}
                         />
-                        <button onClick={send} style={{ width: 36, height: 36, borderRadius: "50%", background: "#EF4444", border: "none", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", flexShrink: 0 }}>
+                        <button onClick={send} style={{ width: 36, height: 36, borderRadius: "50%", background: "#B91C1C", border: "none", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", flexShrink: 0 }}>
                             <Send size={15} color="#fff" />
                         </button>
                     </div>
@@ -904,7 +904,7 @@ export default function HomePage() {
                 <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                     <div>
                         <div className="text-left mb-6">
-                            <span className="inline-block rounded-full border border-red-200 bg-red-50 px-4 py-1 text-xs font-bold uppercase tracking-widest text-red-600 mb-3">Who We Are</span>
+                            <span className="inline-block rounded-full border border-red-200 bg-white px-4 py-1 text-xs font-bold uppercase tracking-widest text-red-600 mb-3">Who We Are</span>
                         </div>
                         <h2 className="text-3xl sm:text-4xl font-black tracking-tight leading-[1.2] text-gray-900 mb-5">
                             Building the Digital <span className="text-red-600">Future</span>,<br />
@@ -951,7 +951,7 @@ export default function HomePage() {
             {/* ── SERVICES ── */}
             <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
                 <div className="text-center mb-14">
-                    <span className="inline-block rounded-full border border-red-200 bg-red-50 px-4 py-1 text-xs font-bold uppercase tracking-widest text-red-600 mb-3">What We Do</span>
+                    <span className="inline-block rounded-full border border-red-200 bg-white px-4 py-1 text-xs font-bold uppercase tracking-widest text-red-600 mb-3">What We Do</span>
                     <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">Our <span className="text-red-600">Core Services</span></h2>
                     <p className="mt-3 text-gray-500 max-w-xl mx-auto">End-to-end digital solutions tailored for your business needs.</p>
                 </div>
@@ -983,7 +983,7 @@ export default function HomePage() {
             <section className="py-20 px-6 bg-white">
                 <div className="max-w-5xl mx-auto">
                     <div className="text-center mb-3 md:mb-5">
-                        <span className="inline-block rounded-full border border-red-200 bg-red-50 px-4 py-1 text-xs font-bold uppercase tracking-widest text-red-600 mb-6">Why Choose US</span>
+                        <span className="inline-block rounded-full border border-red-200 bg-white px-4 py-1 text-xs font-bold uppercase tracking-widest text-red-600 mb-6">Why Choose US</span>
                         <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900">Businesses <span className="text-red-600">Trust</span> Deific Digital</h2>
                     </div>
                     <div className="flex justify-center mb-20">
@@ -1024,7 +1024,7 @@ export default function HomePage() {
                             <div className="flex-1 min-w-0">
                                 <span className="inline-block bg-red-600 text-white text-[12px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider mb-4">Our Own Product</span>
                                 <h3 className="text-lg sm:text-xl font-black text-gray-900 leading-tight">AI Review Ninja Pro</h3>
-                                <p className="text-sm text-gray-500 mt-2 leading-relaxed max-w-2xl">
+                                <p className="text-sm text-gray-600 mt-2 leading-relaxed max-w-2xl">
                                     We don't just build for clients — we create products that solve real business challenges.{" "}
                                     <span className="text-gray-700 font-semibold">AI Review Ninja Pro</span>{" "}
                                     helps businesses generate high-quality customer reviews, strengthen their online reputation, and improve local search visibility, making it easier to rank higher on Google Business Profile and attract more customers.
