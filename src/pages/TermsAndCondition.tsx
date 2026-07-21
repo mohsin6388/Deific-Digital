@@ -34,7 +34,7 @@ function TermsContent() {
   const sections = [
     {
       title: "1. Introduction",
-      icon: <FileText className="h-6 w-6 text-red-600 shrink-0" />,
+      icon: <FileText className="h-6 w-6 text-white-600 shrink-0" />,
       content: (
         <p className="text-gray-600 leading-relaxed">
           Welcome to Deific Digital. By accessing or using our website, services,
@@ -47,7 +47,7 @@ function TermsContent() {
     },
     {
       title: "2. Intellectual Property Rights",
-      icon: <Scale className="h-6 w-6 text-red-600 shrink-0" />,
+      icon: <Scale className="h-6 w-6 text-white-600 shrink-0" />,
       content: (
         <div className="space-y-3 text-gray-600 leading-relaxed">
           <p>
@@ -66,7 +66,7 @@ function TermsContent() {
     },
     {
       title: "3. User Obligations",
-      icon: <Users className="h-6 w-6 text-red-600 shrink-0" />,
+      icon: <Users className="h-6 w-6 text-white-600 shrink-0" />,
       content: (
         <div className="space-y-3 text-gray-600 leading-relaxed">
           <p>As a user, you agree to:</p>
@@ -82,7 +82,7 @@ function TermsContent() {
     },
     {
       title: "4. Payment and Refund Policy",
-      icon: <Clock className="h-6 w-6 text-red-600 shrink-0" />,
+      icon: <Clock className="h-6 w-6 text-white-600 shrink-0" />,
       content: (
         <div className="space-y-3 text-gray-600 leading-relaxed">
           <p>
@@ -104,7 +104,7 @@ function TermsContent() {
     },
     {
       title: "5. Limitation of Liability",
-      icon: <AlertTriangle className="h-6 w-6 text-red-600 shrink-0" />,
+      icon: <AlertTriangle className="h-6 w-6 text-white-600 shrink-0" />,
       content: (
         <div className="space-y-3 text-gray-600 leading-relaxed">
           <p>
@@ -123,7 +123,7 @@ function TermsContent() {
     },
     {
       title: "6. Third-Party Links and Services",
-      icon: <GlobeLock className="h-6 w-6 text-red-600 shrink-0" />,
+      icon: <GlobeLock className="h-6 w-6 text-white-600 shrink-0" />,
       content: (
         <p className="text-gray-600 leading-relaxed">
           Our website may contain links to third-party websites or services that
@@ -135,7 +135,7 @@ function TermsContent() {
     },
     {
       title: "7. Governing Law",
-      icon: <Scale className="h-6 w-6 text-red-600 shrink-0" />,
+      icon: <Scale className="h-6 w-6 text-white-600 shrink-0" />,
       content: (
         <p className="text-gray-600 leading-relaxed">
           These Terms & Conditions are governed by and construed in accordance
@@ -147,7 +147,7 @@ function TermsContent() {
     },
     {
       title: "8. Changes to These Terms",
-      icon: <Clock className="h-6 w-6 text-red-600 shrink-0" />,
+      icon: <Clock className="h-6 w-6 text-white-600 shrink-0" />,
       content: (
         <p className="text-gray-600 leading-relaxed">
           We reserve the right to update or modify these Terms & Conditions at any
@@ -159,7 +159,7 @@ function TermsContent() {
     },
     {
       title: "9. Contact Us",
-      icon: <FileText className="h-6 w-6 text-red-600 shrink-0" />,
+      icon: <FileText className="h-6 w-6 text-white-600 shrink-0" />,
       content: (
         <div className="space-y-3 text-gray-600 leading-relaxed">
           <p>

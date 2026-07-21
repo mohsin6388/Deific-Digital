@@ -47,7 +47,7 @@ function PrivacyContent() {
     const sections = [
         {
             title: "1. Information We Collect",
-            icon: <FileText className="h-6 w-6 text-red-600 shrink-0" />,
+            icon: <FileText className="h-6 w-6 text-white-600 shrink-0" />,
             content: (
                 <div className="space-y-3 text-gray-600 leading-relaxed">
                     <p>
@@ -78,7 +78,7 @@ function PrivacyContent() {
         },
         {
             title: "2. How We Use Your Information",
-            icon: <Users className="h-6 w-6 text-red-600 shrink-0" />,
+            icon: <Users className="h-6 w-6 text-white-600 shrink-0" />,
             content: (
                 <div className="space-y-3 text-gray-600 leading-relaxed">
                     <p>We use your information for the following purposes:</p>
@@ -98,7 +98,7 @@ function PrivacyContent() {
         },
         {
             title: "3. Information Sharing and Disclosure",
-            icon: <Share2 className="h-6 w-6 text-red-600 shrink-0" />,
+            icon: <Share2 className="h-6 w-6 text-white-600 shrink-0" />,
             content: (
                 <div className="space-y-3 text-gray-600 leading-relaxed">
                     <p>
@@ -131,7 +131,7 @@ function PrivacyContent() {
         },
         {
             title: "4. Cookies and Tracking Technologies",
-            icon: <Cookie className="h-6 w-6 text-red-600 shrink-0" />,
+            icon: <Cookie className="h-6 w-6 text-white-600 shrink-0" />,
             content: (
                 <div className="space-y-3 text-gray-600 leading-relaxed">
                     <p>
@@ -164,7 +164,7 @@ function PrivacyContent() {
         },
         {
             title: "5. Data Security",
-            icon: <Lock className="h-6 w-6 text-red-600 shrink-0" />,
+            icon: <Lock className="h-6 w-6 text-white-600 shrink-0" />,
             content: (
                 <div className="space-y-3 text-gray-600 leading-relaxed">
                     <p>
@@ -190,7 +190,7 @@ function PrivacyContent() {
         },
         {
             title: "6. Data Retention",
-            icon: <Clock className="h-6 w-6 text-red-600 shrink-0" />,
+            icon: <Clock className="h-6 w-6 text-white-600 shrink-0" />,
             content: (
                 <p className="text-gray-600 leading-relaxed">
                     We retain your personal information only for as long as
@@ -203,7 +203,7 @@ function PrivacyContent() {
         },
         {
             title: "7. Your Rights and Choices",
-            icon: <UserCheck className="h-6 w-6 text-red-600 shrink-0" />,
+            icon: <UserCheck className="h-6 w-6 text-white-600 shrink-0" />,
             content: (
                 <div className="space-y-3 text-gray-600 leading-relaxed">
                     <p>
@@ -227,7 +227,7 @@ function PrivacyContent() {
         },
         {
             title: "8. Third-Party Links",
-            icon: <Eye className="h-6 w-6 text-red-600 shrink-0" />,
+            icon: <Eye className="h-6 w-6 text-white-600 shrink-0" />,
             content: (
                 <p className="text-gray-600 leading-relaxed">
                     Our website may contain links to external sites that are not
@@ -240,7 +240,7 @@ function PrivacyContent() {
         },
         {
             title: "9. Children's Privacy",
-            icon: <Shield className="h-6 w-6 text-red-600 shrink-0" />,
+            icon: <Shield className="h-6 w-6 text-white-600 shrink-0" />,
             content: (
                 <p className="text-gray-600 leading-relaxed">
                     Our services are not directed to children under the age of
@@ -253,7 +253,7 @@ function PrivacyContent() {
         },
         {
             title: "10. Changes to This Policy",
-            icon: <AlertTriangle className="h-6 w-6 text-red-600 shrink-0" />,
+            icon: <AlertTriangle className="h-6 w-6 text-white-600 shrink-0" />,
             content: (
                 <p className="text-gray-600 leading-relaxed">
                     We may update this Privacy Policy from time to time to
@@ -266,7 +266,7 @@ function PrivacyContent() {
         },
         {
             title: "11. Contact Us",
-            icon: <Mail className="h-6 w-6 text-red-600 shrink-0" />,
+            icon: <Mail className="h-6 w-6 text-white-600 shrink-0" />,
             content: (
                 <div className="space-y-3 text-gray-600 leading-relaxed">
                     <p>
@@ -291,7 +291,7 @@ function PrivacyContent() {
                         Privacy Commitment
                     </span>
                     <h2 className="text-4xl md:text-5xl font-bold text-gray-900 font-display">
-                        Privacy <span className="text-red-600">Policy</span>
+                        Privacy <span className="text-white-600">Policy</span>
                     </h2>
                     <div className="w-20 h-1 bg-red-600 mx-auto mt-4 rounded-full" />
                     <p className="mt-4 text-gray-500 max-w-2xl mx-auto">
@@ -306,7 +306,7 @@ function PrivacyContent() {
                             className="group rounded-2xl bg-gray-50/50 border border-gray-100 p-6 md:p-8 transition-all hover:shadow-md hover:border-red-200"
                         >
                             <div className="flex items-start gap-4">
-                                <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-red-50 text-red-600 group-hover:bg-red-600 group-hover:text-white transition-colors">
+                                <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-red-50 text-white-600 group-hover:bg-red-600 group-hover:text-white transition-colors">
                                     {section.icon}
                                 </div>
                                 <div className="flex-1">

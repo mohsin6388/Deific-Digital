@@ -19,4 +19,4 @@ Allow: /
 
 
 
-Sitemap: https://www.deificdigital.com/sitemap.xml
+Sitemap: https://deificdigital.com/sitemap.xml
