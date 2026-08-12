@@ -8,6 +8,8 @@ import '@fontsource/outfit/500.css';
 import '@fontsource/outfit/600.css';
 import '@fontsource/outfit/700.css';
 import '@fontsource/outfit/800.css';
+import USA from "@/pages/USA";
+import UAE from "@/pages/UAE";
 
 // 👇 Sab pages ab lazy — direct import hata diya
 const HomePage = lazy(() => import("@/pages/HomePage"));
@@ -23,6 +25,8 @@ const ContactPage = lazy(() => import("@/pages/ContactPage"));
 const ChatWidget = lazy(() => import("@/components/site/ChatWidget"));
 const TermsAndCondition = lazy(() => import("@/pages/TermsAndCondition"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
+const USALandingPage = lazy(() => import("@/pages/USA"));
+const UAELandingPage = lazy(() => import("@/pages/UAE"));
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -55,6 +59,8 @@ export default function App() {
           <Route path="/contact" element={<Layout><ContactPage /></Layout>} />
           <Route path="/terms-and-condition" element={<Layout><TermsAndCondition /></Layout>} />
           <Route path="/privacy-policy" element={<Layout><PrivacyPolicy /></Layout>} />
+          <Route path="/usa" element={<Layout><USA /></Layout>} />
+          <Route path="/uae" element={<Layout><UAE /></Layout>} />
           <Route
             path="*"
             element={

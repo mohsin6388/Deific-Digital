@@ -66,10 +66,13 @@ const certTags = [
     { label: "Google Partner", color: "#4285F4" },
     { label: "AWS Partner", color: "#FF9900" },
     { label: "Meta Business Partner", color: "#1877F2" },
-    { label: "NASSCOM Member", color: "#B91C1C" },
     { label: "Microsoft Partner", color: "#00A4EF" },
-    { label: "Clutch Top Company", color: "#B91C1C" },
-    { label: "GoodFirms Certified", color: "#2ECC71" },
+    { label: "Clutch Top Company", color: "#B91C1C", to: 'https://clutch.co/profile/deific-digital' },
+     { label: "ISO 9001 Certified", color: "#B91C1C" },
+    { label: "Google Partner", color: "#4285F4" },
+    { label: "AWS Partner", color: "#FF9900" },
+    
+   
 ];
 
 // ──────────────────────────────────────────────────────────────
@@ -233,6 +236,53 @@ function AIScreen() {
         </div>
     );
 }
+
+
+
+//______________________________________________________________
+//      Add For increase left and right spacing
+//______________________________________________________________
+
+function ResponsiveDeviceFrame({
+    children,
+    w,
+    h,
+    minW,
+    maxW,
+    vw,
+}: {
+    children: React.ReactNode;
+    w: number;
+    h: number;
+    minW: number;
+    maxW: number;
+    vw: number;
+}) {
+    const clampWidth = `clamp(${minW}px, ${vw}vw, ${maxW}px)`;
+    return (
+        <div style={{ width: clampWidth, aspectRatio: `${w} / ${h}`, position: "relative", flexShrink: 0 }}>
+            <div
+                style={{
+                    width: w,
+                    height: h,
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    transform: `scale(calc(${clampWidth} / ${w}px))`,
+                    transformOrigin: "top left",
+                }}
+            >
+                {children}
+            </div>
+        </div>
+    );
+}
+
+
+
+
+
+
 
 // ──────────────────────────────────────────────────────────────
 // DEVICE FRAMES
@@ -398,16 +448,30 @@ function HeroSlider() {
 
     const slide = slides[current];
 
-    // Render the appropriate frame based on device type
     const renderDeviceFrame = (children: React.ReactNode, device: string) => {
-        switch (device) {
-            case "phone": return <PhoneFrame>{children}</PhoneFrame>;
-            case "tablet": return <TabletFrame>{children}</TabletFrame>;
-            case "laptop": return <LaptopFrame>{children}</LaptopFrame>;
-            case "monitor": return <MonitorFrame>{children}</MonitorFrame>;
-            default: return <PhoneFrame>{children}</PhoneFrame>;
-        }
+    const configs: Record<string, { w: number; h: number; minW: number; maxW: number; vw: number }> = {
+        phone:   { w: 230, h: 460, minW: 130, maxW: 230, vw: 42 },
+        tablet:  { w: 300, h: 440, minW: 160, maxW: 300, vw: 48 },
+        laptop:  { w: 380, h: 300, minW: 180, maxW: 380, vw: 52 },
+        monitor: { w: 400, h: 320, minW: 190, maxW: 400, vw: 54 },
     };
+    const cfg = configs[device] || configs.phone;
+
+    let Frame;
+    switch (device) {
+        case "phone": Frame = PhoneFrame; break;
+        case "tablet": Frame = TabletFrame; break;
+        case "laptop": Frame = LaptopFrame; break;
+        case "monitor": Frame = MonitorFrame; break;
+        default: Frame = PhoneFrame;
+    }
+
+    return (
+        <ResponsiveDeviceFrame w={cfg.w} h={cfg.h} minW={cfg.minW} maxW={cfg.maxW} vw={cfg.vw}>
+            <Frame>{children}</Frame>
+        </ResponsiveDeviceFrame>
+    );
+};
 
     return (
         <>
@@ -417,10 +481,12 @@ function HeroSlider() {
                 <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 60, background: "linear-gradient(to left,#fff,transparent)", zIndex: 10, pointerEvents: "none" }} />
                 <div className="cert-strip" style={{ display: "flex", width: "max-content", animation: "certScroll 28s linear infinite" }}>
                     {doubled.map((tag, i) => (
+                        <Link to={tag.to}>
                         <div key={i} style={{ display: "inline-flex", alignItems: "center", gap: 7, background: "#fff", border: `1.5px solid ${tag.color}22`, borderRadius: 99, padding: "5px 16px", boxShadow: `0 2px 8px ${tag.color}12`, whiteSpace: "nowrap", flexShrink: 0, marginRight: 12 }}>
                             <div style={{ width: 7, height: 7, borderRadius: "50%", background: tag.color }} />
                             <span style={{ fontSize: 12, fontWeight: 700, color: "#333" }}>{tag.label}</span>
                         </div>
+                        </Link>
                     ))}
                 </div>
             </div>
@@ -430,7 +496,7 @@ function HeroSlider() {
                 background: "linear-gradient(135deg,#fff 0%,#fef2f2 60%,#fff 100%)",
                 position: "relative",
                 overflow: "hidden",
-                width: "100%"
+                width: "100%",
             }}>
                 <div style={{ position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.03, backgroundImage: "radial-gradient(#b91c1c 1px,transparent 1px)", backgroundSize: "28px 28px" }} />
                 <div style={{ position: "absolute", right: -80, top: -80, width: 420, height: 420, background: `radial-gradient(circle,${slide.accent}18 0%,transparent 70%)`, pointerEvents: "none", transition: "background 0.6s ease", borderRadius: "50%" }} />
@@ -823,15 +889,19 @@ const globalStyles = `
   .cert-strip-container {
     padding: 11px 0;
   }
-  .hero-inner {
-    padding: 0 40px;
-    column-gap: 280px;
+
+.hero-inner {
+    padding: 0 140px;
+    column-gap: 200px;
     row-gap: 40px;
-  }
+    max-width: 1600px;
+    margin: 0 auto;
+}
 
   @media (max-width: 1024px) {
-    .hero-inner {
-      column-gap: 60px;
+   .hero-inner {
+        column-gap: 60px;
+        padding: 0 60px;
     }
   }
 
@@ -851,6 +921,42 @@ const globalStyles = `
       row-gap: 24px !important;
     }
   }
+
+
+
+
+
+
+
+
+
+  .hero-device-wrap {
+    transform-origin: center top;
+}
+
+@media (max-width: 1024px) {
+    .hero-device-wrap {
+        transform: scale(0.85);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-device-wrap {
+        transform: scale(0.7);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-device-wrap {
+        transform: scale(0.55);
+    }
+}
+
+
+  
+
+
+ 
 `;
 
 // ──────────────────────────────────────────────────────────────
@@ -869,7 +975,53 @@ export default function HomePage() {
          <title>Deific Digital – IT Company | Web Development & Digital Marketing Experts</title>
          <link rel="canonical" href="https://deificdigital.com" />
          <meta name="description" content="Professional IT services for businesses including web development, mobile apps, SEO, Google Ads, branding, software development, and cloud hosting." />
-       </Helmet>
+           
+           <script type="application/ld+json">
+        {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "url": "https://deificdigital.com",
+            "name": "Deific Digital",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://deificdigital.com/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        })}
+    </script>
+
+    <script type="application/ld+json">
+        {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SiteNavigationElement",
+            "name": ["Home", "About", "Services", "Work & Clients", "Careers", "Blog", "Contact"],
+            "url": [
+                "https://deificdigital.com/",
+                "https://deificdigital.com/about",
+                "http://deificdigital.com/services/android-app-development",
+                "http://deificdigital.com/services/ios-app-development",
+                "http://deificdigital.com/services/ai-integration-service",
+                "http://deificdigital.com/services/chatbots-virtual-assistants",
+                "http://deificdigital.com/services/automation",
+                "http://deificdigital.com/services/search-engine-optimization",
+                "http://deificdigital.com/services/social-media-marketing",
+                "http://deificdigital.com/services/meta-ads",
+                "http://deificdigital.com/services/google-my-business-optimization",
+                "http://deificdigital.com/services/mvp-development",
+                "http://deificdigital.com/services/startup-idea-validation",
+                "https://deificdigital.com/portfolio",
+                "https://deificdigital.com/careers",
+                "https://deificdigital.com/blog",
+                "https://deificdigital.com/contact"
+            ]
+        })}
+    </script>
+        
+        
+        
+        
+        
+         </Helmet>
 
         
         <div className="min-h-screen">
@@ -911,14 +1063,16 @@ export default function HomePage() {
                             One <span className="text-red-600">Solution</span> at a Time.
                         </h2>
                         <p className="text-gray-500 text-[15px] leading-[1.8] mb-4">
-                            Deific Digital is a full-service IT solutions company founded in 2014, headquartered in Noida, India. Over the past decade, we have grown into a trusted technology partner for{" "}
-                            <span className="text-gray-800 font-semibold">550+ businesses across the globe</span>{" "}
-                            — delivering high-impact web, mobile, AI, and digital marketing services.
+                            Deific Digital is a renowned {" "} <span className="text-gray-800 font-semibold">IT company</span>{" "} that was established in 2014 and has its headquarters in Noida, India. 
+                            In the last ten years, our company has managed to become one of the <span className="text-gray-800 font-semibold">top IT companies</span>{" "} that provide services to {" "}<span className="text-gray-800 font-semibold">more than 550 businesses globally</span>{" "} and offer them effective web, mobile, AI, and digital marketing solutions. 
+                            Being a highly skilled <span className="text-gray-800 font-semibold">software company</span>, we create digital solutions for businesses and help them grow effectively.
+                            
                         </p>
                         <p className="text-gray-500 text-[15px] leading-[1.8] mb-7">
-                            Our teams are proactive, detail-oriented, and obsessed with client success. With{" "}
-                            <span className="text-gray-800 font-semibold">12+ years of experience</span>{" "}
-                            and a 98% satisfaction rate, we don't follow digital trends — we help our clients lead them.
+                            We are a team of professionals who care about the success of our clients. Having{" "}
+                             <span className="text-gray-800 font-semibold">12+ years of experience</span>{" "}and having a 98% satisfaction rate, we do not only follow the latest digital trends but also help our clients shape them.{" "}
+                           
+                           
                         </p>
                         <button className="inline-flex items-center gap-2 border-2 border-red-600 text-red-600 font-bold text-sm px-4 py-2 md:px-6 md:py-3 rounded-full hover:bg-red-600 hover:text-white transition-all duration-200">
                             Request A Quote &rsaquo;
@@ -993,7 +1147,7 @@ export default function HomePage() {
                         More Than an Agency —<br />We're Your <span className="text-red-600">Growth Engine.</span>
                     </h2>
                     <p className="text-gray-500 text-[15px] leading-relaxed max-w-2xl mb-10">
-                        From AI-powered tools to round-the-clock delivery, every part of Deific Digital is built to move your business forward — faster, smarter, better.
+                       Whether it is due to AI-enabled solutions or 24x7 delivery support, Deific Digital has emerged as one of the best <span className="text-gray-800 font-semibold">IT companies in India</span>{" "} and {" "} <span className="text-gray-800 font-semibold">digital marketing companies</span>.
                     </p>
 
                     {/* Feature Cards */}

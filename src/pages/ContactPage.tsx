@@ -128,66 +128,130 @@ export default function ContactPage() {
         } else if (!/^[\+\d\s\-\(\)]{10,15}$/.test(formData.phone)) {
             newErrors.phone = "Please enter a valid phone number";
         }
-        if (!formData.service) newErrors.service = "Please select a service";
+        // if (!formData.service) newErrors.service = "Please select a service";
         if (!formData.message.trim())
             newErrors.message = "Message is required";
 
         // Captcha check
-        if (!captchaAnswer.trim()) {
-            newErrors.captcha = "Please solve the captcha";
-        } else if (
-            parseInt(captchaAnswer, 10) !== captcha.num1 + captcha.num2
-        ) {
-            newErrors.captcha = "Incorrect answer, please try again";
-        }
+        // if (!captchaAnswer.trim()) {
+        //     newErrors.captcha = "Please solve the captcha";
+        // } else if (
+        //     parseInt(captchaAnswer, 10) !== captcha.num1 + captcha.num2
+        // ) {
+        //     newErrors.captcha = "Incorrect answer, please try again";
+        // }
 
         return newErrors;
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        const allTouched: Record<string, boolean> = {};
-        Object.keys(formData).forEach((key) => {
-            allTouched[key] = true;
-        });
-        setTouched(allTouched);
-        setCaptchaTouched(true);
+   
+   
+   
+   
+   
+   
+   
+    const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-        const newErrors = validateForm();
-        if (Object.keys(newErrors).length > 0) {
-            setErrors(newErrors);
-            // Refresh captcha whenever it fails, so an answer can't be reused/brute-forced
-            if (newErrors.captcha) {
-                refreshCaptcha();
-            }
-            const firstError = Object.keys(newErrors)[0];
-            const el = document.querySelector(`[name="${firstError}"]`);
-            if (el) {
-                (el as HTMLElement).focus();
-                (el as HTMLElement).scrollIntoView({
-                    behavior: "smooth",
-                    block: "center",
-                });
-            }
-            return;
-        }
+  console.log("Handle Submit Called");
 
-        setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-            setSubmitted(true);
-            setFormData({
-                firstName: "",
-                lastName: "",
-                email: "",
-                phone: "",
-                service: "",
-                message: "",
-            });
-            setTouched({});
-            refreshCaptcha();
-        }, 1500);
-    };
+  const allTouched: Record<string, boolean> = {};
+  Object.keys(formData).forEach((key) => {
+    allTouched[key] = true;
+  });
+
+  setTouched(allTouched);
+
+  const newErrors = validateForm();
+
+  if (Object.keys(newErrors).length > 0) {
+    setErrors(newErrors);
+    return;
+  }
+
+  try {
+    setLoading(true);
+
+    const response = await fetch(
+      "http://localhost:5000/api/inquiries",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Something went wrong");
+    }
+
+    setSubmitted(true);
+
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      service: "",
+      message: "",
+    });
+
+  } catch (err: any) {
+    alert(err.message);
+  } finally {
+    setLoading(false);
+  }
+};
+
+    // const handleSubmit = (e: React.FormEvent) => {
+    //     e.preventDefault();
+    //     const allTouched: Record<string, boolean> = {};
+    //     Object.keys(formData).forEach((key) => {
+    //         allTouched[key] = true;
+    //     });
+    //     setTouched(allTouched);
+    //     setCaptchaTouched(true);
+
+    //     const newErrors = validateForm();
+    //     if (Object.keys(newErrors).length > 0) {
+    //         setErrors(newErrors);
+    //         // Refresh captcha whenever it fails, so an answer can't be reused/brute-forced
+    //         if (newErrors.captcha) {
+    //             refreshCaptcha();
+    //         }
+    //         const firstError = Object.keys(newErrors)[0];
+    //         const el = document.querySelector(`[name="${firstError}"]`);
+    //         if (el) {
+    //             (el as HTMLElement).focus();
+    //             (el as HTMLElement).scrollIntoView({
+    //                 behavior: "smooth",
+    //                 block: "center",
+    //             });
+    //         }
+    //         return;
+    //     }
+
+    //     setLoading(true);
+    //     setTimeout(() => {
+    //         setLoading(false);
+    //         setSubmitted(true);
+    //         setFormData({
+    //             firstName: "",
+    //             lastName: "",
+    //             email: "",
+    //             phone: "",
+    //             service: "",
+    //             message: "",
+    //         });
+    //         setTouched({});
+    //         refreshCaptcha();
+    //     }, 1500);
+    // };
 
     const getLabelClass = (fieldName: string) => {
         const hasValue =
@@ -588,7 +652,7 @@ export default function ContactPage() {
                                         </div>
 
                                         {/* Service */}
-                                        <div className="relative">
+                                        {/* <div className="relative">
                                             <Briefcase className="absolute left-3 top-3.5 h-5 w-5 text-gray-400 transition-colors peer-focus:text-red-500 pointer-events-none" />
                                             <select
                                                 name="service"
@@ -642,7 +706,7 @@ export default function ContactPage() {
                                                         {errors.service}
                                                     </p>
                                                 )}
-                                        </div>
+                                        </div> */}
 
                                         {/* Message */}
                                         <div className="relative">
@@ -681,7 +745,7 @@ export default function ContactPage() {
                                         </div>
 
                                         {/* Captcha */}
-                                        <div className="rounded-xl border border-gray-200 bg-gray-50/50 p-4">
+                                        {/* <div className="rounded-xl border border-gray-200 bg-gray-50/50 p-4">
                                             <div className="flex items-center gap-2 mb-3">
                                                 <ShieldCheck className="h-4 w-4 text-red-500" />
                                                 <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">
@@ -728,7 +792,7 @@ export default function ContactPage() {
                                                         {errors.captcha}
                                                     </p>
                                                 )}
-                                        </div>
+                                        </div> */}
 
                                         {/* Submit */}
                                         <button
@@ -766,7 +830,7 @@ export default function ContactPage() {
                                                         Send Message
                                                         <Send className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                                                     </>
-                                                )}
+                                                 )} 
                                             </span>
                                         </button>
                                     </form>

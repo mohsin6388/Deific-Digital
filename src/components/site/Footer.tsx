@@ -53,6 +53,8 @@ export function Footer() {
                 // ["/team", "Our Team"],
                 ["/careers", "Careers"],
                 ["/blog", "Blog"],
+                ["/uae", "UAE"],
+                ["/usa", "USA"],
               ].map(([to, label]) => (
                 <li key={to}>
                   <Link

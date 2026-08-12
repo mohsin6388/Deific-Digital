@@ -1033,8 +1033,8 @@ export const servicesContent: Record<string, ServiceContent> = {
 
   overviewTitle: "Strategic SEO Solutions",
   overviewParagraphs: [
-    "Search Engine Optimization is the foundation of sustainable digital growth. With billions of searches happening every day, appearing on the first page of Google is no longer a luxury — it's a necessity. SEO drives high-intent traffic that converts into real customers.",
-    "At Deific Digital, we craft comprehensive SEO strategies tailored to your industry, audience, and business goals. From technical audits to content optimization and link building, we handle everything. Our approach combines proven techniques with the latest algorithm insights to deliver lasting rankings and measurable ROI.",
+    `SEO Services is the base for sustainable growth online. At Deific Digital, we offer outcome-oriented SEO Services in Kanpur and enable business growth through our SEO strategy customized for your needs. Being the best SEO Company in Kanpur, SEO Company in Mumbai, and SEO Company in Bangalore, we take care of all aspects including Technical SEO, Content Optimization, Link Building, and more.`,
+    // "At Deific Digital, we craft comprehensive SEO strategies tailored to your industry, audience, and business goals. From technical audits to content optimization and link building, we handle everything. Our approach combines proven techniques with the latest algorithm insights to deliver lasting rankings and measurable ROI.",
   ],
   overviewBadges: [
     "Technical SEO",
@@ -1045,7 +1045,7 @@ export const servicesContent: Record<string, ServiceContent> = {
 
   whyChooseTitle: "Why Choose Us?",
   whyChooseDesc:
-    "We are a leader among SEO agencies and have helped hundreds of brands dominate search results. 'Our work is done when it serves your purpose' — so we dedicate ourselves fully to delivering measurable rankings and organic growth. We stay ahead of algorithm updates and industry trends to keep your brand on top.",
+    "We are here to ensure that your brands convert their visibility into business growth through effective SEO strategies based on your objectives which include increased rankings, traffic, and ROI. Using our expertise on how algorithms change and the latest developments in your industries, we will make sure that you maintain a competitive edge.",
   whyChooseTags: [
     "Technical SEO audit & fixes",
     "On-page & off-page optimization",
@@ -1091,16 +1091,15 @@ export const servicesContent: Record<string, ServiceContent> = {
 
   servicesHeading: "SEO Services We Offer",
   servicesIntro:
-    "Your search for a results-driven SEO agency ends at Deific Digital. Demand for organic visibility is growing across every industry, and we design extensively researched and result-oriented SEO campaigns. Our SEO services encompass:",
+    "Your hunt for a results-oriented SEO company comes to an end with Deific Digital. We craft result-oriented SEO campaigns based on research that help increase organic visibility, traffic, and conversions. The SEO services we offer are as follows:",
   servicesList: [
-    "Technical SEO audit & implementation",
+    "Technical SEO Audit & Implementation",
     "Keyword research & competitive analysis",
     "On-page SEO optimization",
-    "Content creation & optimization",
     "Link building & digital PR",
     "Local SEO & Google Business Profile management",
-    "E-commerce SEO",
-    "SEO analytics, reporting & continuous optimization",
+    "E-commerce SEO & Product Optimization",
+    "SEO Analytics, Reporting & Optimization",
   ],
 
   processPhases: [
@@ -1154,8 +1153,8 @@ export const servicesContent: Record<string, ServiceContent> = {
 
   overviewTitle: "Strategic Social Media Solutions",
   overviewParagraphs: [
-    "Social media marketing is no longer optional – it's a critical channel for building brand identity, connecting with customers, and driving revenue. From organic content to paid advertising, social platforms offer unparalleled targeting and engagement opportunities.",
-    "At Deific Digital, we craft comprehensive social media strategies tailored to your brand voice and business objectives. We manage everything: content creation, community management, paid ads, influencer partnerships, and analytics. Our approach combines creativity with data to maximize ROI and build lasting customer relationships.",
+    "Social media marketing is critical in helping create a strong brand image, customer interaction, and revenue generation. Deific Digital is a leading digital marketing company, which develops data-based strategies to help you transform your customer engagement into business growth.",
+    "At Deific Digital, our social media management service includes all the tasks including content creation and management, advertisements, influencer marketing, and data analysis. We are one of the best digital marketing agencies in Bangalore, and our team helps achieve maximum return on investment.",
   ],
   overviewBadges: [
     "Organic & Paid Strategy",
@@ -1166,7 +1165,7 @@ export const servicesContent: Record<string, ServiceContent> = {
 
   whyChooseTitle: "Why Choose Us?",
   whyChooseDesc:
-    "We are a leader among social media marketing agencies and have helped hundreds of brands grow their online presence. “Our work is done when it serves your purpose” so we dedicate full heartedly to deliver our best when it comes to social media services. We stay ahead of trends and platform changes to keep your brand relevant.",
+    "We are a reliable social media marketing agency that helps brands build a strong online identity through their online presence. At Deific Digital, we always keep an eye out for trends and changes in order to formulate an effective social media strategy. We are a digital marketing agency in Kanpur and all our efforts go towards creating meaningful engagement and growth for our clients.",
   whyChooseTags: [
     "Organic social media strategy",
     "Paid social advertising (Meta, LinkedIn, etc.)",
@@ -1212,7 +1211,7 @@ export const servicesContent: Record<string, ServiceContent> = {
 
   servicesHeading: "Social Media Marketing Services",
   servicesIntro:
-    "Your search for a leading social media marketing agency may get a halt at Deific Digital. Demand for authentic, engaging social presence is rising across every industry, and so we design extensively creative and result-driven campaigns. Our social media services encompass:",
+    "Your search for a leading social media marketing agency ends at Deific Digital. As a best digital marketing agency in Kanpur, we create creative, engaging, and result-driven campaigns designed to strengthen your online presence. Our social media services encompass:",
   servicesList: [
     "Organic social media strategy & management",
     "Paid social advertising (Meta, LinkedIn, Instagram, etc.)",
