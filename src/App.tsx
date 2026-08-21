@@ -11,6 +11,7 @@ import '@fontsource/outfit/800.css';
 import USA from "@/pages/USA";
 import UAE from "@/pages/UAE";
 import DigitalAgencyBlog from "@/Posts/DigitalAgency";
+import TopItCompaniesBlog from "@/Posts/TopItCompanies";
 
 // 👇 Sab pages ab lazy — direct import hata diya
 const HomePage = lazy(() => import("@/pages/HomePage"));
@@ -58,7 +59,7 @@ export default function App() {
           <Route path="/careers" element={<Layout><CareersPage /></Layout>} />
           <Route path="/blog" element={<Layout><BlogPage /></Layout>} />
           <Route path="/blog/how-to-choose-the-right-digital-agency" element={<Layout><DigitalAgencyBlog /></Layout>} />
-
+          <Route path="/blog/top-10-it-companies-in-india" element={<Layout><TopItCompaniesBlog /></Layout>} />
           <Route path="/contact" element={<Layout><ContactPage /></Layout>} />
           <Route path="/terms-and-condition" element={<Layout><TermsAndCondition /></Layout>} />
           <Route path="/privacy-policy" element={<Layout><PrivacyPolicy /></Layout>} />

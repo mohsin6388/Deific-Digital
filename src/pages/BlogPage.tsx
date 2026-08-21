@@ -12,6 +12,15 @@ const posts = [
       "Software dev, UX, SEO, PPC or full-service? Here's how to pick the right digital partner for your business, wherever you're based.",
     slug: "how-to-choose-the-right-digital-agency",
   },
+   {
+    title: "Top IT Companies & Digital Marketing Agencies in India: A City-Wise Guide (2026)",
+    cat: "Software Development",
+    date: "Aug 21, 2026",
+    read: "8 min",
+    excerpt:
+      "Discover the top IT companies and digital marketing agencies in India, with a city-wise guide to leading software development, SEO, web development, PPC, and digital marketing companies.",
+    slug: "top-10-it-companies-in-india",
+  },
 ];
 
 export default function BlogPage() {
