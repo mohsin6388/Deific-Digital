@@ -3,15 +3,16 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ScrollToTop } from "./hooks/ScrollToTop";
 import { lazy, Suspense } from "react";
-import '@fontsource/outfit/400.css';
-import '@fontsource/outfit/500.css';
-import '@fontsource/outfit/600.css';
-import '@fontsource/outfit/700.css';
-import '@fontsource/outfit/800.css';
+import "@fontsource/outfit/400.css";
+import "@fontsource/outfit/500.css";
+import "@fontsource/outfit/600.css";
+import "@fontsource/outfit/700.css";
+import "@fontsource/outfit/800.css";
 import USA from "@/pages/USA";
 import UAE from "@/pages/UAE";
 import DigitalAgencyBlog from "@/Posts/DigitalAgency";
 import TopItCompaniesBlog from "@/Posts/TopItCompanies";
+import AiAgents from "@/pages/AiAgent";
 
 // 👇 Sab pages ab lazy — direct import hata diya
 const HomePage = lazy(() => import("@/pages/HomePage"));
@@ -27,6 +28,7 @@ const ContactPage = lazy(() => import("@/pages/ContactPage"));
 const ChatWidget = lazy(() => import("@/components/site/ChatWidget"));
 const TermsAndCondition = lazy(() => import("@/pages/TermsAndCondition"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
+
 const USALandingPage = lazy(() => import("@/pages/USA"));
 const UAELandingPage = lazy(() => import("@/pages/UAE"));
 
@@ -49,22 +51,145 @@ export default function App() {
       <ScrollToTop />
       <Suspense fallback={<div className="min-h-screen" />}>
         <Routes>
-          <Route path="/" element={<Layout><HomePage /></Layout>} />
-          <Route path="/about" element={<Layout><AboutPage /></Layout>} />
-          <Route path="/services/:slug" element={<Layout><ServicesPage /></Layout>} />
-          <Route path="/portfolio" element={<Layout><PortfolioPage /></Layout>} />
-          <Route path="/technologies" element={<Layout><TechnologiesPage /></Layout>} />
-          <Route path="/industries" element={<Layout><IndustriesPage /></Layout>} />
-          <Route path="/team" element={<Layout><TeamPage /></Layout>} />
-          <Route path="/careers" element={<Layout><CareersPage /></Layout>} />
-          <Route path="/blog" element={<Layout><BlogPage /></Layout>} />
-          <Route path="/blog/how-to-choose-the-right-digital-agency" element={<Layout><DigitalAgencyBlog /></Layout>} />
-          <Route path="/blog/top-10-it-companies-in-india" element={<Layout><TopItCompaniesBlog /></Layout>} />
-          <Route path="/contact" element={<Layout><ContactPage /></Layout>} />
-          <Route path="/terms-and-condition" element={<Layout><TermsAndCondition /></Layout>} />
-          <Route path="/privacy-policy" element={<Layout><PrivacyPolicy /></Layout>} />
-          <Route path="/usa" element={<Layout><USA /></Layout>} />
-          <Route path="/uae" element={<Layout><UAE /></Layout>} />
+          <Route
+            path="/"
+            element={
+              <Layout>
+                <HomePage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <Layout>
+                <AboutPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/services/:slug"
+            element={
+              <Layout>
+                <ServicesPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/portfolio"
+            element={
+              <Layout>
+                <PortfolioPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/technologies"
+            element={
+              <Layout>
+                <TechnologiesPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/industries"
+            element={
+              <Layout>
+                <IndustriesPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/team"
+            element={
+              <Layout>
+                <TeamPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/careers"
+            element={
+              <Layout>
+                <CareersPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/blog"
+            element={
+              <Layout>
+                <BlogPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/blog/how-to-choose-the-right-digital-agency"
+            element={
+              <Layout>
+                <DigitalAgencyBlog />
+              </Layout>
+            }
+          />
+          <Route
+            path="/blog/top-10-it-companies-in-india"
+            element={
+              <Layout>
+                <TopItCompaniesBlog />
+              </Layout>
+            }
+          />
+
+          <Route
+            path="/contact"
+            element={
+              <Layout>
+                <ContactPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/terms-and-condition"
+            element={
+              <Layout>
+                <TermsAndCondition />
+              </Layout>
+            }
+          />
+          <Route
+            path="/privacy-policy"
+            element={
+              <Layout>
+                <PrivacyPolicy />
+              </Layout>
+            }
+          />
+
+          <Route
+            path="/ai-agents"
+            element={
+              <Layout>
+                <AiAgents />
+              </Layout>
+            }
+          />
+
+          <Route
+            path="/usa"
+            element={
+              <Layout>
+                <USA />
+              </Layout>
+            }
+          />
+          <Route
+            path="/uae"
+            element={
+              <Layout>
+                <UAE />
+              </Layout>
+            }
+          />
           <Route
             path="*"
             element={

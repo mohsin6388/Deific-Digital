@@ -8,7 +8,6 @@ const WEBHOOK_URL: string =
   (import.meta as any)?.env?.VITE_N8N_WEBHOOK_URL ||
   "https://n8n.deificglobal.tech/webhook/support-chat";
 
-
 type Role = "user" | "bot";
 
 interface ChatMessage {
@@ -57,7 +56,7 @@ export default function ChatWidget() {
       } else {
         const greeting: ChatMessage = {
           role: "bot",
-          text: "Hi! Main Deific Global ka support assistant hu. Aapki kaise madad kar sakta hu?",
+          text: "Hi! Main Deific Digital ka support assistant hu. Aapki kaise madad kar sakta hu?",
         };
         setMessages([greeting]);
       }
@@ -89,7 +88,8 @@ export default function ChatWidget() {
         body: JSON.stringify({ name: visitorNameRef.current, message: text }),
       });
       const data = await res.json();
-      const reply: string = data.reply || "Sorry, kuch gadbad hui. Dobara try karein.";
+      const reply: string =
+        data.reply || "Sorry, kuch gadbad hui. Dobara try karein.";
       setMessages((prev) => {
         const next = [...prev, { role: "bot" as Role, text: reply }];
         persist(next);
@@ -99,7 +99,10 @@ export default function ChatWidget() {
       setMessages((prev) => {
         const next = [
           ...prev,
-          { role: "bot" as Role, text: "Connection error — please try again in a moment." },
+          {
+            role: "bot" as Role,
+            text: "Connection error — please try again in a moment.",
+          },
         ];
         persist(next);
         return next;
@@ -219,7 +222,15 @@ export default function ChatWidget() {
         {!isOpen && <span id="dg-launcher-badge" />}
         {isOpen ? (
           // Close (X) icon when the chat window is open
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.4"
+            strokeLinecap="round"
+          >
             <line x1="6" y1="6" x2="18" y2="18" />
             <line x1="18" y1="6" x2="6" y2="18" />
           </svg>
@@ -237,24 +248,38 @@ export default function ChatWidget() {
         )}
       </button>
 
-      <div id="dg-window" className={isOpen ? "dg-open" : ""} role="dialog" aria-label="Support chat">
+      <div
+        id="dg-window"
+        className={isOpen ? "dg-open" : ""}
+        role="dialog"
+        aria-label="Support chat"
+      >
         <div id="dg-header">
           <div id="dg-header-title">
-            support@deificglobal<span className="dg-cursor">_</span>
+            Support Deific Digital<span className="dg-cursor">_</span>
           </div>
-          <button id="dg-close" aria-label="Close chat" onClick={() => setIsOpen(false)}>
+          <button
+            id="dg-close"
+            aria-label="Close chat"
+            onClick={() => setIsOpen(false)}
+          >
             &times;
           </button>
         </div>
 
         <div id="dg-messages">
           {messages.map((m, i) => (
-            <div key={i} className={`dg-msg ${m.role === "user" ? "dg-msg-user" : "dg-msg-bot"}`}>
+            <div
+              key={i}
+              className={`dg-msg ${m.role === "user" ? "dg-msg-user" : "dg-msg-bot"}`}
+            >
               {m.role === "bot" && <span className="dg-label">SUPPORT</span>}
               <span>{m.text}</span>
             </div>
           ))}
-          {isTyping && <div className="dg-msg dg-msg-typing">SUPPORT is typing...</div>}
+          {isTyping && (
+            <div className="dg-msg dg-msg-typing">SUPPORT is typing...</div>
+          )}
           <div ref={messagesEndRef} />
         </div>
 

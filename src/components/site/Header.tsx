@@ -1,4 +1,3 @@
-
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
@@ -8,7 +7,12 @@ import { servicesMenu } from "../../static/servicesData"; // <-- yahan se data a
 const nav = [
   { to: "/", label: "Home", hasDropdown: false },
   { to: "/about", label: "About", hasDropdown: false },
-  { to: "/services/android-app-development", label: "Services", hasDropdown: true },
+  { to: "/ai-agents", label: "AI Agents", hasDropdown: false },
+  {
+    to: "/services/android-app-development",
+    label: "Services",
+    hasDropdown: true,
+  },
   { to: "/portfolio", label: "Work & Clients", hasDropdown: false },
   { to: "/careers", label: "Careers", hasDropdown: false },
   { to: "/blog", label: "Blog", hasDropdown: false },
@@ -51,7 +55,9 @@ export function Header() {
                 <Link
                   to={n.to}
                   className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-red-700 ${
-                    location.pathname === n.to ? "text-red-700" : "text-gray-500"
+                    location.pathname === n.to
+                      ? "text-red-700"
+                      : "text-gray-500"
                   }`}
                 >
                   {n.label}
@@ -103,7 +109,7 @@ export function Header() {
               >
                 {n.label}
               </Link>
-            )
+            ),
           )}
         </nav>
 
@@ -226,7 +232,7 @@ export function Header() {
                 >
                   {n.label}
                 </Link>
-              )
+              ),
             )}
 
             <a
@@ -251,5 +257,3 @@ export function Header() {
     </header>
   );
 }
-
-
