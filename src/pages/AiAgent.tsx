@@ -407,6 +407,7 @@ const agents: Agent[] = [
       "Previous visit history",
     ],
     cta: "Get AI Receptionist",
+    link: "https://medibuddy-dashboard.onrender.com/",
     theme: "soft",
     Mockup: ReceptionistMockup,
   },
@@ -434,6 +435,7 @@ const agents: Agent[] = [
       "Hot, warm, cold dashboard",
     ],
     cta: "Get Prop AI",
+    link: "https://real-estate-agent-17dl.onrender.com/",
     theme: "white",
     Mockup: PropAiMockup,
   },
@@ -615,7 +617,7 @@ function AgentSection({ agent, index }: { agent: Agent; index: number }) {
             </div>
 
             <a
-              href="/contact"
+              href={agent?.link}
               className={`mt-10 inline-flex items-center gap-3 rounded-full px-7 py-4 text-sm font-semibold transition ${
                 dark
                   ? "bg-red-600 text-white hover:bg-white hover:text-black"
