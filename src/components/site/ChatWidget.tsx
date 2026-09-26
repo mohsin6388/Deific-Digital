@@ -131,21 +131,37 @@ export default function ChatWidget() {
       "moira",
       "tessa",
     ];
+    const langPrefix = targetLang.split("-")[0].toLowerCase(); // "en" or "hi"
+
     const exactLang = voices.filter(
       (v) => v.lang.toLowerCase() === targetLang.toLowerCase(),
     );
+    // 🔧 FIX: same-language voices (any region), not just exact locale match
+    const samePrefix = voices.filter((v) =>
+      v.lang.toLowerCase().startsWith(langPrefix),
+    );
     const indianLang = voices.filter((v) => /^(hi-in|en-in)$/i.test(v.lang));
-    for (const pool of [exactLang, indianLang, voices]) {
+
+    for (const pool of [exactLang, indianLang, samePrefix]) {
       if (!pool.length) continue;
       const match = pool.find((v) =>
         femaleHints.some((h) => v.name.toLowerCase().includes(h)),
       );
       if (match) return match;
     }
-    const fallbackPool = indianLang.length ? indianLang : voices;
+
+    // 🔧 FIX: final fallback must stay within the SAME language — never fall
+    // back to an unrelated language voice (e.g. Assamese for English text)
+    const fallbackPool = samePrefix.length
+      ? samePrefix
+      : exactLang.length
+        ? exactLang
+        : voices.filter((v) => v.lang.toLowerCase().startsWith("en"));
+
     return (
       fallbackPool.find((v) => !/male/i.test(v.name)) ||
       fallbackPool[0] ||
+      voices.find((v) => v.lang.toLowerCase().startsWith("en")) ||
       voices[0] ||
       null
     );
@@ -160,12 +176,8 @@ export default function ChatWidget() {
   //   2) long utterances (~15s+) can get auto-paused by the browser mid-speech
   //      and never resume on their own — a periodic pause()/resume() nudge
   //      ("watchdog") keeps it alive until it actually finishes.
-
   function speakThenListen(text: string) {
     setPhase("speaking");
-    console.log("[DG] speakThenListen called, text length:", text.length);
-    console.log("[DG] voices available:", voicesRef.current.length);
-
     const targetLang = detectSpeechLang(text);
     const utter = new SpeechSynthesisUtterance(text);
     utter.rate = 1.0;
@@ -175,72 +187,38 @@ export default function ChatWidget() {
     if (voice) {
       utter.voice = voice;
       utter.lang = voice.lang;
-      console.log("[DG] voice picked:", voice.name, voice.lang);
-    } else {
-      console.log("[DG] no voice picked, using default lang:", targetLang);
     }
 
-    utter.onstart = () => console.log("[DG] utter onstart fired");
+    let watchdog: any = null;
+
+    utter.onstart = () => {
+      watchdog = setInterval(() => {
+        if (window.speechSynthesis.speaking) {
+          window.speechSynthesis.pause();
+          window.speechSynthesis.resume();
+        }
+      }, 4000);
+    };
+
+    const cleanup = () => {
+      if (watchdog) clearInterval(watchdog);
+      watchdog = null;
+    };
+
     utter.onend = () => {
-      console.log("[DG] utter onend fired");
+      cleanup();
       if (continuousRef.current) startListening();
     };
-    utter.onerror = (e) => {
-      console.log("[DG] utter onerror fired:", e.error);
+    utter.onerror = () => {
+      cleanup();
       if (continuousRef.current) startListening();
     };
 
-    console.log(
-      "[DG] speechSynthesis.speaking before cancel:",
-      window.speechSynthesis.speaking,
-    );
     window.speechSynthesis.cancel();
-    console.log("[DG] calling speak() now");
-    window.speechSynthesis.speak(utter);
+    setTimeout(() => {
+      window.speechSynthesis.speak(utter);
+    }, 120);
   }
-  // function speakThenListen(text: string) {
-  //   setPhase("speaking");
-  //   const targetLang = detectSpeechLang(text);
-  //   const utter = new SpeechSynthesisUtterance(text);
-  //   utter.rate = 1.0;
-  //   utter.pitch = 1.05;
-  //   utter.lang = targetLang;
-  //   const voice = pickFemaleVoice(targetLang);
-  //   if (voice) {
-  //     utter.voice = voice;
-  //     utter.lang = voice.lang;
-  //   }
-
-  //   let watchdog: any = null;
-
-  //   utter.onstart = () => {
-  //     watchdog = setInterval(() => {
-  //       if (window.speechSynthesis.speaking) {
-  //         window.speechSynthesis.pause();
-  //         window.speechSynthesis.resume();
-  //       }
-  //     }, 4000);
-  //   };
-
-  //   const cleanup = () => {
-  //     if (watchdog) clearInterval(watchdog);
-  //     watchdog = null;
-  //   };
-
-  //   utter.onend = () => {
-  //     cleanup();
-  //     if (continuousRef.current) startListening();
-  //   };
-  //   utter.onerror = () => {
-  //     cleanup();
-  //     if (continuousRef.current) startListening();
-  //   };
-
-  //   window.speechSynthesis.cancel();
-  //   setTimeout(() => {
-  //     window.speechSynthesis.speak(utter);
-  //   }, 120);
-  // }
 
   function startListening() {
     if (!recognitionRef.current || !continuousRef.current) return;
