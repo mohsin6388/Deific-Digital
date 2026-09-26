@@ -153,6 +153,13 @@ export default function ChatWidget() {
 
   // Speaks the text, then (if the hands-free loop is still active) automatically
   // starts listening again — this is what removes the "tap every time" problem.
+  //
+  // 🔧 ANDROID FIX: Chrome on Android has two known quirks with speechSynthesis:
+  //   1) calling speak() immediately after cancel() can silently get dropped
+  //      (a small delay avoids the race).
+  //   2) long utterances (~15s+) can get auto-paused by the browser mid-speech
+  //      and never resume on their own — a periodic pause()/resume() nudge
+  //      ("watchdog") keeps it alive until it actually finishes.
   function speakThenListen(text: string) {
     setPhase("speaking");
     const targetLang = detectSpeechLang(text);
@@ -165,14 +172,36 @@ export default function ChatWidget() {
       utter.voice = voice;
       utter.lang = voice.lang;
     }
+
+    let watchdog: any = null;
+
+    utter.onstart = () => {
+      watchdog = setInterval(() => {
+        if (window.speechSynthesis.speaking) {
+          window.speechSynthesis.pause();
+          window.speechSynthesis.resume();
+        }
+      }, 4000);
+    };
+
+    const cleanup = () => {
+      if (watchdog) clearInterval(watchdog);
+      watchdog = null;
+    };
+
     utter.onend = () => {
+      cleanup();
       if (continuousRef.current) startListening();
     };
     utter.onerror = () => {
+      cleanup();
       if (continuousRef.current) startListening();
     };
+
     window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(utter);
+    setTimeout(() => {
+      window.speechSynthesis.speak(utter);
+    }, 120);
   }
 
   function startListening() {
@@ -186,11 +215,25 @@ export default function ChatWidget() {
   }
 
   // Called by the mic button on the intro screen. Starts the whole hands-free call.
+  //
+  // 🔧 ANDROID FIX: fire a near-silent "primer" utterance synchronously inside
+  // this tap-gesture handler, before any await. This unlocks the speech engine
+  // on Android Chrome so that the *real* reply (spoken later, after the fetch
+  // resolves) is reliably allowed to play instead of being silently blocked.
   const startCall = async () => {
     continuousRef.current = true;
     setView("live");
     setPhase("connecting");
     setMessages([]);
+
+    try {
+      const primer = new SpeechSynthesisUtterance(" ");
+      primer.volume = 0;
+      window.speechSynthesis.speak(primer);
+    } catch {
+      /* ignore */
+    }
+
     try {
       const res = await fetch(`${API_BASE}/web/start`, {
         method: "POST",
