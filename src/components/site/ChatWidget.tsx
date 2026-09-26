@@ -160,8 +160,12 @@ export default function ChatWidget() {
   //   2) long utterances (~15s+) can get auto-paused by the browser mid-speech
   //      and never resume on their own — a periodic pause()/resume() nudge
   //      ("watchdog") keeps it alive until it actually finishes.
+
   function speakThenListen(text: string) {
     setPhase("speaking");
+    console.log("[DG] speakThenListen called, text length:", text.length);
+    console.log("[DG] voices available:", voicesRef.current.length);
+
     const targetLang = detectSpeechLang(text);
     const utter = new SpeechSynthesisUtterance(text);
     utter.rate = 1.0;
@@ -171,38 +175,72 @@ export default function ChatWidget() {
     if (voice) {
       utter.voice = voice;
       utter.lang = voice.lang;
+      console.log("[DG] voice picked:", voice.name, voice.lang);
+    } else {
+      console.log("[DG] no voice picked, using default lang:", targetLang);
     }
 
-    let watchdog: any = null;
-
-    utter.onstart = () => {
-      watchdog = setInterval(() => {
-        if (window.speechSynthesis.speaking) {
-          window.speechSynthesis.pause();
-          window.speechSynthesis.resume();
-        }
-      }, 4000);
-    };
-
-    const cleanup = () => {
-      if (watchdog) clearInterval(watchdog);
-      watchdog = null;
-    };
-
+    utter.onstart = () => console.log("[DG] utter onstart fired");
     utter.onend = () => {
-      cleanup();
+      console.log("[DG] utter onend fired");
       if (continuousRef.current) startListening();
     };
-    utter.onerror = () => {
-      cleanup();
+    utter.onerror = (e) => {
+      console.log("[DG] utter onerror fired:", e.error);
       if (continuousRef.current) startListening();
     };
 
+    console.log(
+      "[DG] speechSynthesis.speaking before cancel:",
+      window.speechSynthesis.speaking,
+    );
     window.speechSynthesis.cancel();
-    setTimeout(() => {
-      window.speechSynthesis.speak(utter);
-    }, 120);
+    console.log("[DG] calling speak() now");
+    window.speechSynthesis.speak(utter);
   }
+  // function speakThenListen(text: string) {
+  //   setPhase("speaking");
+  //   const targetLang = detectSpeechLang(text);
+  //   const utter = new SpeechSynthesisUtterance(text);
+  //   utter.rate = 1.0;
+  //   utter.pitch = 1.05;
+  //   utter.lang = targetLang;
+  //   const voice = pickFemaleVoice(targetLang);
+  //   if (voice) {
+  //     utter.voice = voice;
+  //     utter.lang = voice.lang;
+  //   }
+
+  //   let watchdog: any = null;
+
+  //   utter.onstart = () => {
+  //     watchdog = setInterval(() => {
+  //       if (window.speechSynthesis.speaking) {
+  //         window.speechSynthesis.pause();
+  //         window.speechSynthesis.resume();
+  //       }
+  //     }, 4000);
+  //   };
+
+  //   const cleanup = () => {
+  //     if (watchdog) clearInterval(watchdog);
+  //     watchdog = null;
+  //   };
+
+  //   utter.onend = () => {
+  //     cleanup();
+  //     if (continuousRef.current) startListening();
+  //   };
+  //   utter.onerror = () => {
+  //     cleanup();
+  //     if (continuousRef.current) startListening();
+  //   };
+
+  //   window.speechSynthesis.cancel();
+  //   setTimeout(() => {
+  //     window.speechSynthesis.speak(utter);
+  //   }, 120);
+  // }
 
   function startListening() {
     if (!recognitionRef.current || !continuousRef.current) return;
