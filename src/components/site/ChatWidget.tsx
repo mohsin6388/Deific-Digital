@@ -226,13 +226,13 @@ export default function ChatWidget() {
     setPhase("connecting");
     setMessages([]);
 
-    try {
-      const primer = new SpeechSynthesisUtterance(" ");
-      primer.volume = 0;
-      window.speechSynthesis.speak(primer);
-    } catch {
-      /* ignore */
-    }
+    // try {
+    //   const primer = new SpeechSynthesisUtterance(" ");
+    //   primer.volume = 0;
+    //   window.speechSynthesis.speak(primer);
+    // } catch {
+    //   /* ignore */
+    // }
 
     try {
       const res = await fetch(`${API_BASE}/web/start`, {
