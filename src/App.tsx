@@ -28,9 +28,11 @@ const ContactPage = lazy(() => import("@/pages/ContactPage"));
 const ChatWidget = lazy(() => import("@/components/site/ChatWidget"));
 const TermsAndCondition = lazy(() => import("@/pages/TermsAndCondition"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
+const PropAILanding = lazy(() => import("@/pages/PropAI"));
 
-const USALandingPage = lazy(() => import("@/pages/USA"));
-const UAELandingPage = lazy(() => import("@/pages/UAE"));
+const PropAIPrivacy = lazy(() => import("@/pages/PropAIPrivacy"));
+const PropAITerms = lazy(() => import("@/pages/PropAITerms"));
+const PropAIDataDeletion = lazy(() => import("@/pages/PropAIDataDeletion"));
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -190,6 +192,16 @@ export default function App() {
               </Layout>
             }
           />
+
+          <Route path="/propai" element={<PropAILanding />} />
+
+          <Route path="/propai/privacy-policy" element={<PropAIPrivacy />} />
+          <Route path="/propai/terms" element={<PropAITerms />} />
+          <Route
+            path="/propai/data-deletion"
+            element={<PropAIDataDeletion />}
+          />
+
           <Route
             path="*"
             element={
