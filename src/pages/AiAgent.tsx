@@ -435,7 +435,7 @@ const agents: Agent[] = [
       "Hot, warm, cold dashboard",
     ],
     cta: "Get Prop AI",
-    link: "https://real-estate-agent-17dl.onrender.com/",
+    link: "/propai",
     theme: "white",
     Mockup: PropAiMockup,
   },

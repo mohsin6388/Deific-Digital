@@ -2830,7 +2830,7 @@ export default function HomePage() {
 
                 {/* CTA Button */}
                 <a
-                  href="/ai-agents"
+                  href="https://www.deificdigital.com/propai"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 shrink-0"
@@ -2841,79 +2841,23 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* AI Review Ninja Pro */}
-            {/* <div className="relative overflow-hidden bg-red-50 border border-red-200 rounded-2xl p-4 sm:p-5 mb-8 mt-10">
-              <div className="absolute right-0 top-0 w-32 h-32 rounded-full bg-red-100 -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-              <div className="relative z-10 flex flex-col lg:flex-row lg:items-center gap-5">
-                <div className="w-14 h-14 rounded-2xl bg-red-600 flex items-center justify-center shrink-0 shadow-lg shadow-red-200">
-                  <Star className="h-7 w-7 text-white fill-white" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <span className="inline-block bg-red-600 text-white text-[12px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider mb-4">
-                    Our Own Product
-                  </span>
-                  <h3 className="text-lg sm:text-xl font-black text-gray-900 leading-tight">
-                    AI Review Ninja Pro
-                  </h3>
-                  <p className="text-sm text-gray-600 mt-2 leading-relaxed max-w-2xl">
-                    We don't just build for clients — we create products that
-                    solve real business challenges.{" "}
-                    <span className="text-gray-700 font-semibold">
-                      AI Review Ninja Pro
-                    </span>{" "}
-                    helps businesses generate high-quality customer reviews,
-                    strengthen their online reputation, and improve local search
-                    visibility, making it easier to rank higher on Google
-                    Business Profile and attract more customers.
-                  </p>
-                </div>
-
-                <button>
-                  <a
-                    href="https://reviewninjapro.com"
-                    className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-                  >
-                    Go To Product &rsaquo;
-                  </a>
-                </button>
-              </div>
+            <div className="flex justify-center mt-10">
+              <a href="/ai-agents" className="neon-spin">
+                <span className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white">
+                  Explore Our AI Agents &rsaquo;
+                </span>
+              </a>
             </div>
 
-            <div className="relative overflow-hidden bg-red-50 border border-red-200 rounded-2xl p-4 sm:p-5 mb-8 mt-10">
-              <div className="absolute right-0 top-0 w-32 h-32 rounded-full bg-red-100 -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-              <div className="relative z-10 flex flex-col lg:flex-row lg:items-center gap-5">
-                <div className="w-14 h-14 rounded-2xl bg-red-600 flex items-center justify-center shrink-0 shadow-lg shadow-red-200">
-                  <Star className="h-7 w-7 text-white fill-white" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <span className="inline-block bg-red-600 text-white text-[12px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider mb-4">
-                    Our Own Product
-                  </span>
-                  <h3 className="text-lg sm:text-xl font-black text-gray-900 leading-tight">
-                    MedAssist
-                  </h3>
-                  <p className="text-sm text-gray-600 mt-2 leading-relaxed max-w-2xl">
-                    We don't just build for clients — we create products that
-                    solve real business challenges.{" "}
-                    <span className="text-gray-700 font-semibold">
-                      MedAssist
-                    </span>{" "}
-                    helps businesses generate high-quality customer reviews,
-                    strengthen their online reputation, and improve local search
-                    visibility, making it easier to rank higher on Google
-                    Business Profile and attract more customers.
-                  </p>
-                </div>
-
-                <button>
-                  <a
-                    href="https://reviewninjapro.com"
-                    className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-                  >
-                    Go To Product &rsaquo;
-                  </a>
-                </button>
-              </div>
+            {/* <div className="flex justify-center mt-10">
+              <button>
+                <a
+                  href={"/ai-agents"}
+                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                >
+                  Explore Our AI Agents &rsaquo;
+                </a>
+              </button>
             </div> */}
           </div>
         </section>

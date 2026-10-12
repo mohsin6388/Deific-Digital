@@ -3,24 +3,49 @@
 @tailwind utilities;
 
 @keyframes floatA {
-  0%, 100% { transform: translateY(0px) rotate(-2deg); }
-  50%       { transform: translateY(-12px) rotate(-2deg); }
+  0%,
+  100% {
+    transform: translateY(0px) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(-2deg);
+  }
 }
 @keyframes floatB {
-  0%, 100% { transform: translateY(0px) rotate(1.5deg); }
-  50%       { transform: translateY(-18px) rotate(1.5deg); }
+  0%,
+  100% {
+    transform: translateY(0px) rotate(1.5deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(1.5deg);
+  }
 }
 @keyframes floatC {
-  0%, 100% { transform: translateY(0px) rotate(-1deg); }
-  50%       { transform: translateY(-8px) rotate(-1deg); }
+  0%,
+  100% {
+    transform: translateY(0px) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-1deg);
+  }
 }
 @keyframes orbit {
-  0%   { transform: rotate(0deg) translateX(54px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(54px) rotate(-360deg); }
+  0% {
+    transform: rotate(0deg) translateX(54px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(54px) rotate(-360deg);
+  }
 }
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @layer base {
@@ -55,10 +80,82 @@
 
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
   }
 }
 
 body {
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
+}
+
+/* Version 1: pulsing neon glow */
+.neon-pulse {
+  border: 1px solid #ff2a4d;
+  box-shadow:
+    0 0 6px #ff2a4d,
+    0 0 18px rgba(255, 42, 77, 0.55),
+    inset 0 0 8px rgba(255, 42, 77, 0.35);
+  animation: neon-pulse 2s ease-in-out infinite;
+  transition: transform 0.2s;
+}
+.neon-pulse:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+@keyframes neon-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 4px #ff2a4d,
+      0 0 12px rgba(255, 42, 77, 0.4),
+      inset 0 0 6px rgba(255, 42, 77, 0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 8px #ff2a4d,
+      0 0 28px rgba(255, 42, 77, 0.8),
+      inset 0 0 12px rgba(255, 42, 77, 0.5);
+  }
+}
+
+/* Version 2: neon light running around the border */
+.neon-spin {
+  position: relative;
+  display: inline-flex;
+  padding: 2px; /* border thickness */
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 0 22px rgba(255, 42, 77, 0.45);
+}
+.neon-spin::before {
+  content: "";
+  position: absolute;
+  inset: -150%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0 55%,
+    #ff2a4d 80%,
+    #ff9aa9 100%
+  );
+  animation: neon-rotate 3s linear infinite;
+}
+.neon-spin > span {
+  position: relative;
+  z-index: 1;
+  border-radius: 6px;
+  background: #0b0b0f; /* button ka andar ka color */
+}
+@keyframes neon-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .neon-pulse,
+  .neon-spin::before {
+    animation: none;
+  }
 }
